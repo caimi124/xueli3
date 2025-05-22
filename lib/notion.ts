@@ -46,7 +46,7 @@ export async function getDatabaseItems(): Promise<Post[]> {
       },
     });
 
-    const posts = response.results.map((page) => {
+    const posts = response.results.map((page: any) => {
       const typedPage = page as unknown as NotionPage;
       return {
         id: typedPage.id,

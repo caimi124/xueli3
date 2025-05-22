@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/next"
+    }
+  ],
+  "env": {
+    "NOTION_API_KEY": "@notion_api_key",
+    "NOTION_DATABASE_ID": "@notion_database_id",
+    "NEXT_PUBLIC_SITE_URL": "${VERCEL_URL}"
+  },
+  "buildCommand": "npm run build"
+} 
