@@ -1,0 +1,10 @@
+declare module 'react';
+declare module 'react-dom';
+declare module 'next/app';
+declare module 'next/head';
+declare module 'next/link';
+declare module 'next/router';
+declare module 'next/image';
+declare module '@notionhq/client';
+declare module 'notion-to-md';
+declare module 'react-markdown'; 
