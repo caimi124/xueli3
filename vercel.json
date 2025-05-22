@@ -11,5 +11,6 @@
     "NOTION_DATABASE_ID": "@notion_database_id",
     "NEXT_PUBLIC_SITE_URL": "${VERCEL_URL}"
   },
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "installCommand": "rm -f package-lock.json && npm install"
 } 
