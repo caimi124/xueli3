@@ -1,43 +1,32 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 import { useTranslations } from '../utils/i18n';
 
-interface Props {
-  children: ReactNode;
-  fallback?: ReactNode;
-}
-
-interface State {
-  hasError: boolean;
-  error?: Error;
-}
-
-/**
- * 错误边界组件，捕获子组件中的 JavaScript 错误
- */
-class ErrorBoundaryClass extends Component<Props, State> {
-  constructor(props: Props) {
+// Simple error boundary class component
+class ErrorBoundary extends React.Component {
+  constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error: Error): State {
-    // 更新状态，下次渲染时显示降级UI
+  static getDerivedStateFromError(error) {
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    // 错误日志或上报服务
+  componentDidCatch(error, errorInfo) {
     console.error('Error caught by ErrorBoundary:', error, errorInfo);
   }
 
-  render(): ReactNode {
-    if (this.state.hasError) {
-      // 自定义降级UI或使用传入的fallback
-      if (this.props.fallback) {
-        return this.props.fallback;
+  render() {
+    const { children, fallback } = this.props;
+    const { hasError, error } = this.state;
+    
+    if (hasError) {
+      if (fallback) {
+        return fallback;
       }
       
+      // Default fallback UI
       return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
           <div className="text-center p-6 bg-white rounded-lg shadow-md max-w-md">
@@ -46,7 +35,7 @@ class ErrorBoundaryClass extends Component<Props, State> {
               抱歉，页面发生了错误。请尝试刷新页面或返回首页。
             </p>
             <div className="text-sm text-gray-500 mb-4 p-2 bg-gray-100 rounded overflow-auto">
-              {this.state.error?.message}
+              {error?.message}
             </div>
             <button
               onClick={() => window.location.reload()}
@@ -65,19 +54,17 @@ class ErrorBoundaryClass extends Component<Props, State> {
       );
     }
 
-    return this.props.children;
+    return children;
   }
 }
 
-/**
- * 错误边界组件的包装器，添加国际化支持
- */
-export default function ErrorBoundary({ children, fallback }: Props): JSX.Element {
+// Wrapper function to provide i18n support
+export default function ErrorBoundaryWithI18n(props) {
   const router = useRouter();
   const { locale = 'zh' } = router || {};
   const { t } = useTranslations(locale);
   
-  // 预设的错误UI
+  // Create internationalized fallback UI
   const defaultFallback = (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="text-center p-6 bg-white rounded-lg shadow-md max-w-md">
@@ -105,9 +92,12 @@ export default function ErrorBoundary({ children, fallback }: Props): JSX.Elemen
     </div>
   );
   
+  // Use the custom fallback or the default one
+  const fallback = props.fallback || defaultFallback;
+  
   return (
-    <ErrorBoundaryClass fallback={fallback || defaultFallback}>
-      {children}
-    </ErrorBoundaryClass>
+    <ErrorBoundary {...props} fallback={fallback}>
+      {props.children}
+    </ErrorBoundary>
   );
 } 

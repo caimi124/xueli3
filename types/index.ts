@@ -82,8 +82,16 @@ export interface SEOProps {
 }
 
 // i18n Types
-export interface Translations {
-  [key: string]: {
-    [key: string]: string;
+export interface TranslationValue {
+  [key: string]: string | TranslationValue;
+}
+
+export interface LocaleTranslations {
+  [locale: string]: {
+    [key: string]: string | TranslationValue;
   };
+}
+
+export interface Translations {
+  [section: string]: LocaleTranslations;
 } 

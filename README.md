@@ -74,6 +74,10 @@ NOTION_API_KEY=your_notion_api_key_here
 NOTION_DATABASE_ID=your_notion_database_id_here
 ```
 
+> **注意**: 如果您没有配置环境变量，项目将使用模拟数据运行。在生产环境中，强烈建议配置真实的 Notion API 凭据。
+> 
+> **Note**: If you don't configure environment variables, the project will run with mock data. For production environments, it is strongly recommended to configure real Notion API credentials.
+
 4. 启动开发服务器 / Start the development server:
 ```bash
 npm run dev
@@ -111,3 +115,21 @@ Contributions and suggestions are welcome!
 ## 许可 / License
 
 MIT 
+
+## 常见问题排查 / Troubleshooting
+
+### 类型错误 / TypeScript Errors
+
+如果您遇到类型错误，有几种解决方案：
+
+1. 在 `tsconfig.json` 中启用严格模式（将 `"strict": false` 改为 `"strict": true`）并修复所有类型错误
+2. 使用 `// @ts-ignore` 注释忽略特定的错误
+3. 保持当前设置，使用 `next.config.js` 中的 `ignoreBuildErrors: true` 选项
+
+### 图片路径错误 / Image Path Errors
+
+确保 `public/images/placeholder.jpg` 文件存在，否则模拟数据中的图片可能无法正确显示。
+
+### 国际化问题 / Internationalization Issues
+
+如果翻译不正确或缺失，请检查 `utils/i18n.ts` 文件中是否包含所有必要的翻译键。 

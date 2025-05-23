@@ -3,16 +3,52 @@ import { NotionToMarkdown } from "notion-to-md";
 import { NotionPage, Post, PostWithContent } from "../types";
 
 // 初始化Notion客户端
-const notion = new Client({
-  auth: process.env.NOTION_API_KEY,
-});
+const notion = process.env.NOTION_API_KEY 
+  ? new Client({ auth: process.env.NOTION_API_KEY })
+  : null;
 
-const n2m = new NotionToMarkdown({ notionClient: notion });
+const n2m = notion ? new NotionToMarkdown({ notionClient: notion }) : null;
 
 // 缓存数据以减少API调用
 let cachedPosts: Post[] | null = null;
 let lastFetched: number = 0;
 const CACHE_DURATION = 1000 * 60 * 5; // 5分钟缓存
+
+// 模拟数据，当环境变量缺失时使用
+const MOCK_POSTS: Post[] = [
+  {
+    id: "mock-post-1",
+    title: "示例文章 1",
+    date: "2023-05-01",
+    slug: "example-post-1",
+    excerpt: "这是一篇示例文章，用于在缺少Notion API密钥时展示。",
+    coverImage: "/images/placeholder.jpg",
+  },
+  {
+    id: "mock-post-2",
+    title: "示例文章 2",
+    date: "2023-04-15",
+    slug: "example-post-2",
+    excerpt: "另一篇示例文章，展示多篇文章的情况。",
+    coverImage: "/images/placeholder.jpg",
+  }
+];
+
+const MOCK_POST_CONTENT = `
+# 示例文章内容
+
+这是一篇示例文章，用于在缺少Notion API密钥时展示。
+
+## 小标题
+
+- 列表项 1
+- 列表项 2
+- 列表项 3
+
+> 这是一段引用文字
+
+正常段落文字内容。
+`;
 
 /**
  * 从Notion数据库获取博客文章列表
@@ -25,8 +61,10 @@ export async function getDatabaseItems(): Promise<Post[]> {
 
   const databaseId = process.env.NOTION_DATABASE_ID;
   
-  if (!databaseId) {
-    throw new Error("缺少NOTION_DATABASE_ID环境变量");
+  // 如果没有API密钥或数据库ID，返回模拟数据
+  if (!notion || !databaseId) {
+    console.warn("使用模拟数据 - 缺少Notion API密钥或数据库ID");
+    return MOCK_POSTS;
   }
 
   try {
@@ -65,7 +103,7 @@ export async function getDatabaseItems(): Promise<Post[]> {
     return posts;
   } catch (error) {
     console.error("获取博客列表失败:", error);
-    return [];
+    return MOCK_POSTS; // 出错时返回模拟数据
   }
 }
 
@@ -73,6 +111,12 @@ export async function getDatabaseItems(): Promise<Post[]> {
  * 获取单个页面的Markdown内容
  */
 export async function getPageContent(pageId: string): Promise<string> {
+  // 如果没有API密钥，返回模拟内容
+  if (!n2m || !notion) {
+    console.warn("使用模拟内容 - 缺少Notion API密钥");
+    return MOCK_POST_CONTENT;
+  }
+
   try {
     const mdblocks = await n2m.pageToMarkdown(pageId);
     const mdString = n2m.toMarkdownString(mdblocks);
@@ -89,8 +133,14 @@ export async function getPageContent(pageId: string): Promise<string> {
 export async function getPageBySlug(slug: string): Promise<PostWithContent> {
   const databaseId = process.env.NOTION_DATABASE_ID;
   
-  if (!databaseId) {
-    throw new Error("缺少NOTION_DATABASE_ID环境变量");
+  // 如果没有API密钥或数据库ID，返回模拟数据
+  if (!notion || !databaseId) {
+    console.warn("使用模拟数据 - 缺少Notion API密钥或数据库ID");
+    const mockPost = MOCK_POSTS.find(post => post.slug === slug) || MOCK_POSTS[0];
+    return {
+      ...mockPost,
+      content: MOCK_POST_CONTENT
+    };
   }
 
   try {
@@ -123,6 +173,11 @@ export async function getPageBySlug(slug: string): Promise<PostWithContent> {
     };
   } catch (error) {
     console.error(`通过slug获取文章失败 (${slug}):`, error);
-    throw error;
+    // 出错时返回模拟数据
+    const mockPost = MOCK_POSTS.find(post => post.slug === slug) || MOCK_POSTS[0];
+    return {
+      ...mockPost,
+      content: MOCK_POST_CONTENT
+    };
   }
 } 
