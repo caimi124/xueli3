@@ -55,6 +55,8 @@ export interface Post {
   slug: string;
   excerpt: string;
   coverImage: string;
+  category?: string;
+  tags?: string[];
 }
 
 export interface PostWithContent extends Post {
@@ -94,4 +96,44 @@ export interface LocaleTranslations {
 
 export interface Translations {
   [section: string]: LocaleTranslations;
+}
+
+export interface School {
+  id: string;
+  name: string;
+  country: string;
+  city?: string;
+  ranking?: number;
+  specialties?: string[];
+  accreditation?: string[];
+  description?: string;
+  website?: string;
+  imageUrl?: string;
+}
+
+export interface SchoolFilter {
+  countries: string[];
+  specialties: string[];
+  search: string;
+}
+
+export interface Service {
+  id: string;
+  name: string;
+  description: string;
+  price: {
+    amount: number;
+    currency: string;
+  };
+  features: string[];
+  duration: string;
+  recommended?: boolean;
+  highlight?: boolean;
+}
+
+export interface ServiceCategory {
+  id: string;
+  name: string;
+  description: string;
+  services: Service[];
 } 
