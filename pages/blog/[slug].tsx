@@ -94,26 +94,30 @@ export default function Post({ post }: PostProps) {
     })
   };
 
-  // 动态生成相关关键词
-  let keywords = locale === 'zh' 
-    ? '学历认证,留学认证,教育部认证' 
-    : 'academic certification,study abroad,education verification';
-  
-  // 基于文章标题添加额外关键词
-  const titleWords = post.title.toLowerCase().split(/\s+/).filter(word => word.length > 3);
-  if (titleWords.length > 0) {
-    keywords += ',' + titleWords.join(',');
+  // Generate keywords from title and content
+  let keywordsArray = [];
+  if (locale === 'zh') {
+    keywordsArray = ['学历认证', '教育资讯', '国际教育'];
+  } else {
+    keywordsArray = ['academic certification', 'education news', 'international education'];
   }
+  
+  // Add title words as keywords
+  const titleWords = post.title.split(' ').filter(word => word.length > 3).slice(0, 5);
+  keywordsArray = [...keywordsArray, ...titleWords];
+  
+  // Set up blog title and description for SEO
+  const blogTitle = locale === 'zh' ? '博客 - 学历认证服务平台' : 'Blog - Academic Certification Platform';
+  const ogDescription = post.excerpt;
 
   return (
     <Layout>
       <SEO 
-        title={post.title}
-        description={post.excerpt}
-        image={post.coverImage}
-        url={`${process.env.NEXT_PUBLIC_SITE_URL || 'https://academic-cert.com'}/blog/${post.slug}`}
+        title={`${post.title} - ${blogTitle}`}
+        description={ogDescription}
+        keywords={keywordsArray}
+        ogImage={post.coverImage}
         type="article"
-        keywords={keywords}
         structuredData={articleSchema}
       />
       <div className="bg-blue-50 py-12">

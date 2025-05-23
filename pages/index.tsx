@@ -124,7 +124,9 @@ export default function Home() {
       <SEO 
         title={seoTitle}
         description={seoDescription}
-        keywords={locale === 'zh' ? '学历认证,留学认证,教育部认证,国际教育' : 'academic certification,study abroad,education verification,international education'}
+        keywords={locale === 'zh' 
+          ? ['学历认证', '留学认证', '教育部认证', '国际教育'] 
+          : ['academic certification', 'study abroad', 'education verification', 'international education']}
         structuredData={serviceSchema}
       />
       {/* Hero Section */}

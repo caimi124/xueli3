@@ -77,7 +77,9 @@ export default function Contact() {
       <SEO 
         title={seoTitle}
         description={seoDescription}
-        keywords={locale === 'zh' ? '联系我们,学历认证,留学咨询,国际教育' : 'contact us,academic certification,study abroad consultation,international education'}
+        keywords={locale === 'zh' 
+          ? ['联系我们', '学历认证', '留学咨询', '国际教育'] 
+          : ['contact us', 'academic certification', 'study abroad consultation', 'international education']}
         structuredData={contactSchema}
       />
       <div className="bg-blue-50 py-12">

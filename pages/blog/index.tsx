@@ -76,7 +76,9 @@ export default function BlogIndex({ posts }: BlogIndexProps) {
       <SEO 
         title={seoTitle}
         description={seoDescription}
-        keywords={locale === 'zh' ? '学历认证,国际教育,留学认证,学位认证,教育资讯' : 'academic certification,international education,study abroad,degree verification,education news'}
+        keywords={locale === 'zh' 
+          ? ['学历认证', '国际教育', '留学认证', '学位认证', '教育资讯'] 
+          : ['academic certification', 'international education', 'study abroad', 'degree verification', 'education news']}
         structuredData={blogListSchema}
         type="blog"
       />

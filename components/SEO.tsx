@@ -8,6 +8,8 @@ interface SEOProps {
   ogImage?: string;
   ogUrl?: string;
   canonicalUrl?: string;
+  structuredData?: Record<string, any>;
+  type?: string;
 }
 
 const SEO = ({
@@ -17,6 +19,7 @@ const SEO = ({
   ogImage = '/images/og-image.jpg',
   ogUrl,
   canonicalUrl,
+  structuredData,
 }: SEOProps) => {
   // 默认网站名称
   const siteName = '学历认证服务平台';
@@ -48,6 +51,14 @@ const SEO = ({
       
       {/* Canonical URL */}
       {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+      
+      {/* Structured Data / JSON-LD */}
+      {structuredData && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      )}
       
       {/* 其他元标签 */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
