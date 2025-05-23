@@ -16,7 +16,7 @@ export default function GuidesPage({ guides }: GuidesPageProps) {
       <SEO
         title="国家认证指南 - 学历认证服务平台"
         description="查看全球各国的学历认证详细指南，了解认证流程、材料、费用和注意事项。"
-        keywords={['学历认证指南', '留学认证', '各国认证流程', '认证要求']}
+        keywords={['学历认证指南', '留学认证', '各国认证流程', '认证要求', '学士学位认证服务', '硕士学位办理流程', 'MBA学历认证费用', '博士学位国际认证', '紧急加急学历认证']}
       />
       
       <div className="bg-blue-700 py-16 relative overflow-hidden">
