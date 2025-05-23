@@ -7,7 +7,7 @@ const certificationServices: Service[] = [
     name: "基础认证服务",
     description: "针对单一学历的基础认证服务，适用于就业或继续教育。",
     price: {
-      amount: 2000,
+      amount: 0,
       currency: "CNY"
     },
     features: [
@@ -24,7 +24,7 @@ const certificationServices: Service[] = [
     name: "标准认证服务",
     description: "全面的学历认证服务，适用于大多数留学和就业需求。",
     price: {
-      amount: 3500,
+      amount: 0,
       currency: "CNY"
     },
     features: [
@@ -43,7 +43,7 @@ const certificationServices: Service[] = [
     name: "高级认证服务",
     description: "尊享VIP认证服务，提供最快速度和最全面的支持。",
     price: {
-      amount: 5800,
+      amount: 0,
       currency: "CNY"
     },
     features: [
@@ -67,7 +67,7 @@ const applicationServices: Service[] = [
     name: "申请咨询服务",
     description: "为您提供专业的院校和专业选择咨询。",
     price: {
-      amount: 1500,
+      amount: 0,
       currency: "CNY"
     },
     features: [
@@ -84,7 +84,7 @@ const applicationServices: Service[] = [
     name: "标准申请服务",
     description: "全程指导和协助您完成学校申请流程。",
     price: {
-      amount: 8000,
+      amount: 0,
       currency: "CNY"
     },
     features: [
@@ -104,7 +104,7 @@ const applicationServices: Service[] = [
     name: "全程服务套餐",
     description: "从选校到获得offer全程一站式服务。",
     price: {
-      amount: 15000,
+      amount: 0,
       currency: "CNY"
     },
     features: [
@@ -129,7 +129,7 @@ const corporateServices: Service[] = [
     name: "企业背景调查服务",
     description: "为企业提供员工学历背景核实服务。",
     price: {
-      amount: 800,
+      amount: 0,
       currency: "CNY"
     },
     features: [
@@ -138,18 +138,14 @@ const corporateServices: Service[] = [
       "毕业状态确认",
       "核查报告提供"
     ],
-    duration: "5-7个工作日",
-    price: {
-      amount: 800,
-      currency: "CNY"
-    }
+    duration: "5-7个工作日"
   },
   {
     id: "batch-certification",
     name: "批量认证服务",
     description: "为企业提供多份学历同时认证的优惠服务。",
     price: {
-      amount: 1800,
+      amount: 0,
       currency: "CNY"
     },
     features: [

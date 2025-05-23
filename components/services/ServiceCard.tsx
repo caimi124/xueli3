@@ -24,14 +24,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
         <p className="text-gray-600 mb-4">{service.description}</p>
         
         <div className="flex items-baseline mb-6">
-          {service.price.amount > 0 ? (
-            <>
-              <span className="text-3xl font-extrabold text-gray-900">¥{service.price.amount}</span>
-              <span className="text-gray-500 text-sm ml-1">/{service.price.currency}</span>
-            </>
-          ) : (
-            <span className="text-lg font-bold text-gray-900">需咨询报价</span>
-          )}
+          <span className="text-lg font-bold text-gray-900">需咨询报价</span>
         </div>
         
         <div className="mb-6">

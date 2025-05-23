@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import EligibilityChecker from '../components/interactive/EligibilityChecker';
-import CostCalculator from '../components/interactive/CostCalculator';
+import ConsultationGuide from '../components/interactive/ConsultationGuide';
 import Link from 'next/link';
 
 export default function ToolsPage() {
@@ -10,15 +10,15 @@ export default function ToolsPage() {
     <Layout>
       <SEO
         title="互动工具 - 学历认证服务平台"
-        description="使用我们的互动工具评估您的学历认证资格和计算认证费用，帮助您更好地规划学历认证流程。"
-        keywords={['学历认证工具', '费用计算', '资格评估', '在线工具']}
+        description="使用我们的互动工具评估您的学历认证资格和获取定制化服务咨询，帮助您更好地规划学历认证流程。"
+        keywords={['学历认证工具', '服务咨询', '资格评估', '在线工具']}
       />
       
       <div className="bg-blue-700 py-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl font-bold text-white mb-4">互动工具</h1>
           <p className="text-blue-100 max-w-2xl mx-auto text-lg">
-            使用我们的在线工具，评估学历认证资格，计算费用，获取专业建议。
+            使用我们的在线工具，评估学历认证资格，获取定制服务方案和专业建议。
           </p>
         </div>
       </div>
@@ -29,7 +29,7 @@ export default function ToolsPage() {
             <EligibilityChecker />
           </div>
           <div>
-            <CostCalculator />
+            <ConsultationGuide />
           </div>
         </div>
         
@@ -68,7 +68,7 @@ export default function ToolsPage() {
             <div className="bg-white rounded-lg shadow-md p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">这些工具的结果有多准确？</h3>
               <p className="text-gray-600">
-                我们的工具基于常见情况提供初步评估和估算，但每个认证案例都有其独特性。为获得最准确的评估和报价，建议您与我们的专业顾问直接联系。
+                我们的工具基于常见情况提供初步评估和咨询，但每个认证案例都有其独特性。为获得最准确的评估和定制方案，建议您与我们的专业顾问直接联系。
               </p>
             </div>
             
@@ -80,9 +80,9 @@ export default function ToolsPage() {
             </div>
             
             <div className="bg-white rounded-lg shadow-md p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">费用计算器是如何工作的？</h3>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">定制服务咨询是如何工作的？</h3>
               <p className="text-gray-600">
-                费用计算器综合考虑服务类型、文件类型、目标国家和认证数量等因素，给出一个预估费用。实际费用可能因特殊情况而有所调整。
+                服务咨询工具会根据您选择的服务类型、文件类型、目标国家和认证数量等因素，为您提供个性化的服务方案。我们的顾问会在您提交需求后与您联系，提供详细的解决方案。
               </p>
             </div>
             
