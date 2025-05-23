@@ -3,8 +3,8 @@ import { NotionToMarkdown } from "notion-to-md";
 import { NotionPage, Post, PostWithContent } from "../types";
 
 // 初始化Notion客户端
-const notion = process.env.NOTION_API_KEY 
-  ? new Client({ auth: process.env.NOTION_API_KEY })
+const notion = process.env.NOTION_TOKEN 
+  ? new Client({ auth: process.env.NOTION_TOKEN })
   : null;
 
 const n2m = notion ? new NotionToMarkdown({ notionClient: notion }) : null;

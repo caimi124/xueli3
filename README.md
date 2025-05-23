@@ -70,7 +70,7 @@ npm install
 3. 创建环境变量文件 / Create environment variables file:
 创建 `.env.local` 文件并添加以下内容 / Create `.env.local` file and add:
 ```
-NOTION_API_KEY=your_notion_api_key_here
+NOTION_TOKEN=your_notion_token_here
 NOTION_DATABASE_ID=your_notion_database_id_here
 ```
 
