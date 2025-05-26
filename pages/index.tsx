@@ -1,235 +1,372 @@
 import React from 'react';
-import Layout from '../components/Layout';
-import SEO from '../components/SEO';
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Image from 'next/image';
+import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 
-export default function Home() {
-  const router = useRouter();
-  const { locale } = router;
-
-  // SEO数据
-  const seoTitle = locale === 'zh' ? '专业的学历认证服务平台' : 'Professional Academic Certification Platform';
-  const seoDescription = locale === 'zh' 
-    ? '为您的留学、就业和国际发展提供权威学历认证服务，快速高效的认证流程，全球认可的认证结果。'
-    : 'Providing authoritative academic certification services for your overseas study, employment, and international development with fast processing and global recognition.';
-  
-  // 结构化数据 - 服务列表
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        item: {
-          '@type': 'Service',
-          name: locale === 'zh' ? '学历认证' : 'Academic Certification',
-          description: locale === 'zh' 
-            ? '为国内外高校毕业证、学位证等提供官方认证服务，确保您的学历文凭全球认可。' 
-            : 'Official certification services for diplomas and degrees from universities worldwide, ensuring global recognition of your academic credentials.',
-          provider: {
-            '@type': 'Organization',
-            name: locale === 'zh' ? '学历认证服务平台' : 'Academic Certification Platform'
-          }
-        }
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        item: {
-          '@type': 'Service',
-          name: locale === 'zh' ? '快速处理' : 'Fast Processing',
-          description: locale === 'zh' 
-            ? '专业高效的认证流程，最快5个工作日完成认证，助您抢占留学和就业先机。' 
-            : 'Professional and efficient certification process, completed in as few as 5 working days, helping you secure study and employment opportunities.'
-        }
-      },
-      {
-        '@type': 'ListItem',
-        position: 3,
-        item: {
-          '@type': 'Service',
-          name: locale === 'zh' ? '全球认可' : 'Global Recognition',
-          description: locale === 'zh' 
-            ? '我们的认证结果获得国际教育组织和海外高校广泛认可，为您的国际发展铺平道路。' 
-            : 'Our certification results are widely recognized by international educational organizations and overseas universities, paving the way for your international development.'
-        }
-      }
-    ]
-  };
-
-  const features = [
+export default function HomePage() {
+  // 案例数据
+  const caseStudies = [
     {
-      title: locale === 'zh' ? '学历认证' : 'Academic Certification',
-      description: locale === 'zh' 
-        ? '为国内外高校毕业证、学位证等提供官方认证服务，确保您的学历文凭全球认可。' 
-        : 'Official certification services for diplomas and degrees from universities worldwide, ensuring global recognition of your academic credentials.',
-      icon: (
-        <svg className="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14v10" />
-        </svg>
-      ),
+      id: 1,
+      name: '张先生',
+      degree: '硕士学位',
+      school: '伦敦大学学院',
+      timeline: '6天完成',
+      description: '紧急需要英国硕士学历认证用于工作升职，我们加急处理并确保了所有文件的有效性。'
     },
     {
-      title: locale === 'zh' ? '快速处理' : 'Fast Processing',
-      description: locale === 'zh' 
-        ? '专业高效的认证流程，最快5个工作日完成认证，助您抢占留学和就业先机。' 
-        : 'Professional and efficient certification process, completed in as few as 5 working days, helping you secure study and employment opportunities.',
-      icon: (
-        <svg className="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
+      id: 2,
+      name: '李女士',
+      degree: '本科学位',
+      school: '南加州大学',
+      timeline: '7天完成',
+      description: '客户需要美国本科学历用于海外求职，我们提供了完整的学历认证解决方案。'
     },
     {
-      title: locale === 'zh' ? '全球认可' : 'Global Recognition',
-      description: locale === 'zh' 
-        ? '我们的认证结果获得国际教育组织和海外高校广泛认可，为您的国际发展铺平道路。' 
-        : 'Our certification results are widely recognized by international educational organizations and overseas universities, paving the way for your international development.',
-      icon: (
-        <svg className="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
+      id: 3,
+      name: '王先生',
+      degree: 'MBA学位',
+      school: '新加坡国立大学',
+      timeline: '5天完成',
+      description: '因工作调动需要亚洲顶尖商学院背景，我们协助完成了完整的学历文件认证。'
     },
   ];
 
-  const testimonials = [
+  // 服务流程
+  const processSteps = [
     {
-      content: locale === 'zh' 
-        ? '学历认证平台帮我顺利完成了硕士学位的认证，整个流程非常顺畅，工作人员也很专业。感谢他们的帮助，让我成功申请到了理想的海外大学。' 
-        : 'The Academic Certification Platform helped me successfully complete the certification of my master\'s degree. The entire process was smooth, and the staff were very professional. Thanks to their help, I successfully applied to my dream overseas university.',
-      author: locale === 'zh' ? '张先生，北京' : 'Mr. Zhang, Beijing',
+      step: 1,
+      title: '需求咨询',
+      description: '了解您的具体需求和时间要求'
     },
     {
-      content: locale === 'zh' 
-        ? '作为一名留学生，我需要将国外学位证书在国内认证。平台提供的服务既快速又准确，解决了我的燃眉之急，真的非常感谢！' 
-        : 'As an international student, I needed to have my foreign degree certificate certified in China. The service provided by the platform was both fast and accurate, solving my urgent need. I am really grateful!',
-      author: locale === 'zh' ? '李女士，上海' : 'Ms. Li, Shanghai',
+      step: 2,
+      title: '学校选择',
+      description: '从我们的资源库中选择适合的学校'
     },
     {
-      content: locale === 'zh' 
-        ? '公司聘请国际人才时要求学历认证，平台的专业服务大大加速了我们的招聘流程，认证结果获得了各方认可，非常值得信赖。' 
-        : 'When our company recruits international talent, we require academic certification. The platform\'s professional service greatly accelerated our recruitment process, and the certification results were recognized by all parties. Very trustworthy.',
-      author: locale === 'zh' ? '王总监，国际企业' : 'Director Wang, International Enterprise',
+      step: 3,
+      title: '文件准备',
+      description: '准备和定制您需要的认证文件'
+    },
+    {
+      step: 4,
+      title: '质量检查',
+      description: '多重验证确保文件真实可查'
+    },
+    {
+      step: 5,
+      title: '完成交付',
+      description: '7天内安全交付您的学历认证'
+    },
+  ];
+
+  // 产品选项
+  const products = [
+    {
+      id: 1,
+      title: '学士学位认证',
+      image: '/images/products/bachelor.jpg',
+      features: ['毕业证书', '学位证书', '成绩单', '在读证明']
+    },
+    {
+      id: 2,
+      title: '硕士学位认证',
+      image: '/images/products/master.jpg',
+      features: ['硕士毕业证', '学位证明', '成绩记录', '导师推荐信']
+    },
+    {
+      id: 3,
+      title: 'MBA/EMBA认证',
+      image: '/images/products/mba.jpg',
+      features: ['商学院证书', '管理学位', '课程成绩单', '项目证明']
+    },
+    {
+      id: 4,
+      title: '博士学位认证',
+      image: '/images/products/phd.jpg',
+      features: ['博士学位', '研究证明', '论文摘要', '学术推荐']
     },
   ];
 
   return (
     <Layout>
-      <SEO 
-        title={seoTitle}
-        description={seoDescription}
-        keywords={locale === 'zh' 
-          ? ['学历认证', '留学认证', '教育部认证', '国际教育'] 
-          : ['academic certification', 'study abroad', 'education verification', 'international education']}
-        structuredData={serviceSchema}
+      <SEO
+        title="学历认证服务 - 100%真实可查的国际学历认证"
+        description="提供7天快速学历认证服务，所有文件100%真实可查，多所知名学校可供选择。"
+        keywords={['学历认证', '国际学位认证', '真实可查', '学历证书', '7天加急', '硕士学位认证', '本科学历认证']}
       />
-      {/* Hero Section */}
-      <div className="bg-blue-50 py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="md:flex md:items-center md:justify-between">
-            <div className="md:w-1/2">
-              <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
-                {locale === 'zh' 
-                  ? '专业的学历认证服务平台' 
-                  : 'Professional Academic Certification Platform'}
-              </h1>
-              <p className="mt-4 text-xl text-gray-600">
-                {locale === 'zh' 
-                  ? '为您的留学、就业和国际发展提供权威学历认证服务' 
-                  : 'Providing authoritative academic certification services for your overseas study, employment, and international development'}
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link href="/contact" className="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700 md:text-lg">
-                  {locale === 'zh' ? '立即咨询' : 'Contact Now'}
-                </Link>
-                <Link href="/blog" className="px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 md:text-lg">
-                  {locale === 'zh' ? '了解更多' : 'Learn More'}
-                </Link>
-              </div>
-            </div>
-            <div className="mt-12 md:mt-0 md:w-1/2">
-              <div className="relative h-64 md:h-96 rounded-lg shadow-xl overflow-hidden">
-                <div className="absolute inset-0 bg-gray-300">
-                  {/* Replace with an actual image */}
-                  <div className="w-full h-full bg-gradient-to-r from-blue-400 to-indigo-500 opacity-80"></div>
-                </div>
-              </div>
+      
+      {/* 英雄区域 */}
+      <div className="bg-blue-700 py-24 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <Image
+            src="/images/hero-background.jpg"
+            alt="学历认证背景"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              100%真实可查的国际学历认证
+            </h1>
+            <p className="text-xl text-blue-100 mb-8">
+              7天内获取您的学历证书，全球顶尖院校资源，满足您的各种学历需求
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Link href="/contact">
+                <a className="bg-white text-blue-700 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg text-lg transition-colors">
+                  立即咨询
+                </a>
+              </Link>
+              <Link href="/schools">
+                <a className="bg-transparent text-white border-2 border-white hover:bg-white/10 font-bold py-3 px-8 rounded-lg text-lg transition-colors">
+                  浏览学校资源
+                </a>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Features Section */}
+      
+      {/* 核心优势 */}
+      <div className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">我们的核心优势</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">为什么选择我们的学历认证服务</p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-lg shadow-md text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+                  <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd"></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-3">100%真实可查</h3>
+              <p className="text-gray-600">
+                所有学历认证材料均可通过官方渠道验证，确保真实有效，无忧使用
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-lg shadow-md text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-3">7天加急服务</h3>
+              <p className="text-gray-600">
+                从咨询到交付，最快7天内完成全部流程，满足您的紧急需求
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-lg shadow-md text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-3">全球顶尖院校</h3>
+              <p className="text-gray-600">
+                提供来自全球各地区的知名院校资源，满足不同需求和偏好
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      {/* 服务流程 */}
       <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">
-              {locale === 'zh' ? '我们的服务' : 'Our Services'}
-            </h2>
-            <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-              {locale === 'zh' 
-                ? '提供全方位的学历认证解决方案，满足您的不同需求' 
-                : 'Providing comprehensive academic certification solutions to meet your various needs'}
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">7天获取学历证书流程</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              简单高效的认证流程，让您轻松获得所需文件
             </p>
           </div>
-
-          <div className="mt-16">
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {features.map((feature, i) => (
-                <div key={i} className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow duration-300">
-                  <div className="bg-blue-50 rounded-md p-2 inline-block">
-                    {feature.icon}
+          
+          <div className="relative">
+            {/* 流程连接线 */}
+            <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-blue-200 transform -translate-x-1/2"></div>
+            
+            <div className="space-y-12">
+              {processSteps.map((step, index) => (
+                <div key={step.step} className={`flex flex-col md:flex-row ${index % 2 === 0 ? '' : 'md:flex-row-reverse'} items-center`}>
+                  <div className={`md:w-5/12 ${index % 2 === 0 ? 'md:text-right md:pr-8' : 'md:text-left md:pl-8'}`}>
+                    <h3 className="text-xl font-bold mb-2">{step.title}</h3>
+                    <p className="text-gray-600">{step.description}</p>
                   </div>
-                  <h3 className="mt-4 text-lg font-medium text-gray-900">{feature.title}</h3>
-                  <p className="mt-2 text-gray-500">{feature.description}</p>
+                  
+                  <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
+                    <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">
+                      {step.step}
+                    </div>
+                  </div>
+                  
+                  <div className="md:w-5/12"></div>
                 </div>
               ))}
             </div>
           </div>
         </div>
       </div>
-
-      {/* Testimonials Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h2 className="text-3xl font-extrabold text-gray-900">
-              {locale === 'zh' ? '客户评价' : 'Testimonials'}
-            </h2>
-            <p className="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-              {locale === 'zh' 
-                ? '看看我们的客户如何评价我们的服务' 
-                : 'See what our clients say about our services'}
+      
+      {/* 产品展示 */}
+      <div className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">可供选择的文件类型</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              我们提供多种类型的学历认证文件，满足您不同场景的需求
             </p>
           </div>
           
-          <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {testimonials.map((testimonial, i) => (
-              <div key={i} className="bg-white p-6 rounded-lg shadow">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <svg className="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
-                    </svg>
-                  </div>
-                  <div className="ml-4">
-                    <p className="text-gray-600 italic">{testimonial.content}</p>
-                    <p className="mt-3 text-gray-900 font-medium">{testimonial.author}</p>
-                  </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {products.map(product => (
+              <div key={product.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="h-48 relative">
+                  <Image
+                    src={product.image || "/images/product-placeholder.jpg"}
+                    alt={product.title}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-4">{product.title}</h3>
+                  <ul className="space-y-2">
+                    {product.features.map((feature, index) => (
+                      <li key={index} className="flex items-center">
+                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                        </svg>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             ))}
           </div>
           
-          <div className="mt-16 text-center">
-            <Link href="/contact" className="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-blue-700">
-              {locale === 'zh' ? '联系我们' : 'Contact Us'}
+          <div className="mt-12 text-center">
+            <Link href="/services">
+              <a className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
+                了解更多服务详情
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+      
+      {/* 学校资源预览 */}
+      <div className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">全球顶尖学校资源</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              我们与全球多个国家和地区的知名院校合作，提供丰富的学历认证选择
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {['美国', '英国', '澳大利亚', '加拿大', '新加坡', '日本', '香港', '新西兰', '荷兰', '西班牙'].map((country, index) => (
+              <Link href="/schools" key={index}>
+                <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
+                  <h3 className="font-bold text-gray-800">{country}</h3>
+                  <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
+                </a>
+              </Link>
+            ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <Link href="/schools">
+              <a className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
+                浏览完整学校资源库
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+      
+      {/* 客户案例 */}
+      <div className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-3">成功案例分析</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              看看我们如何帮助其他客户成功获得学历认证
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {caseStudies.map(study => (
+              <div key={study.id} className="bg-white rounded-lg shadow-md p-6">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                    <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="font-bold">{study.name}</h3>
+                    <p className="text-sm text-gray-500">{study.school}</p>
+                  </div>
+                </div>
+                
+                <div className="mb-4">
+                  <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">
+                    {study.degree}
+                  </span>
+                  <span className="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">
+                    {study.timeline}
+                  </span>
+                </div>
+                
+                <p className="text-gray-700">{study.description}</p>
+              </div>
+            ))}
+          </div>
+          
+          <div className="mt-12 text-center">
+            <Link href="/blog">
+              <a className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">
+                查看更多成功案例
+              </a>
+            </Link>
+          </div>
+        </div>
+      </div>
+      
+      {/* CTA区域 */}
+      <div className="py-16 bg-blue-700 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <Image
+            src="/images/cta-background.jpg"
+            alt="联系我们背景"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-bold text-white mb-6">
+              准备好开始您的学历认证之旅了吗？
+            </h2>
+            <p className="text-xl text-blue-100 mb-8">
+              填写您的需求信息，我们的专家团队将在24小时内与您联系
+            </p>
+            <Link href="/contact">
+              <a className="inline-block bg-white text-blue-700 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg text-lg transition-colors">
+                立即咨询
+              </a>
             </Link>
           </div>
         </div>

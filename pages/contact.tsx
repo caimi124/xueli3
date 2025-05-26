@@ -1,305 +1,413 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import { useRouter } from 'next/router';
 
-export default function Contact() {
-  const router = useRouter();
-  const { locale } = router;
-  
+export default function ContactPage() {
+  // 表单状态
   const [formData, setFormData] = useState({
     name: '',
-    email: '',
     phone: '',
-    message: '',
+    email: '',
+    purpose: '',
+    educationType: '',
+    targetCountry: '',
+    urgency: '',
+    message: ''
   });
   
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState('');
+  // 提交状态
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitResult, setSubmitResult] = useState<{success: boolean; message: string} | null>(null);
   
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  // 处理输入变化
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    setFormData(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  // 处理表单提交
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Validate form
-    if (!formData.name || !formData.email || !formData.message) {
-      setError(locale === 'zh' ? '请填写所有必填字段' : 'Please fill in all required fields');
-      return;
-    }
-    
-    // Here you would typically send the data to your server or a third-party service
-    // For demo purposes, we'll just simulate a successful submission
-    setTimeout(() => {
-      setSubmitted(true);
-      setError('');
-    }, 1000);
-  };
-  
-  // SEO数据
-  const seoTitle = locale === 'zh' ? '联系我们 - 专业学历认证咨询' : 'Contact Us - Professional Academic Certification';
-  const seoDescription = locale === 'zh' 
-    ? '与我们的学历认证专家取得联系，获取专业咨询和服务。我们提供高效的响应和个性化的解决方案。' 
-    : 'Get in touch with our academic certification experts for professional consultation and services. We offer prompt responses and personalized solutions.';
-  
-  // 联系页面结构化数据
-  const contactSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: locale === 'zh' ? '学历认证服务平台' : 'Academic Certification Platform',
-    url: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://academic-cert.com'}`,
-    logo: `${process.env.NEXT_PUBLIC_SITE_URL || 'https://academic-cert.com'}/images/logo.png`,
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+86 123 4567 8910',
-      email: 'info@academiccert.com',
-      contactType: 'customer service',
-      availableLanguage: ['Chinese', 'English']
-    },
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: locale === 'zh' ? '建国路88号城市大厦15层' : '15th Floor, City Building, 88 Jianguo Road',
-      addressLocality: 'Beijing',
-      addressRegion: 'Chaoyang District',
-      postalCode: '100022',
-      addressCountry: 'CN'
+    try {
+      // 这里应该是实际的API调用，现在模拟一个成功响应
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // 成功响应
+      setSubmitResult({
+        success: true,
+        message: '您的咨询请求已成功提交！我们的顾问将在24小时内与您联系。'
+      });
+      
+      // 清空表单
+      setFormData({
+        name: '',
+        phone: '',
+        email: '',
+        purpose: '',
+        educationType: '',
+        targetCountry: '',
+        urgency: '',
+        message: ''
+      });
+    } catch (error) {
+      // 错误处理
+      setSubmitResult({
+        success: false,
+        message: '提交失败，请稍后再试或直接拨打我们的客服电话。'
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
-  
+
   return (
     <Layout>
-      <SEO 
-        title={seoTitle}
-        description={seoDescription}
-        keywords={locale === 'zh' 
-          ? ['联系我们', '学历认证', '留学咨询', '国际教育'] 
-          : ['contact us', 'academic certification', 'study abroad consultation', 'international education']}
-        structuredData={contactSchema}
+      <SEO
+        title="联系我们 - 学历认证服务平台"
+        description="联系我们的专业顾问，获取学历认证服务的详细咨询。填写表单提交您的需求，我们将为您提供个性化的解决方案。"
+        keywords={['学历认证咨询', '联系顾问', '学历服务咨询', '认证需求提交', '国际学历认证', '加急学历办理']}
       />
-      <div className="bg-blue-50 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      {/* 顶部横幅 */}
+      <div className="bg-blue-700 py-16 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <Image
+            src="/images/contact-banner.jpg"
+            alt="联系我们"
+            layout="fill"
+            objectFit="cover"
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center">
-            <h1 className="text-3xl font-extrabold text-gray-900">
-              {locale === 'zh' ? '联系我们' : 'Contact Us'}
-            </h1>
-            <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-              {locale === 'zh' 
-                ? '如果您有任何问题或需要咨询，请随时与我们联系，我们将竭诚为您服务。' 
-                : 'If you have any questions or need a consultation, please feel free to contact us. We are here to help you.'}
+            <h1 className="text-4xl font-bold text-white mb-4">联系我们</h1>
+            <p className="text-blue-100 max-w-2xl mx-auto text-lg">
+              提交您的需求，我们将为您提供专业的学历认证解决方案
             </p>
           </div>
         </div>
       </div>
       
-      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Contact Form */}
-          <div className="bg-white shadow-lg rounded-lg p-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              {locale === 'zh' ? '发送消息给我们' : 'Send us a message'}
-            </h2>
-            
-            {submitted ? (
-              <div className="bg-green-50 border border-green-200 text-green-700 p-4 rounded-md mb-6">
-                {locale === 'zh'
-                  ? '感谢您的留言！我们将尽快回复您。'
-                  : 'Thank you for your message! We will get back to you as soon as possible.'}
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                {error && (
-                  <div className="bg-red-50 border border-red-200 text-red-700 p-4 rounded-md mb-6">
-                    {error}
+      {/* 主内容区 */}
+      <div className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div className="md:flex">
+                {/* 联系信息侧边栏 */}
+                <div className="md:w-1/3 bg-blue-600 text-white p-8">
+                  <h2 className="text-2xl font-bold mb-6">联系方式</h2>
+                  
+                  <div className="space-y-6">
+                    <div className="flex items-start">
+                      <svg className="w-6 h-6 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd"></path>
+                      </svg>
+                      <div>
+                        <p className="font-medium mb-1">地址</p>
+                        <p className="text-blue-100">上海市浦东新区张杨路188号</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <svg className="w-6 h-6 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path>
+                      </svg>
+                      <div>
+                        <p className="font-medium mb-1">电话</p>
+                        <p className="text-blue-100">400-888-XXXX</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <svg className="w-6 h-6 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                      </svg>
+                      <div>
+                        <p className="font-medium mb-1">邮箱</p>
+                        <p className="text-blue-100">contact@xueli-service.com</p>
+                      </div>
+                    </div>
+                    
+                    <div className="flex items-start">
+                      <svg className="w-6 h-6 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd"></path>
+                      </svg>
+                      <div>
+                        <p className="font-medium mb-1">工作时间</p>
+                        <p className="text-blue-100">周一至周六 9:00-18:00</p>
+                      </div>
+                    </div>
                   </div>
-                )}
-                
-                <div className="mb-4">
-                  <label htmlFor="name" className="block text-gray-700 font-medium mb-2">
-                    {locale === 'zh' ? '姓名' : 'Name'} *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required
-                  />
-                </div>
-                
-                <div className="mb-4">
-                  <label htmlFor="email" className="block text-gray-700 font-medium mb-2">
-                    {locale === 'zh' ? '电子邮箱' : 'Email'} *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required
-                  />
-                </div>
-                
-                <div className="mb-4">
-                  <label htmlFor="phone" className="block text-gray-700 font-medium mb-2">
-                    {locale === 'zh' ? '电话' : 'Phone'}
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-                
-                <div className="mb-6">
-                  <label htmlFor="message" className="block text-gray-700 font-medium mb-2">
-                    {locale === 'zh' ? '留言' : 'Message'} *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={5}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    required
-                  ></textarea>
-                </div>
-                
-                <button
-                  type="submit"
-                  className="w-full px-4 py-3 bg-primary text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  {locale === 'zh' ? '提交' : 'Submit'}
-                </button>
-              </form>
-            )}
-          </div>
-          
-          {/* Contact Info */}
-          <div>
-            <div className="bg-white shadow-lg rounded-lg p-8 mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                {locale === 'zh' ? '联系方式' : 'Contact Information'}
-              </h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <svg className="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div className="ml-3 text-gray-700">
-                    <p className="font-medium">{locale === 'zh' ? '电子邮箱' : 'Email'}</p>
-                    <p className="mt-1">info@academiccert.com</p>
+                  
+                  <div className="mt-12">
+                    <h3 className="text-xl font-bold mb-4">客户服务承诺</h3>
+                    <ul className="space-y-3">
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 mr-2 text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                        </svg>
+                        <span>24小时内回复咨询</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 mr-2 text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                        </svg>
+                        <span>专业顾问一对一服务</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 mr-2 text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                        </svg>
+                        <span>保密协议保护客户隐私</span>
+                      </li>
+                      <li className="flex items-center">
+                        <svg className="w-5 h-5 mr-2 text-blue-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"></path>
+                        </svg>
+                        <span>满意度保证</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
                 
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <svg className="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <div className="ml-3 text-gray-700">
-                    <p className="font-medium">{locale === 'zh' ? '电话' : 'Phone'}</p>
-                    <p className="mt-1">+86 123 4567 8910</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <svg className="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div className="ml-3 text-gray-700">
-                    <p className="font-medium">{locale === 'zh' ? '地址' : 'Address'}</p>
-                    <p className="mt-1">
-                      {locale === 'zh'
-                        ? '北京市朝阳区建国路88号城市大厦15层'
-                        : '15th Floor, City Building, 88 Jianguo Road, Chaoyang District, Beijing, China'}
-                    </p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start">
-                  <div className="flex-shrink-0">
-                    <svg className="h-6 w-6 text-primary" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div className="ml-3 text-gray-700">
-                    <p className="font-medium">{locale === 'zh' ? '工作时间' : 'Working Hours'}</p>
-                    <p className="mt-1">
-                      {locale === 'zh'
-                        ? '周一至周五: 上午9点 - 下午6点'
-                        : 'Monday - Friday: 9:00 AM - 6:00 PM'}
-                    </p>
-                  </div>
+                {/* 表单区域 */}
+                <div className="md:w-2/3 p-8">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">提交您的需求</h2>
+                  
+                  {submitResult ? (
+                    <div className={`mb-6 p-4 rounded-md ${submitResult.success ? 'bg-green-50 text-green-800' : 'bg-red-50 text-red-800'}`}>
+                      <div className="flex">
+                        <div className="flex-shrink-0">
+                          {submitResult.success ? (
+                            <svg className="h-5 w-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                          ) : (
+                            <svg className="h-5 w-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+                            </svg>
+                          )}
+                        </div>
+                        <div className="ml-3">
+                          <p className="text-sm font-medium">{submitResult.message}</p>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null}
+                  
+                  <form onSubmit={handleSubmit}>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                          姓名 <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          name="name"
+                          id="name"
+                          required
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                          电话 <span className="text-red-500">*</span>
+                        </label>
+                        <input
+                          type="tel"
+                          name="phone"
+                          id="phone"
+                          required
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                          电子邮箱
+                        </label>
+                        <input
+                          type="email"
+                          name="email"
+                          id="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        />
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="purpose" className="block text-sm font-medium text-gray-700 mb-1">
+                          认证用途 <span className="text-red-500">*</span>
+                        </label>
+                        <select
+                          name="purpose"
+                          id="purpose"
+                          required
+                          value={formData.purpose}
+                          onChange={handleInputChange}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        >
+                          <option value="">请选择</option>
+                          <option value="就业">就业</option>
+                          <option value="升职">升职</option>
+                          <option value="继续教育">继续教育</option>
+                          <option value="移民">移民</option>
+                          <option value="创业">创业</option>
+                          <option value="其他">其他</option>
+                        </select>
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="educationType" className="block text-sm font-medium text-gray-700 mb-1">
+                          需要的学历类型 <span className="text-red-500">*</span>
+                        </label>
+                        <select
+                          name="educationType"
+                          id="educationType"
+                          required
+                          value={formData.educationType}
+                          onChange={handleInputChange}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        >
+                          <option value="">请选择</option>
+                          <option value="本科学历">本科学历</option>
+                          <option value="硕士学位">硕士学位</option>
+                          <option value="MBA/EMBA">MBA/EMBA</option>
+                          <option value="博士学位">博士学位</option>
+                          <option value="其他">其他</option>
+                        </select>
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="targetCountry" className="block text-sm font-medium text-gray-700 mb-1">
+                          意向国家/地区
+                        </label>
+                        <select
+                          name="targetCountry"
+                          id="targetCountry"
+                          value={formData.targetCountry}
+                          onChange={handleInputChange}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        >
+                          <option value="">请选择</option>
+                          <option value="美国">美国</option>
+                          <option value="英国">英国</option>
+                          <option value="澳大利亚">澳大利亚</option>
+                          <option value="加拿大">加拿大</option>
+                          <option value="新加坡">新加坡</option>
+                          <option value="香港">香港</option>
+                          <option value="日本">日本</option>
+                          <option value="其他">其他</option>
+                        </select>
+                      </div>
+                      
+                      <div>
+                        <label htmlFor="urgency" className="block text-sm font-medium text-gray-700 mb-1">
+                          紧急程度
+                        </label>
+                        <select
+                          name="urgency"
+                          id="urgency"
+                          value={formData.urgency}
+                          onChange={handleInputChange}
+                          className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        >
+                          <option value="">请选择</option>
+                          <option value="非常紧急（3-5天）">非常紧急（3-5天）</option>
+                          <option value="紧急（一周内）">紧急（一周内）</option>
+                          <option value="标准（7-15天）">标准（7-15天）</option>
+                          <option value="不着急（15天以上）">不着急（15天以上）</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div className="mt-6">
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                        具体需求和问题描述
+                      </label>
+                      <textarea
+                        name="message"
+                        id="message"
+                        rows={5}
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                        placeholder="请详细描述您的需求，例如：专业方向、学校偏好、时间要求等..."
+                      ></textarea>
+                    </div>
+                    
+                    <div className="mt-8">
+                      <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className={`w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-blue-600 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : 'hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'}`}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            提交中...
+                          </>
+                        ) : '提交需求'}
+                      </button>
+                    </div>
+                    
+                    <div className="mt-4 text-sm text-gray-500 text-center">
+                      提交后，我们的顾问将在24小时内与您联系
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white shadow-lg rounded-lg p-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">
-                {locale === 'zh' ? '关注我们' : 'Follow Us'}
-              </h2>
+            {/* 常见问题 */}
+            <div className="mt-16">
+              <h2 className="text-2xl font-bold text-gray-900 mb-8 text-center">快速解答</h2>
               
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-primary">
-                  <span className="sr-only">Facebook</span>
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      fillRule="evenodd"
-                      d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </a>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="font-bold text-lg text-gray-900 mb-3">如何开始学历认证流程？</h3>
+                  <p className="text-gray-600">
+                    只需填写上方表单提交您的需求，我们的顾问会与您联系，了解详情并为您量身定制认证方案。您也可以直接拨打我们的客服电话进行咨询。
+                  </p>
+                </div>
                 
-                <a href="#" className="text-gray-400 hover:text-primary">
-                  <span className="sr-only">Instagram</span>
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      fillRule="evenodd"
-                      d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </a>
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="font-bold text-lg text-gray-900 mb-3">认证流程需要多长时间？</h3>
+                  <p className="text-gray-600">
+                    标准认证流程约需7天完成。如有紧急需求，我们提供3-5天的加急服务，请在咨询时说明您的时间要求。
+                  </p>
+                </div>
                 
-                <a href="#" className="text-gray-400 hover:text-primary">
-                  <span className="sr-only">Twitter</span>
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
-                    />
-                  </svg>
-                </a>
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="font-bold text-lg text-gray-900 mb-3">如何确保学历认证的真实性？</h3>
+                  <p className="text-gray-600">
+                    我们提供的所有认证材料均可通过官方渠道验证，确保真实可靠。具体验证方式会在服务过程中向您详细说明。
+                  </p>
+                </div>
                 
-                <a href="#" className="text-gray-400 hover:text-primary">
-                  <span className="sr-only">WeChat</span>
-                  <svg className="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path
-                      d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 2.344-6.244 2.012-1.17 4.591-1.064 6.53.283 1.06-2.539-.022-5.093-2.5-6.409-1.798-.957-3.875-1.26-5.928-.766-1.13.273-2.18.784-3.057 1.514zm1.188 1.352c.774-.557 1.668-.948 2.617-1.114 1.743-.368 3.528-.143 5.09.586 1.856.976 3.109 2.842 2.35 4.815-1.417-1.239-3.743-1.603-5.534-.798-2.112.945-3.15 3.245-2.087 5.323-.216.013-.434.025-.653.025-1.714 0-3.33-.427-4.725-1.174-.042-.022-.087-.034-.132-.034a.289.289 0 0 0-.167.054l-1.455.852.286-1.095a.691.691 0 0 0-.271-.752C3.699 8.926 2.788 7.347 2.788 5.579c0-3.036 3.155-5.539 7.09-5.539zm10.736 7.999c-.996 0-1.887.43-2.502 1.117a3.424 3.424 0 0 0-.735 2.13c0 .344.047.673.132.989.37 1.355 1.444 2.292 2.753 2.462.55.071 1.014-.353 1.014-.908 0-.19-.069-.361-.18-.498 1.143-1.098 1.45-2.416.926-3.807-.274-.728-.782-1.32-1.408-1.485zm-7.297.021c-.533 0-1.001.18-1.408.476-.667.484-1.11 1.251-1.11 2.144 0 .258.036.498.095.734.274 1.085 1.066 1.842 2.07 2.016.409.071.742-.082.982-.366.099-.12.168-.258.168-.407 0-.188-.069-.36-.18-.496.965-.934 1.227-2.393.667-3.57-.262-.546-.774-.531-.774-.531h-.51zm-.097 1.462c.327 0 .593.196.593.437 0 .242-.266.437-.593.437-.327 0-.593-.196-.593-.437 0-.241.266-.437.593-.437zm4.056 0c.327 0 .593.196.593.437 0 .242-.266.437-.593.437-.327 0-.593-.196-.593-.437 0-.241.266-.437.593-.437z"
-                    />
-                  </svg>
-                </a>
+                <div className="bg-white p-6 rounded-lg shadow-md">
+                  <h3 className="font-bold text-lg text-gray-900 mb-3">可以先咨询再决定是否使用服务吗？</h3>
+                  <p className="text-gray-600">
+                    当然可以。我们提供免费的初步咨询，了解您的需求并提供建议方案。您可以在充分了解服务内容和流程后再决定是否继续。
+                  </p>
+                </div>
               </div>
             </div>
           </div>
