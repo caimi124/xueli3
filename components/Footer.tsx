@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-const Footer: React.FC = () => {
+const Footer = () => {
   const router = useRouter();
   const currentYear = new Date().getFullYear();
   
@@ -63,11 +63,6 @@ const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/tools">
-                  <a className="text-gray-400 hover:text-white">互动工具</a>
-                </Link>
-              </li>
-              <li>
                 <Link href="/blog">
                   <a className="text-gray-400 hover:text-white">博客文章</a>
                 </Link>
@@ -96,16 +91,6 @@ const Footer: React.FC = () => {
               <li>
                 <Link href="/guides/canada">
                   <a className="text-gray-400 hover:text-white">加拿大认证指南</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/tools">
-                  <a className="text-gray-400 hover:text-white">费用计算器</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/tools">
-                  <a className="text-gray-400 hover:text-white">资格评估工具</a>
                 </Link>
               </li>
               <li>
