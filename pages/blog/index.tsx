@@ -38,7 +38,7 @@ const BlogPage = () => {
       <SEO 
         title="学历认证指南 | Acaboost"
         description="掌握权威、真实、官方可查的学历认证知识，提供专业的学历认证服务指南。"
-        keywords="学历认证,学历办理,学历认证流程,学历认证服务"
+        keywords={["学历认证", "学历办理", "学历认证流程", "学历认证服务"]}
       />
 
       {/* Hero Section */}

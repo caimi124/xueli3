@@ -34,7 +34,7 @@ const SchoolsPage: NextPage = () => {
       <SEO 
         title="全球顶尖院校认证服务 | Acaboost"
         description="提供全球顶尖院校的学历认证服务，包括MIT、哈佛、牛津等世界一流大学。快速、专业、可靠的认证解决方案。"
-        keywords="学历认证,学校认证,MIT认证,哈佛认证,牛津认证,剑桥认证,斯坦福认证"
+        keywords={["学历认证", "学校认证", "MIT认证", "哈佛认证", "牛津认证", "剑桥认证", "斯坦福认证"]}
       />
       
       {/* Hero Banner */}
