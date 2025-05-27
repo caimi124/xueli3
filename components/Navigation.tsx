@@ -18,11 +18,9 @@ const Navigation = () => {
 
   const menuItems = [
     { href: '/', label: '首页' },
-    { href: '/services', label: '服务' },
-    { href: '/universities', label: '院校' },
-    { href: '/cases', label: '案例' },
-    { href: '/guide', label: '指南' },
-    { href: '/faq', label: '常见问题' },
+    { href: '/schools', label: '院校数据库' },
+    { href: '/guide', label: '领证指南' },
+    { href: '/blog', label: '博客' },
     { href: '/contact', label: '联系我们' }
   ];
 
