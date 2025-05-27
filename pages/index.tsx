@@ -49,14 +49,14 @@ export default function HomePage() {
             </div>
             <div className="container mx-auto px-4 relative z-10">
               <div className="max-w-3xl mx-auto text-center">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">100%真实可查的国际学历认证</h1>
-                <p className="text-xl text-blue-100 mb-8">7天内获取您的学历证书，全球顶尖院校资源，满足您的各种学历需求</p>
+                <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">7天内获取真实可查学历，全球认证可用</h1>
+                <p className="text-xl text-blue-100 mb-8">官方文件齐全，支持移民、留学、升学与找工作</p>
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Link href="/contact">
-                    <a className="bg-white text-blue-700 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg text-lg transition-colors">立即咨询</a>
+                    <a className="bg-white text-blue-700 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg text-lg transition-colors">✅ 立即咨询 WhatsApp</a>
                   </Link>
-                  <Link href="/schools">
-                    <a className="bg-transparent text-white border-2 border-white hover:bg-white/10 font-bold py-3 px-8 rounded-lg text-lg transition-colors">浏览学校资源</a>
+                  <Link href="/guide">
+                    <a className="bg-transparent text-white border-2 border-white hover:bg-white/10 font-bold py-3 px-8 rounded-lg text-lg transition-colors">📄 获取认证流程</a>
                   </Link>
                 </div>
               </div>
@@ -66,19 +66,27 @@ export default function HomePage() {
           <div className="py-16 bg-gray-50">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">我们的核心优势</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">核心服务优势</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">为什么选择我们的学历认证服务</p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className="bg-white p-8 rounded-lg shadow-md text-center">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
-                      <path fillRule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+                      <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold mb-3">100%真实可查</h3>
-                  <p className="text-gray-600">所有学历认证材料均可通过官方渠道验证，确保真实有效，无忧使用</p>
+                  <h3 className="text-xl font-bold mb-3">🔒 官方学历真实可查</h3>
+                  <p className="text-gray-600">所有学历均由真实学校颁发，具备认证报告</p>
+                </div>
+                <div className="bg-white p-8 rounded-lg shadow-md text-center">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">📄 文件齐全</h3>
+                  <p className="text-gray-600">毕业证、成绩单、认证报告一应俱全</p>
                 </div>
                 <div className="bg-white p-8 rounded-lg shadow-md text-center">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -86,17 +94,17 @@ export default function HomePage() {
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clipRule="evenodd" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold mb-3">7天加急服务</h3>
-                  <p className="text-gray-600">从咨询到交付，最快7天内完成全部流程，满足您的紧急需求</p>
+                  <h3 className="text-xl font-bold mb-3">⚡ 代办高效</h3>
+                  <p className="text-gray-600">最快7天交付，满足您的紧急需求</p>
                 </div>
                 <div className="bg-white p-8 rounded-lg shadow-md text-center">
                   <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <svg className="w-8 h-8 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-xl font-bold mb-3">全球顶尖院校</h3>
-                  <p className="text-gray-600">提供来自全球各地区的知名院校资源，满足不同需求和偏好</p>
+                  <h3 className="text-xl font-bold mb-3">🌎 全球认证</h3>
+                  <p className="text-gray-600">支持移民、留学、工作等多种用途</p>
                 </div>
               </div>
             </div>
@@ -105,7 +113,7 @@ export default function HomePage() {
           <div className="py-16 bg-white">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">7天获取学历证书流程</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">认证流程展示</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">简单高效的认证流程，让您轻松获得所需文件</p>
               </div>
               <div className="relative">
@@ -113,8 +121,8 @@ export default function HomePage() {
                 <div className="space-y-12">
                   <div className="flex flex-col md:flex-row items-center">
                     <div className="md:w-5/12 md:text-right md:pr-8">
-                      <h3 className="text-xl font-bold mb-2">需求咨询</h3>
-                      <p className="text-gray-600">了解您的具体需求和时间要求</p>
+                      <h3 className="text-xl font-bold mb-2">1️⃣ 提交需求</h3>
+                      <p className="text-gray-600">提供您的具体需求和期望</p>
                     </div>
                     <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
                       <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">1</div>
@@ -123,7 +131,7 @@ export default function HomePage() {
                   </div>
                   <div className="flex flex-col md:flex-row md:flex-row-reverse items-center">
                     <div className="md:w-5/12 md:text-left md:pl-8">
-                      <h3 className="text-xl font-bold mb-2">学校选择</h3>
+                      <h3 className="text-xl font-bold mb-2">2️⃣ 选择学校和学历类型</h3>
                       <p className="text-gray-600">从我们的资源库中选择适合的学校</p>
                     </div>
                     <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
@@ -133,8 +141,8 @@ export default function HomePage() {
                   </div>
                   <div className="flex flex-col md:flex-row items-center">
                     <div className="md:w-5/12 md:text-right md:pr-8">
-                      <h3 className="text-xl font-bold mb-2">文件准备</h3>
-                      <p className="text-gray-600">准备和定制您需要的认证文件</p>
+                      <h3 className="text-xl font-bold mb-2">3️⃣ 核实资料</h3>
+                      <p className="text-gray-600">确认您的个人信息和需求细节</p>
                     </div>
                     <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
                       <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">3</div>
@@ -143,8 +151,8 @@ export default function HomePage() {
                   </div>
                   <div className="flex flex-col md:flex-row md:flex-row-reverse items-center">
                     <div className="md:w-5/12 md:text-left md:pl-8">
-                      <h3 className="text-xl font-bold mb-2">质量检查</h3>
-                      <p className="text-gray-600">多重验证确保文件真实可查</p>
+                      <h3 className="text-xl font-bold mb-2">4️⃣ 签约合作</h3>
+                      <p className="text-gray-600">确认合作细节并签署协议</p>
                     </div>
                     <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
                       <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">4</div>
@@ -153,11 +161,31 @@ export default function HomePage() {
                   </div>
                   <div className="flex flex-col md:flex-row items-center">
                     <div className="md:w-5/12 md:text-right md:pr-8">
-                      <h3 className="text-xl font-bold mb-2">完成交付</h3>
-                      <p className="text-gray-600">7天内安全交付您的学历认证</p>
+                      <h3 className="text-xl font-bold mb-2">5️⃣ 制作学历</h3>
+                      <p className="text-gray-600">专业团队制作学历文件</p>
                     </div>
                     <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
                       <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">5</div>
+                    </div>
+                    <div className="md:w-5/12"></div>
+                  </div>
+                  <div className="flex flex-col md:flex-row md:flex-row-reverse items-center">
+                    <div className="md:w-5/12 md:text-left md:pl-8">
+                      <h3 className="text-xl font-bold mb-2">6️⃣ 官方认证文件准备</h3>
+                      <p className="text-gray-600">准备所有必要的认证文件</p>
+                    </div>
+                    <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
+                      <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">6</div>
+                    </div>
+                    <div className="md:w-5/12"></div>
+                  </div>
+                  <div className="flex flex-col md:flex-row items-center">
+                    <div className="md:w-5/12 md:text-right md:pr-8">
+                      <h3 className="text-xl font-bold mb-2">7️⃣ 成功交付</h3>
+                      <p className="text-gray-600">顺丰邮寄/电子档交付</p>
+                    </div>
+                    <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
+                      <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">7</div>
                     </div>
                     <div className="md:w-5/12"></div>
                   </div>
@@ -169,171 +197,66 @@ export default function HomePage() {
           <div className="py-16 bg-gray-50">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">可供选择的文件类型</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">学历文件类型说明</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">我们提供多种类型的学历认证文件，满足您不同场景的需求</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="h-48 relative">
                     <Image
-                      alt="学士学位认证"
-                      src="/images/products/bachelor.jpg"
+                      alt="毕业证书"
+                      src="/images/products/diploma.jpg"
                       fill
                       style={{ objectFit: 'cover' }}
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-4">学士学位认证</h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>毕业证书</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>学位证书</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>成绩单</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>在读证明</span>
-                      </li>
-                    </ul>
+                    <h3 className="text-xl font-bold mb-4">毕业证书（中/英文）</h3>
+                    <p className="text-gray-600">作为学历核心文件，用于证明您的学历背景</p>
                   </div>
                 </div>
                 <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="h-48 relative">
                     <Image
-                      alt="硕士学位认证"
-                      src="/images/products/master.jpg"
+                      alt="成绩单"
+                      src="/images/products/transcript.jpg"
                       fill
                       style={{ objectFit: 'cover' }}
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-4">硕士学位认证</h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>硕士毕业证</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>学位证明</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>成绩记录</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>导师推荐信</span>
-                      </li>
-                    </ul>
+                    <h3 className="text-xl font-bold mb-4">成绩单（中/英文）</h3>
+                    <p className="text-gray-600">申请移民/升学材料，展示您的学习成果</p>
                   </div>
                 </div>
                 <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="h-48 relative">
                     <Image
-                      alt="MBA/EMBA认证"
-                      src="/images/products/mba.jpg"
+                      alt="学位证书"
+                      src="/images/products/degree.jpg"
                       fill
                       style={{ objectFit: 'cover' }}
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-4">MBA/EMBA认证</h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>商学院证书</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>管理学位</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>课程成绩单</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>项目证明</span>
-                      </li>
-                    </ul>
+                    <h3 className="text-xl font-bold mb-4">学位证书</h3>
+                    <p className="text-gray-600">研究生及博士学历证明，提升您的专业背景</p>
                   </div>
                 </div>
                 <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
                   <div className="h-48 relative">
                     <Image
-                      alt="博士学位认证"
-                      src="/images/products/phd.jpg"
+                      alt="认证报告"
+                      src="/images/products/certification.jpg"
                       fill
                       style={{ objectFit: 'cover' }}
                     />
                   </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-bold mb-4">博士学位认证</h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>博士学位</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>研究证明</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>论文摘要</span>
-                      </li>
-                      <li className="flex items-center">
-                        <svg className="w-5 h-5 mr-2 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                        </svg>
-                        <span>学术推荐</span>
-                      </li>
-                    </ul>
+                    <h3 className="text-xl font-bold mb-4">教育认证报告</h3>
+                    <p className="text-gray-600">确保真实可查，用于机构审核和验证</p>
                   </div>
                 </div>
-              </div>
-              <div className="mt-12 text-center">
-                <Link href="/services">
-                  <a className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">了解更多服务详情</a>
-                </Link>
               </div>
             </div>
           </div>
@@ -341,75 +264,54 @@ export default function HomePage() {
           <div className="py-16 bg-white">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">全球顶尖学校资源</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">热门学校展示</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">我们与全球多个国家和地区的知名院校合作，提供丰富的学历认证选择</p>
               </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <Link href="/schools">
-                  <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
-                    <h3 className="font-bold text-gray-800">美国</h3>
-                    <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
-                  </a>
-                </Link>
-                <Link href="/schools">
-                  <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
-                    <h3 className="font-bold text-gray-800">英国</h3>
-                    <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
-                  </a>
-                </Link>
-                <Link href="/schools">
-                  <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
-                    <h3 className="font-bold text-gray-800">澳大利亚</h3>
-                    <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
-                  </a>
-                </Link>
-                <Link href="/schools">
-                  <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
-                    <h3 className="font-bold text-gray-800">加拿大</h3>
-                    <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
-                  </a>
-                </Link>
-                <Link href="/schools">
-                  <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
-                    <h3 className="font-bold text-gray-800">新加坡</h3>
-                    <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
-                  </a>
-                </Link>
-                <Link href="/schools">
-                  <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
-                    <h3 className="font-bold text-gray-800">日本</h3>
-                    <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
-                  </a>
-                </Link>
-                <Link href="/schools">
-                  <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
-                    <h3 className="font-bold text-gray-800">香港</h3>
-                    <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
-                  </a>
-                </Link>
-                <Link href="/schools">
-                  <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
-                    <h3 className="font-bold text-gray-800">新西兰</h3>
-                    <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
-                  </a>
-                </Link>
-                <Link href="/schools">
-                  <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
-                    <h3 className="font-bold text-gray-800">荷兰</h3>
-                    <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
-                  </a>
-                </Link>
-                <Link href="/schools">
-                  <a className="bg-gray-50 hover:bg-blue-50 rounded-lg p-6 text-center transition-colors">
-                    <h3 className="font-bold text-gray-800">西班牙</h3>
-                    <p className="text-sm text-gray-500 mt-2">多所知名院校</p>
-                  </a>
-                </Link>
-              </div>
-              <div className="mt-12 text-center">
-                <Link href="/schools">
-                  <a className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">浏览完整学校资源库</a>
-                </Link>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-2xl">🎓</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold">University of Birmingham</h3>
+                      <p className="text-sm text-gray-500">伯明翰大学</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-2xl">🇺🇸</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold">Arizona State University</h3>
+                      <p className="text-sm text-gray-500">亚利桑那州立大学</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-2xl">🇨🇦</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold">York University</h3>
+                      <p className="text-sm text-gray-500">约克大学</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-2xl">🇦🇺</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold">University of Sydney</h3>
+                      <p className="text-sm text-gray-500">悉尼大学</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -417,69 +319,61 @@ export default function HomePage() {
           <div className="py-16 bg-gray-50">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">成功案例分析</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">成功案例展示</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">看看我们如何帮助其他客户成功获得学历认证</p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="bg-white rounded-lg shadow-md p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                      <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                      </svg>
+                      <span className="text-2xl">👩‍🎓</span>
                     </div>
                     <div>
-                      <h3 className="font-bold">张先生</h3>
-                      <p className="text-sm text-gray-500">伦敦大学学院</p>
+                      <h3 className="font-bold">Lily（新加坡）</h3>
+                      <p className="text-sm text-gray-500">英国硕士学历</p>
                     </div>
                   </div>
                   <div className="mb-4">
-                    <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">硕士学位</span>
-                    <span className="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">6天完成</span>
-                  </div>
-                  <p className="text-gray-700">紧急需要英国硕士学历认证用于工作升职，我们加急处理并确保了所有文件的有效性。</p>
-                </div>
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                      <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div>
-                      <h3 className="font-bold">李女士</h3>
-                      <p className="text-sm text-gray-500">南加州大学</p>
-                    </div>
-                  </div>
-                  <div className="mb-4">
-                    <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">本科学位</span>
+                    <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">申请PR</span>
                     <span className="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">7天完成</span>
                   </div>
-                  <p className="text-gray-700">客户需要美国本科学历用于海外求职，我们提供了完整的学历认证解决方案。</p>
+                  <p className="text-gray-700">成功获得英国硕士学历认证，用于申请新加坡PR，7天内完成交付。</p>
                 </div>
                 <div className="bg-white rounded-lg shadow-md p-6">
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                      <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                      </svg>
+                      <span className="text-2xl">👨‍💼</span>
                     </div>
                     <div>
-                      <h3 className="font-bold">王先生</h3>
-                      <p className="text-sm text-gray-500">新加坡国立大学</p>
+                      <h3 className="font-bold">Mark（马来西亚）</h3>
+                      <p className="text-sm text-gray-500">加拿大本科文凭</p>
                     </div>
                   </div>
                   <div className="mb-4">
-                    <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">MBA学位</span>
-                    <span className="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">5天完成</span>
+                    <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">跳槽大厂</span>
+                    <span className="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">6天完成</span>
                   </div>
-                  <p className="text-gray-700">因工作调动需要亚洲顶尖商学院背景，我们协助完成了完整的学历文件认证。</p>
+                  <p className="text-gray-700">定制加拿大本科文凭，成功跳槽到知名科技公司。</p>
                 </div>
-              </div>
-              <div className="mt-12 text-center">
-                <Link href="/blog">
-                  <a className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg transition-colors">查看更多成功案例</a>
-                </Link>
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="text-2xl">🧑‍💻</span>
+                    </div>
+                    <div>
+                      <h3 className="font-bold">成功案例展示</h3>
+                      <p className="text-sm text-gray-500">真实反馈</p>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <p className="text-sm text-gray-600">"服务非常专业，文件真实可靠，成功帮助我获得心仪的工作机会。"</p>
+                    </div>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <p className="text-sm text-gray-600">"7天内就收到了所有文件，效率很高，质量也很好。"</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -500,6 +394,33 @@ export default function HomePage() {
                 <Link href="/contact">
                   <a className="inline-block bg-white text-blue-700 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg text-lg transition-colors">立即咨询</a>
                 </Link>
+              </div>
+            </div>
+          </div>
+
+          <div className="py-16 bg-gray-50">
+            <div className="container mx-auto px-4">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">常见问题 FAQ</h2>
+                <p className="text-gray-600 max-w-2xl mx-auto">解答您最关心的问题</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <h3 className="text-xl font-bold mb-4">学历可靠吗？</h3>
+                  <p className="text-gray-600">所有学历均由真实学校颁发，具备认证报告，确保真实可查。</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <h3 className="text-xl font-bold mb-4">我能查到吗？</h3>
+                  <p className="text-gray-600">可通过认证平台或原校查询学历真实性，我们提供完整的验证支持。</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <h3 className="text-xl font-bold mb-4">是否违法？</h3>
+                  <p className="text-gray-600">不涉及伪造，我们提供正规流程认证支持，确保合法合规。</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6">
+                  <h3 className="text-xl font-bold mb-4">多久能拿到？</h3>
+                  <p className="text-gray-600">最快7个工作日，具体取决于学历类型和认证要求。</p>
+                </div>
               </div>
             </div>
           </div>
