@@ -93,8 +93,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <Head>
-        <title>Academic Credential Authentication Services</title>
-        <meta name="description" content="Professional academic credential authentication services for international students" />
+        <title>学历认证服务 - 100%真实可查的国际学历认证服务平台</title>
+        <meta name="description" content="专业提供全球学历认证服务，7-15天快速交付，确保100%真实可查，满足就业、留学、移民等多种需求。" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -116,7 +116,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8 }}
                 className="text-5xl font-bold mb-6"
               >
-                Professional Academic Credential Authentication
+                专业学历认证服务
               </motion.h1>
               <motion.p 
                 initial={{ opacity: 0, y: 20 }}
@@ -124,7 +124,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-xl mb-8"
               >
-                Fast, reliable, and internationally recognized credential verification services
+                快速、可靠、国际认可的学历认证服务
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -132,7 +132,7 @@ export default function HomePage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
                 <Link href="/contact" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-                  Get Started
+                  立即咨询
                 </Link>
               </motion.div>
             </div>
@@ -154,8 +154,8 @@ export default function HomePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4">100% Verifiable</h3>
-                <p className="text-gray-600">All credentials are thoroughly verified and authenticated by our expert team</p>
+                <h3 className="text-xl font-semibold mb-4">100% 真实可查</h3>
+                <p className="text-gray-600">所有学历证书均由专业团队严格验证和认证</p>
               </motion.div>
 
               <motion.div 
@@ -169,8 +169,8 @@ export default function HomePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4">7-Day Processing</h3>
-                <p className="text-gray-600">Quick turnaround time with our efficient verification process</p>
+                <h3 className="text-xl font-semibold mb-4">7天快速处理</h3>
+                <p className="text-gray-600">高效验证流程，快速交付结果</p>
               </motion.div>
 
               <motion.div 
@@ -184,8 +184,8 @@ export default function HomePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
                   </svg>
                 </div>
-                <h3 className="text-xl font-semibold mb-4">Global Recognition</h3>
-                <p className="text-gray-600">Internationally recognized authentication services</p>
+                <h3 className="text-xl font-semibold mb-4">全球认可</h3>
+                <p className="text-gray-600">国际认可的认证服务</p>
               </motion.div>
             </div>
           </div>
@@ -194,27 +194,19 @@ export default function HomePage() {
         {/* Services Section */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {['United States', 'United Kingdom', 'Canada', 'Australia'].map((country) => (
+            <h2 className="text-3xl font-bold text-center mb-12">我们的服务</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {certificationOptions.map((option) => (
                 <motion.div
-                  key={country}
+                  key={option.id}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
                   className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
                 >
-                  <div className="h-48 relative">
-                    <Image
-                      src={`/images/${country.toLowerCase().replace(' ', '-')}.jpg`}
-                      alt={country}
-                      layout="fill"
-                      objectFit="cover"
-                    />
-                  </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{country}</h3>
-                    <p className="text-gray-600">Professional credential authentication services</p>
+                    <h3 className="text-xl font-semibold mb-2">{option.title}</h3>
+                    <p className="text-gray-600">{option.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -225,31 +217,18 @@ export default function HomePage() {
         {/* Process Section */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Process</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">认证流程</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[
-                {
-                  title: 'Submit Documents',
-                  description: 'Upload your academic credentials and required documents'
-                },
-                {
-                  title: 'Verification',
-                  description: 'Our team verifies the authenticity of your documents'
-                },
-                {
-                  title: 'Certification',
-                  description: 'Receive your authenticated credentials within 7 days'
-                }
-              ].map((step, index) => (
+              {certificationProcess.map((step) => (
                 <motion.div
-                  key={step.title}
+                  key={step.step}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  transition={{ duration: 0.5, delay: step.step * 0.2 }}
                   className="bg-white p-8 rounded-xl shadow-lg"
                 >
                   <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4">
-                    {index + 1}
+                    {step.step}
                   </div>
                   <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
                   <p className="text-gray-600">{step.description}</p>
@@ -262,29 +241,27 @@ export default function HomePage() {
         {/* Case Studies Section */}
         <section className="py-20">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Success Stories</h2>
+            <h2 className="text-3xl font-bold text-center mb-12">成功案例</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[1, 2, 3].map((index) => (
+              {successCases.map((case_) => (
                 <motion.div
-                  key={index}
+                  key={case_.id}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
+                  transition={{ duration: 0.5, delay: case_.id * 0.2 }}
                   className="bg-white rounded-xl shadow-lg overflow-hidden"
                 >
                   <div className="p-6">
                     <div className="flex items-center mb-4">
                       <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                        <span className="text-blue-600 font-semibold">CS{index}</span>
+                        <span className="text-blue-600 font-semibold">CS{case_.id}</span>
                       </div>
                       <div className="ml-4">
-                        <h3 className="font-semibold">Case Study {index}</h3>
-                        <p className="text-sm text-gray-500">Success Story</p>
+                        <h3 className="font-semibold">{case_.name}</h3>
+                        <p className="text-sm text-gray-500">成功案例</p>
                       </div>
                     </div>
-                    <p className="text-gray-600">
-                      Read about how we helped students achieve their academic goals through our authentication services.
-                    </p>
+                    <p className="text-gray-600">{case_.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -295,10 +272,10 @@ export default function HomePage() {
         {/* CTA Section */}
         <section className="py-20 bg-blue-600 text-white">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-8">Ready to Get Started?</h2>
-            <p className="text-xl mb-8">Begin your credential authentication process today</p>
+            <h2 className="text-3xl font-bold mb-8">准备开始了吗？</h2>
+            <p className="text-xl mb-8">立即开始您的学历认证流程</p>
             <Link href="/contact" className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-              Contact Us
+              联系我们
             </Link>
           </div>
         </section>

@@ -7,9 +7,6 @@ interface SEOProps {
   keywords?: string[];
   ogImage?: string;
   ogUrl?: string;
-  canonicalUrl?: string;
-  structuredData?: Record<string, any>;
-  type?: string;
 }
 
 const SEO = ({
@@ -17,16 +14,11 @@ const SEO = ({
   description,
   keywords = [],
   ogImage = '/images/og-image.jpg',
-  ogUrl,
-  canonicalUrl,
-  structuredData,
+  ogUrl = 'https://example.com'
 }: SEOProps) => {
-  // 默认网站名称
-  const siteName = '学历认证服务平台';
-  
-  // 确保标题包含网站名称
-  const fullTitle = title.includes(siteName) ? title : `${title} - ${siteName}`;
-  
+  const siteTitle = '学历认证服务';
+  const fullTitle = `${title} | ${siteTitle}`;
+
   return (
     <Head>
       <title>{fullTitle}</title>
@@ -34,36 +26,30 @@ const SEO = ({
       {keywords.length > 0 && (
         <meta name="keywords" content={keywords.join(', ')} />
       )}
-      
-      {/* Open Graph / Facebook */}
-      <meta property="og:type" content="website" />
+
+      {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:site_name" content={siteName} />
-      {ogImage && <meta property="og:image" content={ogImage} />}
-      {ogUrl && <meta property="og:url" content={ogUrl} />}
-      
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={ogUrl} />
+      <meta property="og:image" content={ogImage} />
+
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      {ogImage && <meta name="twitter:image" content={ogImage} />}
-      
-      {/* Canonical URL */}
-      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
-      
-      {/* Structured Data / JSON-LD */}
-      {structuredData && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
-      )}
-      
-      {/* 其他元标签 */}
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta httpEquiv="Content-Language" content="zh-CN" />
+      <meta name="twitter:image" content={ogImage} />
+
+      {/* Favicon */}
+      <link rel="icon" href="/favicon.ico" />
+      <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+      {/* Other Meta Tags */}
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
       <meta name="robots" content="index, follow" />
+      <meta name="language" content="Chinese" />
+      <meta name="revisit-after" content="7 days" />
     </Head>
   );
 };
