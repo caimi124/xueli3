@@ -38,26 +38,26 @@ export default function HomePage() {
         />
 
         <main className="flex-grow">
-          <div className="bg-blue-700 py-24 relative overflow-hidden">
-            <div className="absolute inset-0 opacity-30">
-              <Image
-                alt="学历认证背景"
-                src="/images/hero-background.jpg"
-                fill
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-            <div className="container mx-auto px-4 relative z-10">
-              <div className="max-w-3xl mx-auto text-center">
-                <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">7天内获取真实可查学历，全球认证可用</h1>
-                <p className="text-xl text-blue-100 mb-8">官方文件齐全，支持移民、留学、升学与找工作</p>
-                <div className="flex flex-col sm:flex-row justify-center gap-4">
-                  <Link href="/contact">
-                    <a className="bg-white text-blue-700 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg text-lg transition-colors">✅ 立即咨询 WhatsApp</a>
-                  </Link>
-                  <Link href="/guide">
-                    <a className="bg-transparent text-white border-2 border-white hover:bg-white/10 font-bold py-3 px-8 rounded-lg text-lg transition-colors">📄 获取认证流程</a>
-                  </Link>
+          <div className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
+            <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center mix-blend-overlay opacity-20"></div>
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+              <div className="text-center">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
+                  7天内获取真实可查学历，全球认证可用
+                </h1>
+                <p className="text-xl md:text-2xl text-blue-100 mb-8">
+                  官方文件齐全，移民/工作/升学皆适用
+                </p>
+                <div className="flex justify-center">
+                  <a
+                    href="https://wa.me/1234567890"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition-colors duration-200"
+                  >
+                    <span className="mr-2">✅</span>
+                    立即咨询
+                  </a>
                 </div>
               </div>
             </div>
@@ -121,8 +121,8 @@ export default function HomePage() {
                 <div className="space-y-12">
                   <div className="flex flex-col md:flex-row items-center">
                     <div className="md:w-5/12 md:text-right md:pr-8">
-                      <h3 className="text-xl font-bold mb-2">1️⃣ 提交需求</h3>
-                      <p className="text-gray-600">提供您的具体需求和期望</p>
+                      <h3 className="text-xl font-bold mb-2">1️⃣ 需求咨询</h3>
+                      <p className="text-gray-600">了解您的具体需求和时间要求</p>
                     </div>
                     <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
                       <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">1</div>
@@ -131,7 +131,7 @@ export default function HomePage() {
                   </div>
                   <div className="flex flex-col md:flex-row md:flex-row-reverse items-center">
                     <div className="md:w-5/12 md:text-left md:pl-8">
-                      <h3 className="text-xl font-bold mb-2">2️⃣ 选择学校和学历类型</h3>
+                      <h3 className="text-xl font-bold mb-2">2️⃣ 学校选择</h3>
                       <p className="text-gray-600">从我们的资源库中选择适合的学校</p>
                     </div>
                     <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
@@ -141,8 +141,8 @@ export default function HomePage() {
                   </div>
                   <div className="flex flex-col md:flex-row items-center">
                     <div className="md:w-5/12 md:text-right md:pr-8">
-                      <h3 className="text-xl font-bold mb-2">3️⃣ 核实资料</h3>
-                      <p className="text-gray-600">确认您的个人信息和需求细节</p>
+                      <h3 className="text-xl font-bold mb-2">3️⃣ 文件准备</h3>
+                      <p className="text-gray-600">准备和定制您需要的认证文件</p>
                     </div>
                     <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
                       <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">3</div>
@@ -151,8 +151,8 @@ export default function HomePage() {
                   </div>
                   <div className="flex flex-col md:flex-row md:flex-row-reverse items-center">
                     <div className="md:w-5/12 md:text-left md:pl-8">
-                      <h3 className="text-xl font-bold mb-2">4️⃣ 签约合作</h3>
-                      <p className="text-gray-600">确认合作细节并签署协议</p>
+                      <h3 className="text-xl font-bold mb-2">4️⃣ 质量检查</h3>
+                      <p className="text-gray-600">多重验证确保文件真实可查</p>
                     </div>
                     <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
                       <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">4</div>
@@ -161,31 +161,11 @@ export default function HomePage() {
                   </div>
                   <div className="flex flex-col md:flex-row items-center">
                     <div className="md:w-5/12 md:text-right md:pr-8">
-                      <h3 className="text-xl font-bold mb-2">5️⃣ 制作学历</h3>
-                      <p className="text-gray-600">专业团队制作学历文件</p>
+                      <h3 className="text-xl font-bold mb-2">5️⃣ 完成交付</h3>
+                      <p className="text-gray-600">7天内安全交付您的学历认证</p>
                     </div>
                     <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
                       <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">5</div>
-                    </div>
-                    <div className="md:w-5/12"></div>
-                  </div>
-                  <div className="flex flex-col md:flex-row md:flex-row-reverse items-center">
-                    <div className="md:w-5/12 md:text-left md:pl-8">
-                      <h3 className="text-xl font-bold mb-2">6️⃣ 官方认证文件准备</h3>
-                      <p className="text-gray-600">准备所有必要的认证文件</p>
-                    </div>
-                    <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
-                      <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">6</div>
-                    </div>
-                    <div className="md:w-5/12"></div>
-                  </div>
-                  <div className="flex flex-col md:flex-row items-center">
-                    <div className="md:w-5/12 md:text-right md:pr-8">
-                      <h3 className="text-xl font-bold mb-2">7️⃣ 成功交付</h3>
-                      <p className="text-gray-600">顺丰邮寄/电子档交付</p>
-                    </div>
-                    <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
-                      <div className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10">7</div>
                     </div>
                     <div className="md:w-5/12"></div>
                   </div>
@@ -264,54 +244,87 @@ export default function HomePage() {
           <div className="py-16 bg-white">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">热门学校展示</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">全球顶尖学校资源</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">我们与全球多个国家和地区的知名院校合作，提供丰富的学历认证选择</p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-2xl">🎓</span>
-                    </div>
-                    <div>
-                      <h3 className="font-bold">University of Birmingham</h3>
-                      <p className="text-sm text-gray-500">伯明翰大学</p>
-                    </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🇺🇸</span>
                   </div>
+                  <h3 className="font-bold mb-2">美国</h3>
+                  <p className="text-sm text-gray-600">多所知名院校</p>
                 </div>
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-2xl">🇺🇸</span>
-                    </div>
-                    <div>
-                      <h3 className="font-bold">Arizona State University</h3>
-                      <p className="text-sm text-gray-500">亚利桑那州立大学</p>
-                    </div>
+                <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🇬🇧</span>
                   </div>
+                  <h3 className="font-bold mb-2">英国</h3>
+                  <p className="text-sm text-gray-600">多所知名院校</p>
                 </div>
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-2xl">🇨🇦</span>
-                    </div>
-                    <div>
-                      <h3 className="font-bold">York University</h3>
-                      <p className="text-sm text-gray-500">约克大学</p>
-                    </div>
+                <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🇦🇺</span>
                   </div>
+                  <h3 className="font-bold mb-2">澳大利亚</h3>
+                  <p className="text-sm text-gray-600">多所知名院校</p>
                 </div>
-                <div className="bg-white rounded-lg shadow-md p-6">
-                  <div className="flex items-center mb-4">
-                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                      <span className="text-2xl">🇦🇺</span>
-                    </div>
-                    <div>
-                      <h3 className="font-bold">University of Sydney</h3>
-                      <p className="text-sm text-gray-500">悉尼大学</p>
-                    </div>
+                <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🇨🇦</span>
                   </div>
+                  <h3 className="font-bold mb-2">加拿大</h3>
+                  <p className="text-sm text-gray-600">多所知名院校</p>
                 </div>
+                <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🇸🇬</span>
+                  </div>
+                  <h3 className="font-bold mb-2">新加坡</h3>
+                  <p className="text-sm text-gray-600">多所知名院校</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🇯🇵</span>
+                  </div>
+                  <h3 className="font-bold mb-2">日本</h3>
+                  <p className="text-sm text-gray-600">多所知名院校</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🇭🇰</span>
+                  </div>
+                  <h3 className="font-bold mb-2">香港</h3>
+                  <p className="text-sm text-gray-600">多所知名院校</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🇳🇿</span>
+                  </div>
+                  <h3 className="font-bold mb-2">新西兰</h3>
+                  <p className="text-sm text-gray-600">多所知名院校</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🇳🇱</span>
+                  </div>
+                  <h3 className="font-bold mb-2">荷兰</h3>
+                  <p className="text-sm text-gray-600">多所知名院校</p>
+                </div>
+                <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🇪🇸</span>
+                  </div>
+                  <h3 className="font-bold mb-2">西班牙</h3>
+                  <p className="text-sm text-gray-600">多所知名院校</p>
+                </div>
+              </div>
+              <div className="text-center mt-12">
+                <Link href="/schools">
+                  <a className="inline-block bg-blue-600 text-white hover:bg-blue-700 font-bold py-3 px-8 rounded-lg text-lg transition-colors">
+                    浏览完整学校资源库
+                  </a>
+                </Link>
               </div>
             </div>
           </div>
