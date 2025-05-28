@@ -15,7 +15,6 @@ const schools = [
     degrees: ['本科', '硕士', '博士'],
     specialties: ['商科', '工程', '医学'],
     verified: true,
-    isHot: true,
     addedDate: '2024-01-15'
   },
   {
@@ -27,7 +26,6 @@ const schools = [
     degrees: ['本科', '硕士'],
     specialties: ['商科', '计算机'],
     verified: true,
-    isHot: true,
     addedDate: '2024-01-10'
   },
   {
@@ -39,7 +37,6 @@ const schools = [
     degrees: ['本科', '硕士', '博士'],
     specialties: ['商科', '医学', '工程'],
     verified: true,
-    isHot: true,
     addedDate: '2024-01-05'
   },
   {
@@ -51,7 +48,6 @@ const schools = [
     degrees: ['本科', '硕士', '博士'],
     specialties: ['商科', '工程', '计算机'],
     verified: true,
-    isHot: true,
     addedDate: '2024-01-01'
   },
   {
@@ -63,7 +59,6 @@ const schools = [
     degrees: ['本科', '硕士', '博士'],
     specialties: ['商科', '医学', '法律'],
     verified: true,
-    isHot: false,
     addedDate: '2023-12-20'
   },
   {
@@ -75,74 +70,7 @@ const schools = [
     degrees: ['本科', '硕士', '博士'],
     specialties: ['商科', '工程', '计算机'],
     verified: true,
-    isHot: false,
     addedDate: '2023-12-15'
-  },
-  {
-    id: 7,
-    name: 'University of British Columbia',
-    chineseName: '英属哥伦比亚大学',
-    country: '加拿大',
-    logo: '/images/placeholder.png',
-    qsRank: 34,
-    degrees: ['本科', '硕士', '博士'],
-    specialties: ['商科', '工程', '医学'],
-    verified: true
-  },
-  {
-    id: 8,
-    name: 'University of Malaya',
-    chineseName: '马来亚大学',
-    country: '马来西亚',
-    logo: '/images/placeholder.png',
-    qsRank: 65,
-    degrees: ['本科', '硕士'],
-    specialties: ['商科', '工程', '医学'],
-    verified: true
-  },
-  {
-    id: 9,
-    name: 'Monash University',
-    chineseName: '莫纳什大学',
-    country: '澳大利亚',
-    logo: '/images/placeholder.png',
-    qsRank: 42,
-    degrees: ['本科', '硕士', '博士'],
-    specialties: ['商科', '工程', '医学'],
-    verified: true
-  },
-  {
-    id: 10,
-    name: 'University of Edinburgh',
-    chineseName: '爱丁堡大学',
-    country: '英国',
-    logo: '/images/placeholder.png',
-    qsRank: 22,
-    degrees: ['本科', '硕士', '博士'],
-    specialties: ['商科', '计算机', '医学'],
-    verified: true
-  },
-  {
-    id: 11,
-    name: 'McGill University',
-    chineseName: '麦吉尔大学',
-    country: '加拿大',
-    logo: '/images/placeholder.png',
-    qsRank: 31,
-    degrees: ['本科', '硕士', '博士'],
-    specialties: ['商科', '医学', '工程'],
-    verified: true
-  },
-  {
-    id: 12,
-    name: 'Nanyang Technological University',
-    chineseName: '南洋理工大学',
-    country: '新加坡',
-    logo: '/images/placeholder.png',
-    qsRank: 26,
-    degrees: ['本科', '硕士', '博士'],
-    specialties: ['工程', '计算机', '商科'],
-    verified: true
   }
 ];
 
@@ -153,7 +81,6 @@ const specialties = ['全部', '商科', '工程', '计算机', '医学', '艺�
 
 // 排序选项
 const sortOptions = [
-  { id: 'hot', name: '热门度' },
   { id: 'newest', name: '最新添加' },
   { id: 'rank', name: 'QS排名' }
 ];
@@ -167,7 +94,7 @@ export default function SchoolsPage() {
   const [selectedDegree, setSelectedDegree] = useState('全部');
   const [selectedSpecialty, setSelectedSpecialty] = useState('全部');
   const [showSuccessCases, setShowSuccessCases] = useState(false);
-  const [sortBy, setSortBy] = useState('hot');
+  const [sortBy, setSortBy] = useState('newest');
   const [currentPage, setCurrentPage] = useState(1);
   const schoolsPerPage = 9;
 
@@ -187,8 +114,6 @@ export default function SchoolsPage() {
     // 排序逻辑
     result.sort((a, b) => {
       switch (sortBy) {
-        case 'hot':
-          return b.isHot ? 1 : -1;
         case 'newest':
           return new Date(b.addedDate) - new Date(a.addedDate);
         case 'rank':
@@ -207,9 +132,6 @@ export default function SchoolsPage() {
     (currentPage - 1) * schoolsPerPage,
     currentPage * schoolsPerPage
   );
-
-  // 热门学校
-  const hotSchools = schools.filter(school => school.isHot).slice(0, 6);
 
   const pageContent = (
     <>
@@ -306,125 +228,85 @@ export default function SchoolsPage() {
           </div>
         </section>
 
-        {/* 热门学校推荐 */}
-        <section className="py-8 px-6">
-          <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold mb-6">🔥 热门推荐</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {hotSchools.map(school => (
-                <div key={school.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
-                  <div className="relative h-16 mb-4">
-                    <Image
-                      src={school.logo}
-                      alt={school.name}
-                      fill
-                      style={{ objectFit: 'contain' }}
-                      className="object-contain"
-                    />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{school.name}</h3>
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <span className="mr-4">🌍 {school.country}</span>
-                    <span>🏆 QS排名: {school.qsRank}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {certificationTypes.map(type => (
-                      <span key={type} className="px-2 py-1 bg-blue-50 text-blue-600 rounded-full text-xs">
-                        {type}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center text-sm text-green-600 mb-4">
-                    <span className="mr-1">✔</span>
-                    已办理20+例
-                  </div>
-                  <div className="flex gap-2">
-                    <Link href={`/schools/${school.id}`}>
-                      <a className="flex-1 bg-blue-600 text-white text-center rounded-lg py-2 hover:bg-blue-700 transition">
-                        查看详情
-                      </a>
-                    </Link>
-                    <a
-                      href="https://wa.me/1234567890"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 border border-blue-600 text-blue-600 text-center rounded-lg py-2 hover:bg-blue-50 transition"
-                    >
-                      立即咨询
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* 学校列表 */}
         <section className="py-8 px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {currentSchools.map(school => (
-                <div key={school.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
-                  <div className="relative h-16 mb-4">
-                    <Image
-                      src={school.logo}
-                      alt={school.name}
-                      fill
-                      style={{ objectFit: 'contain' }}
-                      className="object-contain"
-                    />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-2">{school.name}</h3>
-                  <div className="flex items-center text-sm text-gray-500 mb-4">
-                    <span className="mr-4">🌍 {school.country}</span>
-                    <span>🏆 QS排名: {school.qsRank}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {certificationTypes.map(type => (
-                      <span key={type} className="px-2 py-1 bg-blue-50 text-blue-600 rounded-full text-xs">
-                        {type}
-                      </span>
+            {currentSchools.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {currentSchools.map(school => (
+                    <div key={school.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
+                      <div className="relative h-16 mb-4">
+                        <Image
+                          src={school.logo}
+                          alt={school.name}
+                          fill
+                          style={{ objectFit: 'contain' }}
+                          className="object-contain"
+                        />
+                      </div>
+                      <h3 className="text-xl font-semibold mb-2">{school.name}</h3>
+                      <div className="flex items-center text-sm text-gray-500 mb-4">
+                        <span className="mr-4">🌍 {school.country}</span>
+                      </div>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {certificationTypes.map(type => (
+                          <span key={type} className="px-2 py-1 bg-blue-50 text-blue-600 rounded-full text-xs">
+                            {type}
+                          </span>
+                        ))}
+                      </div>
+                      <div className="flex gap-2">
+                        <Link href={`/schools/${school.id}`}>
+                          <a className="flex-1 bg-blue-600 text-white text-center rounded-lg py-2 hover:bg-blue-700 transition">
+                            查看详情
+                          </a>
+                        </Link>
+                        <a
+                          href="https://wa.me/1234567890"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 border border-blue-600 text-blue-600 text-center rounded-lg py-2 hover:bg-blue-50 transition"
+                        >
+                          立即咨询
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* 分页控件 */}
+                {totalPages > 1 && (
+                  <div className="flex justify-center mt-8 gap-2">
+                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                      <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`px-4 py-2 rounded-lg ${
+                          currentPage === page
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                        }`}
+                      >
+                        {page}
+                      </button>
                     ))}
                   </div>
-                  <div className="flex items-center text-sm text-green-600 mb-4">
-                    <span className="mr-1">✔</span>
-                    已办理20+例
-                  </div>
-                  <div className="flex gap-2">
-                    <Link href={`/schools/${school.id}`}>
-                      <a className="flex-1 bg-blue-600 text-white text-center rounded-lg py-2 hover:bg-blue-700 transition">
-                        查看详情
-                      </a>
-                    </Link>
-                    <a
-                      href="https://wa.me/1234567890"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 border border-blue-600 text-blue-600 text-center rounded-lg py-2 hover:bg-blue-50 transition"
-                    >
-                      立即咨询
-                    </a>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* 分页控件 */}
-            {totalPages > 1 && (
-              <div className="flex justify-center mt-8 gap-2">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                  <button
-                    key={page}
-                    onClick={() => setCurrentPage(page)}
-                    className={`px-4 py-2 rounded-lg ${
-                      currentPage === page
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                    }`}
-                  >
-                    {page}
-                  </button>
-                ))}
+                )}
+              </>
+            ) : (
+              <div className="text-center py-12">
+                <h3 className="text-xl font-semibold mb-4">未找到符合条件的学校</h3>
+                <p className="text-gray-600 mb-6">您可以尝试其他搜索条件，或直接联系我们的顾问获取帮助</p>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition-colors"
+                >
+                  <span className="mr-2">📱</span>
+                  WhatsApp咨询
+                </a>
               </div>
             )}
           </div>
