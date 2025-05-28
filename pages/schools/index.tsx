@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import Layout from '../../components/Layout';
 import SEO from '../../components/SEO';
 import Image from 'next/image';
@@ -148,14 +148,61 @@ const specialties = ['全部', '商科', '工程', '计算机', '医学', '艺�
 // 认证类型
 const certificationTypes = ['毕业证', '学位证', '成绩单'];
 
+// 分类标签
+const categories = [
+  { id: 'all', name: '全部学校' },
+  { id: 'hot', name: '热门推荐' },
+  { id: 'fast', name: '快速拿证' },
+  { id: 'medical', name: '医学类' },
+  { id: 'business', name: '商科类' },
+  { id: 'engineering', name: '工程类' }
+];
+
 export default function SchoolsPage() {
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedCountry, setSelectedCountry] = useState('全部');
   const [selectedDegree, setSelectedDegree] = useState('全部');
   const [selectedSpecialty, setSelectedSpecialty] = useState('全部');
   const [showSuccessCases, setShowSuccessCases] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const schoolsPerPage = 9;
 
-  // 获取热门推荐学校
-  const recommendedSchools = schools.slice(0, 6);
+  // 过滤和搜索逻辑
+  const filteredSchools = useMemo(() => {
+    return schools.filter(school => {
+      const matchesSearch = searchQuery === '' || 
+        school.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        school.chineseName.toLowerCase().includes(searchQuery.toLowerCase());
+      
+      const matchesCountry = selectedCountry === '全部' || school.country === selectedCountry;
+      const matchesDegree = selectedDegree === '全部' || school.degrees.includes(selectedDegree);
+      const matchesSpecialty = selectedSpecialty === '全部' || school.specialties.includes(selectedSpecialty);
+      
+      // 分类过滤
+      let matchesCategory = true;
+      if (selectedCategory === 'hot') {
+        matchesCategory = school.qsRank <= 50;
+      } else if (selectedCategory === 'fast') {
+        matchesCategory = school.verified;
+      } else if (selectedCategory === 'medical') {
+        matchesCategory = school.specialties.includes('医学');
+      } else if (selectedCategory === 'business') {
+        matchesCategory = school.specialties.includes('商科');
+      } else if (selectedCategory === 'engineering') {
+        matchesCategory = school.specialties.includes('工程');
+      }
+
+      return matchesSearch && matchesCountry && matchesDegree && matchesSpecialty && matchesCategory;
+    });
+  }, [searchQuery, selectedCountry, selectedDegree, selectedSpecialty, selectedCategory]);
+
+  // 分页逻辑
+  const totalPages = Math.ceil(filteredSchools.length / schoolsPerPage);
+  const currentSchools = filteredSchools.slice(
+    (currentPage - 1) * schoolsPerPage,
+    currentPage * schoolsPerPage
+  );
 
   const pageContent = (
     <>
@@ -171,26 +218,100 @@ export default function SchoolsPage() {
           <div className="max-w-6xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">全球认证高校资源库</h1>
             <p className="text-xl md:text-2xl mb-8">支持真实学历验证的全球院校，一键对接认证顾问，快速拿证</p>
-            <a
-              href="https://wa.me/1234567890"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:bg-blue-50 transition-colors"
-            >
-              <span className="mr-2">📱</span>
-              WhatsApp一键咨询
-            </a>
           </div>
         </section>
 
-        {/* 热门推荐学校 */}
-        <section className="py-12 px-6 bg-gray-50">
+        {/* 搜索和筛选区域 */}
+        <section className="py-8 px-6 bg-gray-50">
           <div className="max-w-6xl mx-auto">
-            <h2 className="text-2xl font-bold mb-8">🔥 热门推荐院校</h2>
+            {/* 搜索框 */}
+            <div className="mb-6">
+              <input
+                type="text"
+                placeholder="搜索学校名称..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              />
+            </div>
+
+            {/* 分类标签 */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {categories.map(category => (
+                <button
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    selectedCategory === category.id
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
+
+            {/* 筛选条件 */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              <select 
+                className="border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                value={selectedCountry}
+                onChange={(e) => setSelectedCountry(e.target.value)}
+              >
+                {countries.map(country => (
+                  <option key={country} value={country}>
+                    {country === '全部' ? '选择国家/地区' : country}
+                  </option>
+                ))}
+              </select>
+              <select 
+                className="border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                value={selectedDegree}
+                onChange={(e) => setSelectedDegree(e.target.value)}
+              >
+                {degreeTypes.map(degree => (
+                  <option key={degree} value={degree}>
+                    {degree === '全部' ? '选择学历类型' : degree}
+                  </option>
+                ))}
+              </select>
+              <select 
+                className="border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                value={selectedSpecialty}
+                onChange={(e) => setSelectedSpecialty(e.target.value)}
+              >
+                {specialties.map(specialty => (
+                  <option key={specialty} value={specialty}>
+                    {specialty === '全部' ? '选择专业方向' : specialty}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* 成功案例筛选 */}
+            <div className="flex items-center mb-6">
+              <input
+                type="checkbox"
+                id="successCases"
+                checked={showSuccessCases}
+                onChange={(e) => setShowSuccessCases(e.target.checked)}
+                className="mr-2"
+              />
+              <label htmlFor="successCases" className="text-gray-600">
+                仅显示有成功案例的学校
+              </label>
+            </div>
+          </div>
+        </section>
+
+        {/* 学校列表 */}
+        <section className="py-8 px-6">
+          <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {recommendedSchools.map(school => (
+              {currentSchools.map(school => (
                 <div key={school.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
-                  <div className="relative h-20 mb-4">
+                  <div className="relative h-16 mb-4">
                     <Image
                       src={school.logo}
                       alt={school.name}
@@ -200,141 +321,59 @@ export default function SchoolsPage() {
                     />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{school.name}</h3>
-                  <p className="text-gray-600 mb-4">{school.chineseName}</p>
+                  <p className="text-gray-600 mb-2">{school.chineseName}</p>
                   <div className="flex items-center text-sm text-gray-500 mb-4">
                     <span className="mr-4">🌍 {school.country}</span>
                     <span>🏆 QS排名: {school.qsRank}</span>
                   </div>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {certificationTypes.map(type => (
-                      <span key={type} className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm">
+                      <span key={type} className="px-2 py-1 bg-blue-50 text-blue-600 rounded-full text-xs">
                         {type}
                       </span>
                     ))}
                   </div>
-                  <a
-                    href="https://wa.me/1234567890"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-full bg-blue-600 text-white text-center rounded-lg py-2 hover:bg-blue-700 transition"
-                  >
-                    立即咨询
-                  </a>
+                  <div className="flex items-center text-sm text-green-600 mb-4">
+                    <span className="mr-1">✔</span>
+                    已办理20+例
+                  </div>
+                  <div className="flex gap-2">
+                    <Link href={`/schools/${school.id}`}>
+                      <a className="flex-1 bg-blue-600 text-white text-center rounded-lg py-2 hover:bg-blue-700 transition">
+                        查看详情
+                      </a>
+                    </Link>
+                    <a
+                      href="https://wa.me/1234567890"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 border border-blue-600 text-blue-600 text-center rounded-lg py-2 hover:bg-blue-50 transition"
+                    >
+                      立即咨询
+                    </a>
+                  </div>
                 </div>
               ))}
             </div>
-          </div>
-        </section>
 
-        {/* 学校库主区域 */}
-        <section className="py-12 px-6">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row gap-8">
-              {/* 左侧筛选面板 */}
-              <div className="w-full md:w-64 space-y-6">
-                <div>
-                  <h3 className="font-semibold mb-3">国家/地区</h3>
-                  <select 
-                    className="w-full border rounded-lg p-2"
-                    value={selectedCountry}
-                    onChange={(e) => setSelectedCountry(e.target.value)}
+            {/* 分页控件 */}
+            {totalPages > 1 && (
+              <div className="flex justify-center mt-8 gap-2">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                  <button
+                    key={page}
+                    onClick={() => setCurrentPage(page)}
+                    className={`px-4 py-2 rounded-lg ${
+                      currentPage === page
+                        ? 'bg-blue-600 text-white'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    }`}
                   >
-                    {countries.map(country => (
-                      <option key={country} value={country}>
-                        {country === '全部' ? '选择国家/地区' : country}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-3">学历类型</h3>
-                  <select 
-                    className="w-full border rounded-lg p-2"
-                    value={selectedDegree}
-                    onChange={(e) => setSelectedDegree(e.target.value)}
-                  >
-                    {degreeTypes.map(degree => (
-                      <option key={degree} value={degree}>
-                        {degree === '全部' ? '选择学历类型' : degree}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <h3 className="font-semibold mb-3">专业方向</h3>
-                  <select 
-                    className="w-full border rounded-lg p-2"
-                    value={selectedSpecialty}
-                    onChange={(e) => setSelectedSpecialty(e.target.value)}
-                  >
-                    {specialties.map(specialty => (
-                      <option key={specialty} value={specialty}>
-                        {specialty === '全部' ? '选择专业方向' : specialty}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="successCases"
-                    checked={showSuccessCases}
-                    onChange={(e) => setShowSuccessCases(e.target.checked)}
-                    className="mr-2"
-                  />
-                  <label htmlFor="successCases">仅显示有成功案例</label>
-                </div>
+                    {page}
+                  </button>
+                ))}
               </div>
-
-              {/* 右侧学校列表 */}
-              <div className="flex-1">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {schools.map(school => (
-                    <div key={school.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
-                      <div className="relative h-16 mb-4">
-                        <Image
-                          src={school.logo}
-                          alt={school.name}
-                          fill
-                          style={{ objectFit: 'contain' }}
-                          className="object-contain"
-                        />
-                      </div>
-                      <h3 className="text-xl font-semibold mb-2">{school.name}</h3>
-                      <p className="text-gray-600 mb-2">{school.chineseName}</p>
-                      <div className="flex items-center text-sm text-gray-500 mb-4">
-                        <span className="mr-4">🌍 {school.country}</span>
-                        <span>🏆 QS排名: {school.qsRank}</span>
-                      </div>
-                      <div className="flex flex-wrap gap-2 mb-4">
-                        {certificationTypes.map(type => (
-                          <span key={type} className="px-2 py-1 bg-blue-50 text-blue-600 rounded-full text-xs">
-                            {type}
-                          </span>
-                        ))}
-                      </div>
-                      <div className="flex items-center text-sm text-green-600 mb-4">
-                        <span className="mr-1">✔</span>
-                        已办理20+例
-                      </div>
-                      <Link href={`/schools/${school.id}`}>
-                        <a className="block w-full bg-blue-600 text-white text-center rounded-lg py-2 hover:bg-blue-700 transition mb-2">
-                          查看详情
-                        </a>
-                      </Link>
-                      <a
-                        href="https://wa.me/1234567890"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="block w-full border border-blue-600 text-blue-600 text-center rounded-lg py-2 hover:bg-blue-50 transition"
-                      >
-                        立即咨询
-                      </a>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
+            )}
           </div>
         </section>
 
