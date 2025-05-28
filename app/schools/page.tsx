@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaGraduationCap, FaMapMarkerAlt, FaStar } from 'react-icons/fa';
+import { FaArrowLeft, FaGraduationCap, FaMapMarkerAlt, FaStar, FaWhatsapp } from 'react-icons/fa';
 
 export default function Schools() {
   const schools = [
@@ -63,7 +65,7 @@ export default function Schools() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-blue-600 text-white py-12">
+      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-12">
         <div className="container mx-auto px-4">
           <Link href="/" className="inline-flex items-center text-white mb-4 hover:text-gray-200">
             <FaArrowLeft className="mr-2" />
@@ -122,8 +124,11 @@ export default function Schools() {
               <div className="bg-gray-50 px-6 py-4">
                 <Link
                   href="https://wa.me/1234567890"
-                  className="block text-center bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors"
+                  className="block text-center bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-lg transition-colors inline-flex items-center justify-center gap-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
+                  <FaWhatsapp className="text-xl" />
                   咨询详情
                 </Link>
               </div>
