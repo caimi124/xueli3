@@ -1,162 +1,135 @@
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
-import Layout from '@/components/Layout';
-import SEO from '@/components/SEO';
+import { NextPage } from 'next';
+import Layout from '../components/Layout';
+import { FiCheckCircle, FiFileText, FiAward, FiBook, FiBriefcase } from 'react-icons/fi';
+import { IconContext } from 'react-icons';
+import WhatsAppButton from '../components/WhatsAppButton';
 
-const GuidePage = () => {
+const GuidePage: NextPage = () => {
+  const certificates = [
+    {
+      type: '学历证明认证',
+      description: '证明您的学历真实有效',
+      usage: '求职、出国留学、移民等',
+      icon: FiFileText
+    },
+    {
+      type: '学位证书认证',
+      description: '认证您获得的学位证书',
+      usage: '海外学术交流、职称评定',
+      icon: FiAward
+    },
+    {
+      type: '成绩单认证',
+      description: '认证学习成绩和课程信息',
+      usage: '继续教育、学历提升',
+      icon: FiBook
+    },
+    {
+      type: '职业资格证书认证',
+      description: '证明职业资格的真实性',
+      usage: '求职、职业评估',
+      icon: FiBriefcase
+    }
+  ];
+
+  const steps = [
+    {
+      title: '准备材料',
+      description: '准备您的学历证书、身份证明等相关资料。'
+    },
+    {
+      title: '提交认证申请',
+      description: '直接点击下方「添加 WhatsApp」按钮，联系专业认证顾问，无需填写复杂表格。'
+    },
+    {
+      title: '材料审核',
+      description: '顾问将协助您完成资料审核和认证流程。'
+    },
+    {
+      title: '证书发放',
+      description: '认证成功后，您将获得100%真实有效的学历认证证书。'
+    },
+    {
+      title: '后续服务',
+      description: '持续提供后续咨询与服务，保障您的学历认证权益。'
+    }
+  ];
+
   return (
-    <Layout>
-      <SEO 
-        title="快速领证 — 7天内获得真实官方学历证书 | Acaboost"
-        description="一站式学历认证与购买服务，快速高效，100%真实可查。支持全球学历证书，7天快速拿证。"
-        keywords={["快速领证", "学历证书", "官方认证", "真实学历", "学历购买"]}
-      />
+    <Layout
+      title="快速领证指南 - Acaboost学历认证"
+      description="了解如何快速完成学历认证，查看证书速览，一键联系认证顾问，轻松拿证。"
+    >
+      <IconContext.Provider value={{ size: '24px', color: '#2563eb' }}>
+        <div className="min-h-screen bg-gray-50">
+          {/* Hero Section */}
+          <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+            <div className="container mx-auto px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
+                快速领证指南
+              </h1>
+              <p className="text-xl text-center max-w-3xl mx-auto">
+                欢迎来到 Acaboost 学历认证快速领证指南页，这里为您详细介绍学历认证的简单流程和常见证书展示，帮助您快速获取真实学历认证。
+              </p>
+            </div>
+          </div>
 
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">快速领证 — 7天内获得真实官方学历证书</h1>
-          <p className="text-xl md:text-2xl mb-8">立即添加WhatsApp客服</p>
-          <p className="text-2xl font-bold mb-8">19935572576</p>
-          <p className="text-lg mb-8">享受一站式学历认证与购买服务，快速高效，100%真实可查！</p>
-          <a
-            href="https://wa.me/19935572576"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-green-500 text-white px-8 py-3 rounded-full font-bold hover:bg-green-600 transition-colors"
-          >
-            立即咨询
-          </a>
-        </div>
-      </div>
+          {/* Quick Guide Process */}
+          <div className="container mx-auto px-4 py-16">
+            <h2 className="text-3xl font-bold text-center mb-12">快速领证流程</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {steps.map((step, index) => (
+                <div key={index} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                  <div className="flex items-center mb-4">
+                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                      <FiCheckCircle />
+                    </div>
+                    <h3 className="text-xl font-semibold">{step.title}</h3>
+                  </div>
+                  <p className="text-gray-600">{step.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
 
-      {/* Service Advantages */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">服务优势</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <h3 className="text-xl font-bold mb-4">全球覆盖</h3>
-            <p className="text-gray-600">支持多国学历证书，含欧美、澳洲、加拿大等热门国家</p>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <h3 className="text-xl font-bold mb-4">官方认证</h3>
-            <p className="text-gray-600">所有证书均为官方真实学历，100%可查询</p>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <h3 className="text-xl font-bold mb-4">极速办理</h3>
-            <p className="text-gray-600">7天快速拿证，节省繁琐时间</p>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <h3 className="text-xl font-bold mb-4">隐私保障</h3>
-            <p className="text-gray-600">信息安全保密，保护客户隐私</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Process Steps */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">快速领证流程</h2>
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-              <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <div className="text-2xl font-bold text-blue-600 mb-2">1</div>
-                <p>在线咨询，确定需求</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <div className="text-2xl font-bold text-blue-600 mb-2">2</div>
-                <p>提交资料，核验信息</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <div className="text-2xl font-bold text-blue-600 mb-2">3</div>
-                <p>支付订单，开始办理</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <div className="text-2xl font-bold text-blue-600 mb-2">4</div>
-                <p>等待官方认证与制作</p>
-              </div>
-              <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-                <div className="text-2xl font-bold text-blue-600 mb-2">5</div>
-                <p>快速收到证书，验真无忧</p>
+          {/* Certificate Overview */}
+          <div className="bg-gray-100 py-16">
+            <div className="container mx-auto px-4">
+              <h2 className="text-3xl font-bold text-center mb-12">证书快速速览</h2>
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {certificates.map((cert, index) => (
+                  <div key={index} className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow">
+                    <div className="flex items-center mb-4">
+                      <div className="mr-3">
+                        <cert.icon />
+                      </div>
+                      <h3 className="text-xl font-semibold">{cert.type}</h3>
+                    </div>
+                    <p className="text-gray-600 mb-2">{cert.description}</p>
+                    <p className="text-sm text-gray-500">{cert.usage}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Certificate Types */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">可提供学历证书类型</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-xl font-bold mb-4">学位证书</h3>
-            <ul className="space-y-2">
-              <li>• 学士学位证书</li>
-              <li>• 硕士学位证书</li>
-              <li>• 博士学位证书</li>
-            </ul>
+          {/* Contact Section */}
+          <div className="container mx-auto px-4 py-16">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center">
+              <h2 className="text-3xl font-bold mb-6">获取专业认证顾问服务！</h2>
+              <p className="text-xl mb-8">立即联系我们的专业顾问，开启您的认证之旅</p>
+              <WhatsAppButton className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-full text-lg font-semibold transition-colors" />
+            </div>
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-xl font-bold mb-4">学历文件</h3>
-            <ul className="space-y-2">
-              <li>• 毕业证书</li>
-              <li>• 成绩单</li>
-              <li>• 在读证明</li>
-            </ul>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-xl font-bold mb-4">认证文件</h3>
-            <ul className="space-y-2">
-              <li>• 学历认证报告</li>
-              <li>• 成绩单认证</li>
-              <li>• 学位认证</li>
-            </ul>
-          </div>
-        </div>
-      </div>
 
-      {/* FAQ Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">常见问题</h2>
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-2">证书是否真实可查？</h3>
-              <p className="text-gray-600">是的，所有证书均为官方真实学历，100%可查询验证。</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-2">办理周期多久？</h3>
-              <p className="text-gray-600">最快7天内完成，加急可更快。</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-2">如何保障隐私？</h3>
-              <p className="text-gray-600">我们采用严格的隐私保护措施，确保客户信息安全。</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-2">是否支持全球学历？</h3>
-              <p className="text-gray-600">支持多国学历证书，包括欧美、澳洲、加拿大等热门国家。</p>
+          {/* Footer Note */}
+          <div className="bg-gray-800 text-white py-8">
+            <div className="container mx-auto px-4 text-center">
+              <p className="text-lg">Acaboost - 您可信赖的学历认证平台</p>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Bottom CTA */}
-      <div className="bg-green-500 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">立即咨询，快速领证</h2>
-          <p className="text-xl mb-8">添加WhatsApp客服：19935572576</p>
-          <a
-            href="https://wa.me/19935572576"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-white text-green-500 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors"
-          >
-            立即咨询
-          </a>
-        </div>
-      </div>
+      </IconContext.Provider>
     </Layout>
   );
 };
