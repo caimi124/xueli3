@@ -1,141 +1,127 @@
-import React from 'react';
-import Head from 'next/head';
-import Link from 'next/link';
-import Image from 'next/image';
-import Layout from '@/components/Layout';
-import SEO from '@/components/SEO';
+import { NextPage } from 'next';
+import Layout from '../components/Layout';
+import { FiMessageCircle, FiPhone, FiMail, FiUsers, FiBook, FiCheckCircle } from 'react-icons/fi';
+import { IconContext } from 'react-icons';
+import WhatsAppButton from '../components/WhatsAppButton';
 
-const ContactPage = () => {
+const ContactPage: NextPage = () => {
+  const contactInfo = [
+    {
+      icon: FiMessageCircle,
+      title: 'WhatsApp',
+      value: '点击添加',
+      link: 'https://wa.me/你的号码'
+    },
+    {
+      icon: FiPhone,
+      title: '电话',
+      value: '+86 123 4567 8901',
+      link: 'tel:+8612345678901'
+    },
+    {
+      icon: FiMail,
+      title: '邮箱',
+      value: 'support@acaboost.com',
+      link: 'mailto:support@acaboost.com'
+    }
+  ];
+
+  const features = [
+    {
+      icon: FiUsers,
+      title: '已服务客户',
+      description: '我们已服务超过千名客户，帮助他们成功获取真实有效的学历证书。您的信任，是我们不断前进的动力。'
+    },
+    {
+      icon: FiBook,
+      title: '学校合作',
+      description: '我们与众多权威高校及教育机构建立了合作，确保为您提供的学历证书均来源正规渠道，真实有效。'
+    },
+    {
+      icon: FiCheckCircle,
+      title: '真实保障',
+      description: '通过我们的服务，您可以轻松完成学历认证，获得权威认可的证书。合作流程简单高效，确保快速出证，省心省力。'
+    }
+  ];
+
   return (
-    <Layout>
-      <SEO 
-        title="立即咨询 | 全球学历认证顾问 | Acaboost"
-        description="无需填写表单，点击WhatsApp一键直达认证顾问，获取100%真实学历。已成功服务1200+客户，支持30+国家学历认证。"
-        keywords={["学历认证", "WhatsApp咨询", "学历顾问", "快速认证", "全球学历"]}
-      />
-
-      {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">全球学历认证顾问，7天快速拿证</h1>
-          <p className="text-xl md:text-2xl mb-8">无需填写表单，点击 WhatsApp 一键直达认证顾问，获取100%真实学历！</p>
-          <div className="flex flex-col items-center gap-6">
-            <a
-              href="https://wa.me/19935572576"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-green-500 text-white px-8 py-3 rounded-full font-bold hover:bg-green-600 transition-colors text-xl"
-            >
-              立即 WhatsApp 咨询
-            </a>
-            <div className="bg-white p-4 rounded-lg shadow-lg">
-              <Image
-                src="/images/whatsapp-qr.png"
-                alt="WhatsApp QR Code"
-                width={200}
-                height={200}
-                className="rounded-lg"
-              />
-            </div>
-            <p className="text-lg">我们在线时间：每天 9:00 - 22:00（支持中英文）</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Service Advantages */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">我们能为您提供什么？</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="text-3xl mb-4">🎓</div>
-            <h3 className="text-xl font-bold mb-4">教育行业专家</h3>
-            <p className="text-gray-600">多年国际教育领域经验，熟悉各国学历政策</p>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="text-3xl mb-4">📄</div>
-            <h3 className="text-xl font-bold mb-4">官方认证学历</h3>
-            <p className="text-gray-600">提供100%真实学历，可在政府官网查验</p>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="text-3xl mb-4">⏱️</div>
-            <h3 className="text-xl font-bold mb-4">极速办证流程</h3>
-            <p className="text-gray-600">3~7天内快速交付完整学历材料</p>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="text-3xl mb-4">🌎</div>
-            <h3 className="text-xl font-bold mb-4">支持多国院校</h3>
-            <p className="text-gray-600">覆盖美国、英国、加拿大、澳洲、东南亚等上百所大学</p>
-          </div>
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <div className="text-3xl mb-4">💬</div>
-            <h3 className="text-xl font-bold mb-4">一对一专属顾问</h3>
-            <p className="text-gray-600">全程答疑，资料准备、认证流程全托管</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonials & Stats */}
-      <div className="bg-gray-50 py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">客户好评</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <p className="text-gray-600 italic mb-4">"我是新加坡工作，需要认证一份硕士学历，3天就搞定了！"</p>
-              <p className="text-gray-800 font-semibold">- 张先生，新加坡</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <p className="text-gray-600 italic mb-4">"流程非常顺利，而且是真实可查的官方文件。"</p>
-              <p className="text-gray-800 font-semibold">- 李女士，上海</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-lg p-6">
-              <p className="text-gray-600 italic mb-4">"顾问很贴心，还会帮我整理材料。"</p>
-              <p className="text-gray-800 font-semibold">- 王先生，北京</p>
+    <Layout
+      title="联系我们 - Acaboost学历认证"
+      description="我们专注为您提供真实、权威的学历认证服务。欢迎随时咨询，专业团队为您保驾护航。"
+    >
+      <IconContext.Provider value={{ size: '24px', color: '#2563eb' }}>
+        <div className="min-h-screen bg-gray-50">
+          {/* Hero Section */}
+          <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
+            <div className="container mx-auto px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
+                联系我们
+              </h1>
+              <p className="text-xl text-center max-w-3xl mx-auto">
+                我们专注为您提供真实、权威的学历认证服务。欢迎随时咨询，专业团队为您保驾护航。
+              </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">1,200+</div>
-              <p className="text-gray-600">已成功服务客户</p>
+          {/* Contact Info Section */}
+          <div className="container mx-auto px-4 py-16">
+            <div className="grid md:grid-cols-3 gap-8">
+              {contactInfo.map((info, index) => (
+                <a
+                  key={index}
+                  href={info.link}
+                  className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow text-center"
+                >
+                  <div className="flex justify-center mb-4">
+                    <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                      <info.icon />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{info.title}</h3>
+                  <p className="text-gray-600">{info.value}</p>
+                </a>
+              ))}
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">30+</div>
-              <p className="text-gray-600">支持认证国家</p>
+          </div>
+
+          {/* Features Section */}
+          <div className="bg-gray-100 py-16">
+            <div className="container mx-auto px-4">
+              <div className="grid md:grid-cols-3 gap-8">
+                {features.map((feature, index) => (
+                  <div key={index} className="bg-white rounded-lg shadow-lg p-6">
+                    <div className="flex items-center mb-4">
+                      <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <feature.icon />
+                      </div>
+                      <h3 className="text-xl font-semibold">{feature.title}</h3>
+                    </div>
+                    <p className="text-gray-600">{feature.description}</p>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">4,000+</div>
-              <p className="text-gray-600">累计处理学历类型</p>
+          </div>
+
+          {/* CTA Section */}
+          <div className="container mx-auto px-4 py-16">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-2xl p-8 text-white text-center">
+              <h2 className="text-3xl font-bold mb-6">立即咨询</h2>
+              <p className="text-xl mb-8">
+                添加我们的WhatsApp，获取一对一专业学历认证咨询，快速解答您的所有疑问！
+              </p>
+              <WhatsAppButton className="bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-full text-lg font-semibold transition-colors" />
+            </div>
+          </div>
+
+          {/* Footer Note */}
+          <div className="bg-gray-800 text-white py-8">
+            <div className="container mx-auto px-4 text-center">
+              <p className="text-lg">Acaboost - 您可信赖的学历认证平台</p>
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Bottom CTA */}
-      <div className="bg-green-500 text-white py-16">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">有任何问题？添加 WhatsApp 顾问，一对一解答！</h2>
-          <p className="text-xl mb-8">不留信息也能快速了解！</p>
-          <div className="flex flex-col items-center gap-6">
-            <a
-              href="https://wa.me/19935572576"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block bg-white text-green-500 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors text-xl"
-            >
-              立即加顾问
-            </a>
-            <div className="bg-white p-4 rounded-lg shadow-lg">
-              <Image
-                src="/images/whatsapp-qr.png"
-                alt="WhatsApp QR Code"
-                width={200}
-                height={200}
-                className="rounded-lg"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      </IconContext.Provider>
     </Layout>
   );
 };
