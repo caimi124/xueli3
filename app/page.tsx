@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
-import { FaWhatsapp, FaGraduationCap, FaCheckCircle, FaUsers } from 'react-icons/fa';
+import { FaWhatsapp, FaGraduationCap, FaCheckCircle, FaUsers, FaStar } from 'react-icons/fa';
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
           <Link 
             href="https://wa.me/1234567890" 
             className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold inline-flex items-center gap-2"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaWhatsapp className="text-2xl" />
             立即咨询
@@ -83,7 +87,7 @@ export default function Home() {
                 <div className="flex items-center mb-4">
                   <div className="text-yellow-400 flex">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <span key={i}>★</span>
+                      <FaStar key={i} className="text-xl" />
                     ))}
                   </div>
                 </div>
@@ -103,6 +107,8 @@ export default function Home() {
           <Link 
             href="https://wa.me/1234567890"
             className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full text-lg font-semibold inline-flex items-center gap-2"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <FaWhatsapp className="text-2xl" />
             立即咨询
