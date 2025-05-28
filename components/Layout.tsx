@@ -2,12 +2,9 @@ import React from 'react';
 import Navigation from './Navigation';
 import Footer from './Footer';
 import WhatsAppButton from './WhatsAppButton';
+import { LayoutProps } from '../types';
 
-interface LayoutProps {
-  children: React.ReactNode;
-}
-
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ children, title, description }: LayoutProps) => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />

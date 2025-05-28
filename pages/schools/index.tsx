@@ -157,8 +157,8 @@ export default function SchoolsPage() {
   // 获取热门推荐学校
   const recommendedSchools = schools.slice(0, 6);
 
-  return (
-    <Layout>
+  const pageContent = (
+    <>
       <SEO
         title="全球认证院校资源库 - 300+国际高校认证服务"
         description="提供全球300+所知名院校的学历认证服务，包括英国、澳大利亚、加拿大等国家的顶尖大学。"
@@ -378,6 +378,8 @@ export default function SchoolsPage() {
           立即咨询
         </a>
       </main>
-    </Layout>
+    </>
   );
+
+  return <Layout>{pageContent}</Layout>;
 } 
