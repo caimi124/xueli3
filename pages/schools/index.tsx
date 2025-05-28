@@ -8,69 +8,75 @@ import Link from 'next/link';
 const schools = [
   {
     id: 1,
-    name: 'University of Melbourne',
-    chineseName: '墨尔本大学',
+    name: '墨尔本大学',
     country: '澳大利亚',
-    logo: '/images/placeholder.png',
+    logo: '/images/schools/placeholder.png',
     qsRank: 13,
     degrees: ['本科', '硕士', '博士'],
     specialties: ['商科', '工程', '医学'],
-    verified: true
+    verified: true,
+    isHot: true,
+    addedDate: '2024-01-15'
   },
   {
     id: 2,
-    name: 'University of Birmingham',
-    chineseName: '伯明翰大学',
+    name: '伯明翰大学',
     country: '英国',
-    logo: '/images/placeholder.png',
+    logo: '/images/schools/placeholder.png',
     qsRank: 91,
     degrees: ['本科', '硕士'],
     specialties: ['商科', '计算机'],
-    verified: true
+    verified: true,
+    isHot: true,
+    addedDate: '2024-01-10'
   },
   {
     id: 3,
-    name: 'University of Toronto',
-    chineseName: '多伦多大学',
+    name: '多伦多大学',
     country: '加拿大',
-    logo: '/images/placeholder.png',
+    logo: '/images/schools/placeholder.png',
     qsRank: 21,
     degrees: ['本科', '硕士', '博士'],
     specialties: ['商科', '医学', '工程'],
-    verified: true
+    verified: true,
+    isHot: true,
+    addedDate: '2024-01-05'
   },
   {
     id: 4,
-    name: 'National University of Singapore',
-    chineseName: '新加坡国立大学',
+    name: '新加坡国立大学',
     country: '新加坡',
-    logo: '/images/placeholder.png',
+    logo: '/images/schools/placeholder.png',
     qsRank: 8,
     degrees: ['本科', '硕士', '博士'],
     specialties: ['商科', '工程', '计算机'],
-    verified: true
+    verified: true,
+    isHot: true,
+    addedDate: '2024-01-01'
   },
   {
     id: 5,
-    name: 'University of Sydney',
-    chineseName: '悉尼大学',
+    name: '悉尼大学',
     country: '澳大利亚',
-    logo: '/images/placeholder.png',
+    logo: '/images/schools/placeholder.png',
     qsRank: 19,
     degrees: ['本科', '硕士', '博士'],
     specialties: ['商科', '医学', '法律'],
-    verified: true
+    verified: true,
+    isHot: false,
+    addedDate: '2023-12-20'
   },
   {
     id: 6,
-    name: 'University of Manchester',
-    chineseName: '曼彻斯特大学',
+    name: '曼彻斯特大学',
     country: '英国',
-    logo: '/images/placeholder.png',
+    logo: '/images/schools/placeholder.png',
     qsRank: 32,
     degrees: ['本科', '硕士', '博士'],
     specialties: ['商科', '工程', '计算机'],
-    verified: true
+    verified: true,
+    isHot: false,
+    addedDate: '2023-12-15'
   },
   {
     id: 7,
@@ -145,18 +151,15 @@ const countries = ['全部', '英国', '澳大利亚', '加拿大', '美国', '�
 const degreeTypes = ['全部', '大专', '本科', '硕士', '博士'];
 const specialties = ['全部', '商科', '工程', '计算机', '医学', '艺术', '教育'];
 
+// 排序选项
+const sortOptions = [
+  { id: 'hot', name: '热门度' },
+  { id: 'newest', name: '最新添加' },
+  { id: 'rank', name: 'QS排名' }
+];
+
 // 认证类型
 const certificationTypes = ['毕业证', '学位证', '成绩单'];
-
-// 分类标签
-const categories = [
-  { id: 'all', name: '全部学校' },
-  { id: 'hot', name: '热门推荐' },
-  { id: 'fast', name: '快速拿证' },
-  { id: 'medical', name: '医学类' },
-  { id: 'business', name: '商科类' },
-  { id: 'engineering', name: '工程类' }
-];
 
 export default function SchoolsPage() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -164,38 +167,39 @@ export default function SchoolsPage() {
   const [selectedDegree, setSelectedDegree] = useState('全部');
   const [selectedSpecialty, setSelectedSpecialty] = useState('全部');
   const [showSuccessCases, setShowSuccessCases] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [sortBy, setSortBy] = useState('hot');
   const [currentPage, setCurrentPage] = useState(1);
   const schoolsPerPage = 9;
 
   // 过滤和搜索逻辑
   const filteredSchools = useMemo(() => {
-    return schools.filter(school => {
+    let result = schools.filter(school => {
       const matchesSearch = searchQuery === '' || 
-        school.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        school.chineseName.toLowerCase().includes(searchQuery.toLowerCase());
+        school.name.toLowerCase().includes(searchQuery.toLowerCase());
       
       const matchesCountry = selectedCountry === '全部' || school.country === selectedCountry;
       const matchesDegree = selectedDegree === '全部' || school.degrees.includes(selectedDegree);
       const matchesSpecialty = selectedSpecialty === '全部' || school.specialties.includes(selectedSpecialty);
       
-      // 分类过滤
-      let matchesCategory = true;
-      if (selectedCategory === 'hot') {
-        matchesCategory = school.qsRank <= 50;
-      } else if (selectedCategory === 'fast') {
-        matchesCategory = school.verified;
-      } else if (selectedCategory === 'medical') {
-        matchesCategory = school.specialties.includes('医学');
-      } else if (selectedCategory === 'business') {
-        matchesCategory = school.specialties.includes('商科');
-      } else if (selectedCategory === 'engineering') {
-        matchesCategory = school.specialties.includes('工程');
-      }
-
-      return matchesSearch && matchesCountry && matchesDegree && matchesSpecialty && matchesCategory;
+      return matchesSearch && matchesCountry && matchesDegree && matchesSpecialty;
     });
-  }, [searchQuery, selectedCountry, selectedDegree, selectedSpecialty, selectedCategory]);
+
+    // 排序逻辑
+    result.sort((a, b) => {
+      switch (sortBy) {
+        case 'hot':
+          return b.isHot ? 1 : -1;
+        case 'newest':
+          return new Date(b.addedDate) - new Date(a.addedDate);
+        case 'rank':
+          return a.qsRank - b.qsRank;
+        default:
+          return 0;
+      }
+    });
+
+    return result;
+  }, [searchQuery, selectedCountry, selectedDegree, selectedSpecialty, sortBy]);
 
   // 分页逻辑
   const totalPages = Math.ceil(filteredSchools.length / schoolsPerPage);
@@ -203,6 +207,9 @@ export default function SchoolsPage() {
     (currentPage - 1) * schoolsPerPage,
     currentPage * schoolsPerPage
   );
+
+  // 热门学校
+  const hotSchools = schools.filter(school => school.isHot).slice(0, 6);
 
   const pageContent = (
     <>
@@ -235,25 +242,8 @@ export default function SchoolsPage() {
               />
             </div>
 
-            {/* 分类标签 */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {categories.map(category => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                    selectedCategory === category.id
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
-
-            {/* 筛选条件 */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            {/* 筛选和排序 */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
               <select 
                 className="border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 value={selectedCountry}
@@ -287,6 +277,17 @@ export default function SchoolsPage() {
                   </option>
                 ))}
               </select>
+              <select 
+                className="border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+              >
+                {sortOptions.map(option => (
+                  <option key={option.id} value={option.id}>
+                    {option.name}
+                  </option>
+                ))}
+              </select>
             </div>
 
             {/* 成功案例筛选 */}
@@ -301,6 +302,59 @@ export default function SchoolsPage() {
               <label htmlFor="successCases" className="text-gray-600">
                 仅显示有成功案例的学校
               </label>
+            </div>
+          </div>
+        </section>
+
+        {/* 热门学校推荐 */}
+        <section className="py-8 px-6">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-2xl font-bold mb-6">🔥 热门推荐</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {hotSchools.map(school => (
+                <div key={school.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6">
+                  <div className="relative h-16 mb-4">
+                    <Image
+                      src={school.logo}
+                      alt={school.name}
+                      fill
+                      style={{ objectFit: 'contain' }}
+                      className="object-contain"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{school.name}</h3>
+                  <div className="flex items-center text-sm text-gray-500 mb-4">
+                    <span className="mr-4">🌍 {school.country}</span>
+                    <span>🏆 QS排名: {school.qsRank}</span>
+                  </div>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {certificationTypes.map(type => (
+                      <span key={type} className="px-2 py-1 bg-blue-50 text-blue-600 rounded-full text-xs">
+                        {type}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex items-center text-sm text-green-600 mb-4">
+                    <span className="mr-1">✔</span>
+                    已办理20+例
+                  </div>
+                  <div className="flex gap-2">
+                    <Link href={`/schools/${school.id}`}>
+                      <a className="flex-1 bg-blue-600 text-white text-center rounded-lg py-2 hover:bg-blue-700 transition">
+                        查看详情
+                      </a>
+                    </Link>
+                    <a
+                      href="https://wa.me/1234567890"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 border border-blue-600 text-blue-600 text-center rounded-lg py-2 hover:bg-blue-50 transition"
+                    >
+                      立即咨询
+                    </a>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -321,7 +375,6 @@ export default function SchoolsPage() {
                     />
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{school.name}</h3>
-                  <p className="text-gray-600 mb-2">{school.chineseName}</p>
                   <div className="flex items-center text-sm text-gray-500 mb-4">
                     <span className="mr-4">🌍 {school.country}</span>
                     <span>🏆 QS排名: {school.qsRank}</span>
