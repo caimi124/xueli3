@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { FaWhatsapp, FaPhone, FaEnvelope, FaCheckCircle, FaGraduationCap } from 'react-icons/fa';
 
 export default function ContactPage() {
   return (
@@ -19,11 +20,11 @@ export default function ContactPage() {
       {/* 联系方式 */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">📞 联系方式</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">联系方式</h2>
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
             <div className="space-y-6">
               <div className="flex items-center">
-                <span className="text-2xl mr-4">📱</span>
+                <FaWhatsapp className="text-2xl text-green-500 mr-4" />
                 <div>
                   <h3 className="font-semibold">WhatsApp</h3>
                   <Link 
@@ -37,14 +38,14 @@ export default function ContactPage() {
                 </div>
               </div>
               <div className="flex items-center">
-                <span className="text-2xl mr-4">📞</span>
+                <FaPhone className="text-2xl text-blue-500 mr-4" />
                 <div>
                   <h3 className="font-semibold">电话</h3>
                   <p>+86 123 4567 8901</p>
                 </div>
               </div>
               <div className="flex items-center">
-                <span className="text-2xl mr-4">📧</span>
+                <FaEnvelope className="text-2xl text-red-500 mr-4" />
                 <div>
                   <h3 className="font-semibold">邮箱</h3>
                   <p>support@acaboost.com</p>
@@ -54,10 +55,11 @@ export default function ContactPage() {
             <div className="mt-8 text-center">
               <Link 
                 href="https://wa.me/1234567890" 
-                className="inline-block bg-green-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-green-600 transition-colors"
+                className="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-green-600 transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                <FaWhatsapp className="mr-2" />
                 立即添加 WhatsApp
               </Link>
             </div>
@@ -68,7 +70,7 @@ export default function ContactPage() {
       {/* 已服务客户 */}
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">👥 我们已服务的客户</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">我们已服务的客户</h2>
           <div className="text-center mb-8">
             <p className="text-xl mb-4">
               我们已成功服务<strong>超 1000 名客户</strong>，帮助他们获取真实、可验证的学历证书。
@@ -84,7 +86,7 @@ export default function ContactPage() {
               "全球可查可验学历服务"
             ].map((item) => (
               <div key={item} className="bg-gray-50 p-6 rounded-lg text-center">
-                <span className="text-green-500 text-2xl mb-2 block">✅</span>
+                <FaCheckCircle className="text-green-500 text-2xl mx-auto mb-2" />
                 <p className="font-medium">{item}</p>
               </div>
             ))}
@@ -95,7 +97,7 @@ export default function ContactPage() {
       {/* 合作院校 */}
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">🎓 合作院校 · 正规学历 · 全球认证</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">合作院校 · 正规学历 · 全球认证</h2>
           <div className="bg-white rounded-lg shadow-lg p-8 mb-8">
             <p className="text-xl mb-6">
               我们与多国高校/教育机构合作，确保每一份学历证书都<strong>正规、真实、可验证</strong>。
@@ -105,15 +107,15 @@ export default function ContactPage() {
             </p>
             <ul className="space-y-4">
               <li className="flex items-center">
-                <span className="text-blue-500 mr-2">•</span>
+                <FaCheckCircle className="text-blue-500 mr-2" />
                 正规渠道申请
               </li>
               <li className="flex items-center">
-                <span className="text-blue-500 mr-2">•</span>
+                <FaCheckCircle className="text-blue-500 mr-2" />
                 多国认证可选（新加坡、马来西亚、英国、澳洲、加拿大等）
               </li>
               <li className="flex items-center">
-                <span className="text-blue-500 mr-2">•</span>
+                <FaCheckCircle className="text-blue-500 mr-2" />
                 支持教育部/留服系统验证
               </li>
             </ul>
@@ -124,7 +126,7 @@ export default function ContactPage() {
       {/* 快速咨询入口 */}
       <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">🚀 快速咨询入口</h2>
+          <h2 className="text-3xl font-bold mb-6">快速咨询入口</h2>
           <p className="text-xl mb-8">
             立即添加 WhatsApp，开启您的专属学历认证咨询！
           </p>
@@ -135,17 +137,18 @@ export default function ContactPage() {
               "免费解答 & 私密沟通"
             ].map((item) => (
               <div key={item} className="bg-blue-700 p-6 rounded-lg">
-                <span className="text-2xl mb-2 block">🔹</span>
+                <FaGraduationCap className="text-2xl mx-auto mb-2" />
                 <p>{item}</p>
               </div>
             ))}
           </div>
           <Link 
             href="https://wa.me/1234567890" 
-            className="inline-block bg-green-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-green-600 transition-colors"
+            className="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-green-600 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
+            <FaWhatsapp className="mr-2" />
             添加 WhatsApp 立即咨询
           </Link>
         </div>
