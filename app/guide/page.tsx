@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { FaWhatsapp, FaCheckCircle, FaGraduationCap, FaUsers, FaClock, FaShieldAlt } from 'react-icons/fa';
 
 export default function GuidePage() {
   return (
@@ -16,10 +16,11 @@ export default function GuidePage() {
           </p>
           <Link 
             href="https://wa.me/1234567890" 
-            className="inline-block bg-green-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-green-600 transition-colors"
+            className="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-green-600 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
+            <FaWhatsapp className="mr-2" />
             立即加 WhatsApp
           </Link>
         </div>
@@ -91,7 +92,7 @@ export default function GuidePage() {
                 <ul className="space-y-2">
                   {category.items.map((item) => (
                     <li key={item} className="flex items-center text-gray-600">
-                      <span className="text-blue-500 mr-2">✓</span>
+                      <FaCheckCircle className="text-blue-500 mr-2" />
                       {item}
                     </li>
                   ))}
@@ -108,14 +109,17 @@ export default function GuidePage() {
           <h2 className="text-3xl font-bold text-center mb-12">为什么选择我们</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
+              <FaUsers className="text-4xl text-blue-600 mx-auto mb-4" />
               <div className="text-4xl font-bold text-blue-600 mb-2">1000+</div>
               <p className="text-gray-600">已成功帮助客户获取真实学历</p>
             </div>
             <div className="text-center">
+              <FaShieldAlt className="text-4xl text-blue-600 mx-auto mb-4" />
               <div className="text-4xl font-bold text-blue-600 mb-2">100%</div>
               <p className="text-gray-600">与真实学校合作，含验证渠道</p>
             </div>
             <div className="text-center">
+              <FaClock className="text-4xl text-blue-600 mx-auto mb-4" />
               <div className="text-4xl font-bold text-blue-600 mb-2">24/7</div>
               <p className="text-gray-600">多语言客服支持 + 经验丰富顾问团队</p>
             </div>
@@ -130,10 +134,11 @@ export default function GuidePage() {
           <p className="text-xl mb-8">专业顾问一对一服务，为您定制最佳方案</p>
           <Link 
             href="https://wa.me/1234567890" 
-            className="inline-block bg-green-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-green-600 transition-colors"
+            className="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-green-600 transition-colors"
             target="_blank"
             rel="noopener noreferrer"
           >
+            <FaWhatsapp className="mr-2" />
             加 WhatsApp 立刻获取方案
           </Link>
         </div>
