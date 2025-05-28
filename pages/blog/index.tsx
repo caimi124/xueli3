@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -6,32 +6,67 @@ import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import { blogPosts, BlogPost } from '@/data/blog-posts';
 
-// 分类列表
+// 博客分类
 const categories = [
-  "全部",
-  "流程科普",
-  "国家攻略",
-  "学校推荐",
-  "假学历风险",
-  "行业案例",
-  "材料详解",
-  "用途拓展",
-  "时间成本",
-  "用户故事",
-  "问答整理"
+  { id: 'all', name: '全部文章', icon: '📚' },
+  { id: 'process', name: '认证流程', icon: '🎓' },
+  { id: 'cases', name: '成功案例', icon: '✅' },
+  { id: 'faq', name: '常见问题', icon: '❓' },
+  { id: 'guides', name: '各国指南', icon: '🌐' },
+  { id: 'hot', name: '热门推荐', icon: '🔥' }
 ];
 
+// 博客文章数据
+const posts = [
+  {
+    id: 1,
+    title: '快速获得学历认证的正规方法【2025权威指南】',
+    slug: 'quick-degree-verification-guide-2025',
+    category: 'process',
+    tags: ['学历认证', '正规学历', '快速学历办理'],
+    excerpt: '本文详细讲解如何通过官方渠道获取学历认证，涵盖流程、风险、防坑指南，并提供快速获得正规学历的实用方法。',
+    coverImage: '/images/blog/verification-guide.jpg',
+    date: '2024-03-15',
+    readTime: '8分钟',
+    isHot: true
+  },
+  {
+    id: 2,
+    title: '【2025版】各国工作签证所需学历要求大全',
+    slug: 'work-visa-degree-requirements-2025',
+    category: 'guides',
+    tags: ['新加坡', '马来西亚', '工作签证', '学历要求'],
+    excerpt: '全面解析新加坡、马来西亚等热门国家的工作签证学历要求，助你顺利通过签证审核。',
+    coverImage: '/images/blog/visa-requirements.jpg',
+    date: '2024-03-10',
+    readTime: '10分钟',
+    isHot: true
+  },
+  {
+    id: 3,
+    title: '真实可查！10所支持认证的热门院校推荐',
+    slug: 'top-10-verified-universities',
+    category: 'cases',
+    tags: ['可查大学', '学历认证', '院校推荐'],
+    excerpt: '精选10所支持学历认证的热门院校，包括美国、英国、澳大利亚等国家的知名大学。',
+    coverImage: '/images/blog/universities.jpg',
+    date: '2024-03-05',
+    readTime: '12分钟',
+    isHot: false
+  }
+];
+
+// 推荐文章
+const recommendedPosts = posts.filter(post => post.isHot);
+
 const BlogPage = () => {
-  const [selectedCategory, setSelectedCategory] = React.useState("全部");
+  const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchTerm, setSearchTerm] = React.useState("");
 
   // 过滤文章
-  const filteredPosts = blogPosts.filter(post => {
-    const matchesCategory = selectedCategory === "全部" || post.category === selectedCategory;
-    const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.summary.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesCategory && matchesSearch;
-  });
+  const filteredPosts = selectedCategory === 'all' 
+    ? posts 
+    : posts.filter(post => post.category === selectedCategory);
 
   return (
     <Layout>
@@ -68,7 +103,7 @@ const BlogPage = () => {
               className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
             >
               {categories.map(category => (
-                <option key={category} value={category}>{category}</option>
+                <option key={category.id} value={category.id}>{category.name}</option>
               ))}
             </select>
           </div>
@@ -89,14 +124,14 @@ const BlogPage = () => {
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="text-sm text-blue-600">{post.category}</span>
+                    <span className="text-sm text-blue-600">{categories.find(c => c.id === post.category)?.name}</span>
                     <span className="text-gray-400">•</span>
                     <span className="text-sm text-gray-500">{post.date}</span>
                     <span className="text-gray-400">•</span>
                     <span className="text-sm text-gray-500">{post.readTime}</span>
                   </div>
                   <h2 className="text-xl font-bold mb-2 line-clamp-2">{post.title}</h2>
-                  <p className="text-gray-600 mb-4 line-clamp-2">{post.summary}</p>
+                  <p className="text-gray-600 mb-4 line-clamp-2">{post.excerpt}</p>
                   <div className="flex flex-wrap gap-2">
                     {post.tags.map(tag => (
                       <span key={tag} className="text-sm text-gray-500 bg-gray-100 px-2 py-1 rounded">
