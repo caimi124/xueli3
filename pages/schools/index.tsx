@@ -1,154 +1,157 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Link from 'next/link';
+import React, { useState } from 'react';
+import Layout from '../../components/Layout';
+import SEO from '../../components/SEO';
 import Image from 'next/image';
-import Layout from '@/components/Layout';
-import SEO from '@/components/SEO';
-import { schools, School } from '@/data/schools';
+import Link from 'next/link';
 
-const SchoolsPage: NextPage = () => {
-  const [searchTerm, setSearchTerm] = React.useState('');
-  const [selectedCountries, setSelectedCountries] = React.useState<string[]>([]);
-  const [selectedMajors, setSelectedMajors] = React.useState<string[]>([]);
+// 学校数据
+const schools = [
+  {
+    id: 1,
+    name: 'University of Melbourne',
+    chineseName: '墨尔本大学',
+    country: '澳大利亚',
+    logo: '/images/schools/melbourne.png',
+    qsRank: 13,
+    degrees: ['本科', '硕士', '博士'],
+    specialties: ['商科', '工程', '医学'],
+    verified: true
+  },
+  {
+    id: 2,
+    name: 'University of Birmingham',
+    chineseName: '伯明翰大学',
+    country: '英国',
+    logo: '/images/schools/birmingham.png',
+    qsRank: 91,
+    degrees: ['本科', '硕士'],
+    specialties: ['商科', '计算机'],
+    verified: true
+  },
+  // 更多学校数据...
+];
 
-  const handleCountryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const values = Array.from(e.target.selectedOptions, (option: HTMLOptionElement) => option.value);
-    setSelectedCountries(values);
-  };
+// 筛选选项
+const countries = ['全部', '英国', '澳大利亚', '加拿大', '美国', '新加坡', '马来西亚'];
+const degreeTypes = ['全部', '大专', '本科', '硕士', '博士'];
+const specialties = ['全部', '商科', '工程', '计算机', '医学', '艺术', '教育'];
 
-  const handleMajorChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const values = Array.from(e.target.selectedOptions, (option: HTMLOptionElement) => option.value);
-    setSelectedMajors(values);
-  };
-
-  const filteredSchools = schools.filter((school: School) => {
-    const matchesSearch = school.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesCountry = selectedCountries.length === 0 || selectedCountries.includes(school.country);
-    const matchesMajor = selectedMajors.length === 0 || school.majors.some(major => selectedMajors.includes(major));
-    return matchesSearch && matchesCountry && matchesMajor;
-  });
+export default function SchoolsPage() {
+  const [selectedCountry, setSelectedCountry] = useState('全部');
+  const [selectedDegree, setSelectedDegree] = useState('全部');
+  const [selectedSpecialty, setSelectedSpecialty] = useState('全部');
 
   return (
     <Layout>
-      <SEO 
-        title="全球顶尖院校认证服务 | Acaboost"
-        description="提供全球顶尖院校的学历认证服务，包括MIT、哈佛、牛津等世界一流大学。快速、专业、可靠的认证解决方案。"
-        keywords={["学历认证", "学校认证", "MIT认证", "哈佛认证", "牛津认证", "剑桥认证", "斯坦福认证"]}
+      <SEO
+        title="全球认证院校资源库 - 300+国际高校认证服务"
+        description="提供全球300+所知名院校的学历认证服务，包括英国、澳大利亚、加拿大等国家的顶尖大学。"
+        keywords={['学历认证', '国际院校', '大学认证', '留学认证', '学历办理']}
       />
-      
-      {/* Hero Banner */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20">
-        <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">全球顶尖院校认证服务</h1>
-          <p className="text-xl md:text-2xl mb-8">为您的学历提供专业、可靠的认证解决方案</p>
-        </div>
-      </div>
 
-      {/* Search and Filter Section */}
-      <div className="container mx-auto px-4 py-12">
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">搜索学校</label>
-              <input
-                type="text"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="输入学校名称..."
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">选择国家</label>
-              <select
-                multiple
-                value={selectedCountries}
-                onChange={handleCountryChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="美国">美国</option>
-                <option value="英国">英国</option>
-                <option value="加拿大">加拿大</option>
-                <option value="澳大利亚">澳大利亚</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">选择专业</label>
-              <select
-                multiple
-                value={selectedMajors}
-                onChange={handleMajorChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="计算机科学">计算机科学</option>
-                <option value="商业管理">商业管理</option>
-                <option value="工程学">工程学</option>
-                <option value="医学">医学</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      <main className="min-h-screen px-6 py-12 bg-white text-gray-800">
+        {/* 页面标题与引导 */}
+        <section className="text-center mb-10">
+          <h1 className="text-4xl font-bold mb-2">全球认证院校资源库</h1>
+          <p className="text-lg text-gray-600">支持300+ 所国际高校认证服务，一键查找目标院校</p>
+        </section>
 
-        {/* Schools Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredSchools.map((school: School) => (
-            <Link href={`/schools/${school.slug}`} key={school.name}>
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative h-48">
-                  <Image
-                    src={school.logo}
-                    alt={school.name}
-                    fill
-                    className="object-contain p-4"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">{school.name}</h3>
-                  <p className="text-gray-600 mb-4">{school.country}</p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sm text-gray-500">QS排名: {school.qsRanking}</span>
-                    <span className="text-blue-600 font-medium">查看详情 →</span>
-                  </div>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* WhatsApp CTA */}
-      <div className="bg-green-500 text-white py-12">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">需要帮助？</h2>
-          <p className="text-xl mb-6">我们的顾问随时为您提供专业支持</p>
-          <a
-            href="https://wa.me/your-number"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-white text-green-500 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors duration-300"
+        {/* 筛选功能模块 */}
+        <section className="mb-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <select 
+            className="border rounded-lg p-3 w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            value={selectedCountry}
+            onChange={(e) => setSelectedCountry(e.target.value)}
           >
-            立即咨询
-          </a>
-        </div>
-      </div>
+            {countries.map(country => (
+              <option key={country} value={country}>
+                {country === '全部' ? '选择国家/地区' : country}
+              </option>
+            ))}
+          </select>
+          <select 
+            className="border rounded-lg p-3 w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            value={selectedDegree}
+            onChange={(e) => setSelectedDegree(e.target.value)}
+          >
+            {degreeTypes.map(degree => (
+              <option key={degree} value={degree}>
+                {degree === '全部' ? '选择学历类型' : degree}
+              </option>
+            ))}
+          </select>
+          <select 
+            className="border rounded-lg p-3 w-full focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            value={selectedSpecialty}
+            onChange={(e) => setSelectedSpecialty(e.target.value)}
+          >
+            {specialties.map(specialty => (
+              <option key={specialty} value={specialty}>
+                {specialty === '全部' ? '选择专业方向' : specialty}
+              </option>
+            ))}
+          </select>
+        </section>
 
-      {/* FAQ Section */}
-      <div className="container mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">常见问题</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-xl font-bold mb-4">认证需要多长时间？</h3>
-            <p className="text-gray-600">一般情况下，认证过程需要5-7个工作日。加急服务可在3个工作日内完成。</p>
+        {/* 学校列表区域 */}
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {schools.map(school => (
+            <div key={school.id} className="border shadow-sm rounded-xl p-4 hover:shadow-md transition-shadow">
+              <div className="relative h-16 mb-4">
+                <Image
+                  src={school.logo}
+                  alt={school.name}
+                  fill
+                  style={{ objectFit: 'contain' }}
+                  className="object-contain"
+                />
+              </div>
+              <h3 className="text-xl font-semibold">{school.name}</h3>
+              <p className="text-sm text-gray-500 mb-2">{school.chineseName}</p>
+              <div className="flex items-center text-sm text-gray-600 mb-3">
+                <span className="mr-2">🌍 {school.country}</span>
+                <span>🏆 QS排名: {school.qsRank}</span>
+              </div>
+              <div className="flex flex-wrap gap-2 mb-4">
+                {school.degrees.map(degree => (
+                  <span key={degree} className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+                    {degree}
+                  </span>
+                ))}
+              </div>
+              <Link href={`/schools/${school.id}`}>
+                <a className="block w-full bg-blue-600 text-white text-center rounded-xl py-2 hover:bg-blue-700 transition">
+                  查看详情 →
+                </a>
+              </Link>
+            </div>
+          ))}
+        </section>
+
+        {/* 推荐模块 */}
+        <section className="mt-16 bg-gray-50 p-6 rounded-xl">
+          <h2 className="text-2xl font-bold mb-4">🔥 热门推荐院校</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {schools.slice(0, 3).map(school => (
+              <div key={school.id} className="bg-white p-4 rounded-xl shadow">
+                <h4 className="font-semibold mb-1">{school.name}</h4>
+                <p className="text-sm text-gray-500">{school.country} · QS排名: {school.qsRank}</p>
+              </div>
+            ))}
           </div>
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-xl font-bold mb-4">认证费用是多少？</h3>
-            <p className="text-gray-600">认证费用根据学校类型和认证级别有所不同。请联系我们的顾问获取详细报价。</p>
-          </div>
-        </div>
-      </div>
+        </section>
+
+        {/* 浮动 WhatsApp 按钮 */}
+        <a
+          href="https://wa.me/1234567890"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-lg z-50 flex items-center"
+        >
+          <span className="mr-2">📲</span>
+          立即咨询 WhatsApp
+        </a>
+      </main>
     </Layout>
   );
-};
-
-export default SchoolsPage; 
+} 
