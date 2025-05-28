@@ -37,21 +37,10 @@ if (currentVersion !== targetVersion) {
   console.log('@notionhq/client版本已经是最新的');
 }
 
-// 删除package-lock.json (如果存在)
-const packageLockPath = path.join(__dirname, 'package-lock.json');
-if (fs.existsSync(packageLockPath)) {
-  try {
-    fs.unlinkSync(packageLockPath);
-    console.log('成功删除package-lock.json文件');
-  } catch (error) {
-    console.error('删除package-lock.json文件失败:', error);
-  }
-}
-
 // 删除node_modules (如果存在)
 const nodeModulesPath = path.join(__dirname, 'node_modules');
 if (fs.existsSync(nodeModulesPath)) {
   console.log('node_modules文件夹存在，但我们不会自动删除它。如果需要，请手动执行 rm -rf node_modules');
 }
 
-console.log('依赖版本修复完成，请重新运行npm install'); 
+console.log('依赖版本修复完成'); 
