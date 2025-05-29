@@ -9,10 +9,9 @@ export default function Schools() {
   const [selectedCountry, setSelectedCountry] = useState('全部');
   const [selectedDegree, setSelectedDegree] = useState('全部');
   const [selectedMajor, setSelectedMajor] = useState('全部');
-  const [sortBy, setSortBy] = useState('qs_rank');
   const [qsRankRange, setQsRankRange] = useState('全部');
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12; // 每页显示12所学校，3行x4列的网格布局
+  const itemsPerPage = 16; // 每页显示16所学校，支持4列布局
 
   const schools = [
     // 美国学校
@@ -198,16 +197,10 @@ export default function Schools() {
     
     return matchesSearch && matchesCountry && matchesDegree && matchesMajor && matchesQsRank;
   }).sort((a, b) => {
-    if (sortBy === 'qs_rank') {
-      if (a.qsRank === null) return 1;
-      if (b.qsRank === null) return -1;
-      return a.qsRank - b.qsRank;
-    } else if (sortBy === 'world_rank') {
-      if (a.worldRank === null) return 1;
-      if (b.worldRank === null) return -1;
-      return a.worldRank - b.worldRank;
-    }
-    return a.id - b.id; // newest (by id)
+    // 默认按QS排名排序，没有排名的学校排在后面
+    if (a.qsRank === null) return 1;
+    if (b.qsRank === null) return -1;
+    return a.qsRank - b.qsRank;
   });
 
   // 分页逻辑
@@ -238,15 +231,132 @@ export default function Schools() {
     return flags[country] || '🌍';
   };
 
+  // 获取国家特色Logo/图标
+  const getSchoolLogo = (country: string, schoolName: string) => {
+    // 根据学校国家和特色返回不同的图标
+    if (country === '美国') {
+      if (schoolName.includes('MIT') || schoolName.includes('麻省理工')) return '🔬';
+      if (schoolName.includes('哈佛')) return '🏛️';
+      if (schoolName.includes('斯坦福')) return '🌲';
+      if (schoolName.includes('普林斯顿')) return '🦁';
+      if (schoolName.includes('耶鲁')) return '🗝️';
+      if (schoolName.includes('哥伦比亚')) return '👑';
+      if (schoolName.includes('芝加哥')) return '🏢';
+      if (schoolName.includes('宾夕法尼亚')) return '🔔';
+      if (schoolName.includes('康奈尔')) return '🌿';
+      if (schoolName.includes('加州大学')) return '🌞';
+      if (schoolName.includes('UCLA')) return '🎬';
+      if (schoolName.includes('USC')) return '⚔️';
+      if (schoolName.includes('纽约大学') || schoolName.includes('NYU')) return '🗽';
+      if (schoolName.includes('密歇根')) return '🏈';
+      if (schoolName.includes('西北大学')) return '🎭';
+      if (schoolName.includes('卡内基梅隆')) return '💻';
+      if (schoolName.includes('杜克')) return '👑';
+      if (schoolName.includes('波士顿')) return '🦞';
+      if (schoolName.includes('华盛顿大学')) return '🌲';
+      return '🗽';
+    }
+    if (country === '英国') {
+      if (schoolName.includes('牛津')) return '📚';
+      if (schoolName.includes('剑桥')) return '⚖️';
+      if (schoolName.includes('帝国理工')) return '🔧';
+      if (schoolName.includes('UCL') || schoolName.includes('伦敦大学学院')) return '🏛️';
+      if (schoolName.includes('LSE') || schoolName.includes('伦敦政治经济')) return '💼';
+      if (schoolName.includes('KCL') || schoolName.includes('伦敦国王')) return '👑';
+      if (schoolName.includes('爱丁堡')) return '🏰';
+      if (schoolName.includes('曼彻斯特')) return '⚽';
+      if (schoolName.includes('华威')) return '⚔️';
+      if (schoolName.includes('布里斯托')) return '🌉';
+      return '👑';
+    }
+    if (country === '新加坡') {
+      if (schoolName.includes('NUS') || schoolName.includes('国立大学')) return '🦁';
+      if (schoolName.includes('NTU') || schoolName.includes('南洋理工')) return '🔬';
+      return '🦁';
+    }
+    if (country === '澳大利亚') {
+      if (schoolName.includes('墨尔本')) return '🦘';
+      if (schoolName.includes('悉尼')) return '🏖️';
+      if (schoolName.includes('新南威尔士')) return '⚡';
+      if (schoolName.includes('澳大利亚国立')) return '🏛️';
+      if (schoolName.includes('莫纳什')) return '🔬';
+      return '🦘';
+    }
+    if (country === '加拿大') {
+      if (schoolName.includes('多伦多')) return '🍁';
+      if (schoolName.includes('麦吉尔')) return '🏔️';
+      if (schoolName.includes('UBC') || schoolName.includes('英属哥伦比亚')) return '🌲';
+      return '🍁';
+    }
+    if (country === '日本') {
+      if (schoolName.includes('东京大学')) return '🗾';
+      if (schoolName.includes('东京工业')) return '🔧';
+      if (schoolName.includes('大阪')) return '🏯';
+      return '🗾';
+    }
+    if (country === '香港') {
+      if (schoolName.includes('HKU') || schoolName.includes('香港大学')) return '🏙️';
+      if (schoolName.includes('CUHK') || schoolName.includes('中文大学')) return '📚';
+      if (schoolName.includes('HKUST') || schoolName.includes('科技大学')) return '🔬';
+      if (schoolName.includes('理工大学')) return '🔧';
+      if (schoolName.includes('城市大学')) return '🏢';
+      if (schoolName.includes('浸会大学')) return '⛪';
+      return '🏙️';
+    }
+    if (country === '新西兰') {
+      if (schoolName.includes('奥克兰')) return '🥝';
+      if (schoolName.includes('林肯')) return '🌿';
+      return '🥝';
+    }
+    if (country === '澳门') {
+      if (schoolName.includes('澳门大学')) return '🎰';
+      if (schoolName.includes('科技大学')) return '🔬';
+      if (schoolName.includes('城市大学')) return '🏢';
+      return '🎰';
+    }
+    if (country === '荷兰') {
+      if (schoolName.includes('阿姆斯特丹')) return '🌷';
+      if (schoolName.includes('莱顿')) return '🧪';
+      return '🌷';
+    }
+    if (country === '西班牙') {
+      if (schoolName.includes('巴塞罗那')) return '🌞';
+      if (schoolName.includes('瓦伦西亚')) return '🍊';
+      return '🌞';
+    }
+    return '🎓';
+  };
+
+  // 获取国家特色背景色
+  const getCountryGradient = (country: string) => {
+    const gradients = {
+      '美国': 'from-red-50 to-blue-50',
+      '英国': 'from-blue-50 to-red-50', 
+      '新加坡': 'from-red-50 to-white',
+      '澳大利亚': 'from-green-50 to-yellow-50',
+      '加拿大': 'from-red-50 to-red-50',
+      '日本': 'from-red-50 to-white',
+      '香港': 'from-red-50 to-white',
+      '新西兰': 'from-blue-50 to-red-50',
+      '澳门': 'from-green-50 to-red-50',
+      '荷兰': 'from-orange-50 to-blue-50',
+      '西班牙': 'from-red-50 to-yellow-50'
+    };
+    return gradients[country] || 'from-blue-50 to-blue-100';
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
-      <nav className="fixed w-full z-50 transition-all duration-300 bg-transparent">
+      <nav className="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
+            {/* Left: Logo */}
             <Link className="flex items-center" href="/">
               <span className="text-xl font-bold text-blue-600">Acaboost</span>
             </Link>
+            
+            {/* Center: Menu */}
             <div className="hidden md:flex items-center space-x-8">
               <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/">
                 首页
@@ -263,15 +373,19 @@ export default function Schools() {
               <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/contact">
                 联系我们
               </Link>
-              <Link 
-                href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
-              >
-                WhatsApp咨询
-              </Link>
             </div>
+            
+            {/* Right: CTA Button */}
+            <Link 
+              href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务，希望了解适合我的学历方案" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hidden md:flex bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
+            >
+              WhatsApp咨询
+            </Link>
+            
+            {/* Mobile Menu Button */}
             <button className="md:hidden text-gray-600 hover:text-blue-600">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -290,7 +404,7 @@ export default function Schools() {
               <h1 className="text-4xl md:text-5xl font-bold mb-4">全球认证高校资源库</h1>
               <p className="text-xl md:text-2xl mb-8">支持真实学历验证的全球院校，一键对接认证顾问，快速拿证</p>
               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 inline-block">
-                <p className="text-lg">📊 已收录 <span className="font-bold text-yellow-300">{schools.length}</span> 所全球知名院校</p>
+                <p className="text-lg">📊 已收录 <span className="font-bold text-yellow-300">70</span> 所全球知名院校</p>
               </div>
             </div>
           </section>
@@ -298,6 +412,7 @@ export default function Schools() {
           {/* Search and Filter Section */}
           <section className="py-8 px-6 bg-gray-50">
             <div className="max-w-6xl mx-auto">
+              {/* Search Bar */}
               <div className="mb-6">
                 <input 
                   type="text" 
@@ -350,11 +465,7 @@ export default function Schools() {
                   <option value="top200">🥉 Top 200 (101-200名)</option>
                   <option value="other">📚 其他 (200名以后)</option>
                 </select>
-                <select 
-                  className="border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                >
+                <select className="border rounded-lg p-3 focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
                   <option value="qs_rank">QS排名排序</option>
                   <option value="world_rank">世界排名排序</option>
                 </select>
@@ -378,14 +489,14 @@ export default function Schools() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {currentSchools.map((school) => (
                   <div key={school.id} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100">
-                    <div className="relative h-16 mb-4">
-                      <Image 
-                        alt={school.name} 
-                        fill
-                        className="object-contain" 
-                        src="/images/schools/placeholder.svg"
-                      />
+                    {/* School Logo */}
+                    <div className="relative h-16 mb-4 flex items-center justify-center">
+                      <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${getCountryGradient(school.country)} flex items-center justify-center border border-gray-200 shadow-sm`}>
+                        <span className="text-3xl">{getSchoolLogo(school.country, school.name)}</span>
+                      </div>
                     </div>
+                    
+                    {/* School Info */}
                     <h3 className="text-xl font-semibold mb-2">{school.name}</h3>
                     <div className="flex items-center text-sm text-gray-500 mb-3">
                       <span className="mr-4">{getCountryFlag(school.country)} {school.country}</span>
@@ -398,27 +509,35 @@ export default function Schools() {
                         <div className="text-center bg-blue-50 rounded-lg p-2">
                           <div className="text-xs text-blue-600 font-medium">QS排名</div>
                           <div className="font-bold text-blue-700 text-lg">#{school.qsRank}</div>
-                          {school.qsRank <= 10 && <div className="text-xs">🏆</div>}
-                          {school.qsRank > 10 && school.qsRank <= 50 && <div className="text-xs">🥇</div>}
-                          {school.qsRank > 50 && school.qsRank <= 100 && <div className="text-xs">🥈</div>}
+                          <div className="text-xs">
+                            {school.qsRank <= 10 && '🏆'}
+                            {school.qsRank > 10 && school.qsRank <= 50 && '🥇'}
+                            {school.qsRank > 50 && school.qsRank <= 100 && '🥈'}
+                            {school.qsRank > 100 && school.qsRank <= 200 && '🥉'}
+                          </div>
                         </div>
                       )}
                       {school.worldRank && (
                         <div className="text-center bg-green-50 rounded-lg p-2">
                           <div className="text-xs text-green-600 font-medium">世界排名</div>
                           <div className="font-bold text-green-700 text-lg">#{school.worldRank}</div>
-                          {school.worldRank <= 20 && <div className="text-xs">🌟</div>}
+                          <div className="text-xs">
+                            {school.worldRank <= 20 && '🌟'}
+                          </div>
                         </div>
                       )}
                       {school.countryRank && (
                         <div className="text-center bg-orange-50 rounded-lg p-2">
                           <div className="text-xs text-orange-600 font-medium">国内排名</div>
                           <div className="font-bold text-orange-700 text-lg">#{school.countryRank}</div>
-                          {school.countryRank <= 5 && <div className="text-xs">⭐</div>}
+                          <div className="text-xs">
+                            {school.countryRank <= 5 && '⭐'}
+                          </div>
                         </div>
                       )}
                     </div>
-
+                    
+                    {/* Documents */}
                     <div className="flex flex-wrap gap-2 mb-4">
                       {school.documents.map((doc, index) => (
                         <span key={index} className="px-2 py-1 bg-blue-50 text-blue-600 rounded-full text-xs">
@@ -427,6 +546,7 @@ export default function Schools() {
                       ))}
                     </div>
                     
+                    {/* Action Buttons */}
                     <div className="flex gap-2">
                       <Link 
                         href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务" 
@@ -446,29 +566,10 @@ export default function Schools() {
                   </div>
                 ))}
               </div>
-              
-              {filteredSchools.length === 0 && (
-                <div className="text-center py-12">
-                  <p className="text-gray-500 text-lg">未找到符合条件的学校</p>
-                  <button 
-                    onClick={() => {
-                      setSearchTerm('');
-                      setSelectedCountry('全部');
-                      setSelectedDegree('全部');
-                      setSelectedMajor('全部');
-                      setQsRankRange('全部');
-                    }}
-                    className="mt-4 bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 transition-colors"
-                  >
-                    重置筛选条件
-                  </button>
-                </div>
-              )}
 
-              {/* Pagination Controls */}
+              {/* Pagination */}
               {filteredSchools.length > 0 && totalPages > 1 && (
                 <div className="flex justify-center items-center mt-12 gap-2">
-                  {/* Previous Button */}
                   <button
                     onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                     disabled={currentPage === 1}
@@ -481,39 +582,42 @@ export default function Schools() {
                     上一页
                   </button>
 
-                  {/* Page Numbers */}
                   <div className="flex gap-1">
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map(pageNum => {
-                      // 显示当前页附近的页码
-                      if (
-                        pageNum === 1 || 
-                        pageNum === totalPages || 
-                        (pageNum >= currentPage - 2 && pageNum <= currentPage + 2)
-                      ) {
-                        return (
-                          <button
-                            key={pageNum}
-                            onClick={() => setCurrentPage(pageNum)}
-                            className={`px-3 py-2 rounded-lg transition-colors ${
-                              pageNum === currentPage
-                                ? 'bg-blue-600 text-white'
-                                : 'bg-gray-100 text-gray-700 hover:bg-blue-100'
-                            }`}
-                          >
-                            {pageNum}
-                          </button>
-                        );
-                      } else if (
-                        (pageNum === currentPage - 3 && currentPage > 4) ||
-                        (pageNum === currentPage + 3 && currentPage < totalPages - 3)
-                      ) {
-                        return <span key={pageNum} className="px-2 text-gray-400">...</span>;
+                    {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+                      let pageNum;
+                      if (totalPages <= 5) {
+                        pageNum = i + 1;
+                      } else if (currentPage <= 3) {
+                        pageNum = i + 1;
+                      } else if (currentPage >= totalPages - 2) {
+                        pageNum = totalPages - 4 + i;
+                      } else {
+                        pageNum = currentPage - 2 + i;
                       }
-                      return null;
+                      
+                      if (pageNum === currentPage - 3 && currentPage > 3) {
+                        return <span key="ellipsis1" className="px-2 text-gray-400">...</span>;
+                      }
+                      if (pageNum === currentPage + 3 && currentPage < totalPages - 2) {
+                        return <span key="ellipsis2" className="px-2 text-gray-400">...</span>;
+                      }
+                      
+                      return (
+                        <button
+                          key={pageNum}
+                          onClick={() => setCurrentPage(pageNum)}
+                          className={`px-3 py-2 rounded-lg transition-colors ${
+                            pageNum === currentPage
+                              ? 'bg-blue-600 text-white'
+                              : 'bg-gray-100 text-gray-700 hover:bg-blue-100'
+                          }`}
+                        >
+                          {pageNum}
+                        </button>
+                      );
                     })}
                   </div>
 
-                  {/* Next Button */}
                   <button
                     onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                     disabled={currentPage === totalPages}

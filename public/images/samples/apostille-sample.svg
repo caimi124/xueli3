@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f8f9fa"/>
+  <rect x="20" y="20" width="360" height="260" fill="white" stroke="#e9ecef" stroke-width="2"/>
+  
+  <!-- Official Seal Area -->
+  <circle cx="200" cy="80" r="35" fill="#fbbf24" opacity="0.2" stroke="#f59e0b" stroke-width="2"/>
+  <text x="200" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#f59e0b">⚡</text>
+  
+  <!-- Apostille Header -->
+  <text x="200" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937">Apostille</text>
+  <text x="200" y="145" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">(Convention de La Haye du 5 octobre 1961)</text>
+  
+  <!-- Form Fields -->
+  <text x="50" y="170" font-family="Arial, sans-serif" font-size="9" fill="#374151">1. District of Columbia, United States of America</text>
+  <text x="50" y="185" font-family="Arial, sans-serif" font-size="9" fill="#374151">2. This public document has been signed by ████████</text>
+  <text x="50" y="200" font-family="Arial, sans-serif" font-size="9" fill="#374151">3. acting in the capacity of ████████████████</text>
+  <text x="50" y="215" font-family="Arial, sans-serif" font-size="9" fill="#374151">4. bears the seal/stamp of ████████████</text>
+  
+  <!-- Official Stamp Area -->
+  <rect x="250" y="160" width="120" height="80" fill="#ef4444" opacity="0.1" stroke="#ef4444" stroke-width="2" rx="5"/>
+  <text x="310" y="190" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#ef4444">CERTIFIED</text>
+  <text x="310" y="205" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#ef4444">DISTRICT OF</text>
+  <text x="310" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#ef4444">COLUMBIA</text>
+  
+  <text x="200" y="260" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">海牙认证样本 - Apostille Sample</text>
+</svg> 

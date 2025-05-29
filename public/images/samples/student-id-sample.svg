@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="250" viewBox="0 0 400 250">
+  <rect width="400" height="250" fill="#1a365d"/>
+  <rect x="20" y="20" width="360" height="210" fill="white" stroke="#e2e8f0" stroke-width="2" rx="15"/>
+  
+  <!-- University Header -->
+  <rect x="200" y="30" width="180" height="30" fill="#dc2626" rx="5"/>
+  <text x="290" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">BOSTON</text>
+  <text x="290" y="65" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">UNIVERSITY</text>
+  
+  <!-- Student Photo Area -->
+  <rect x="40" y="80" width="80" height="100" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" rx="5"/>
+  <circle cx="80" cy="110" r="20" fill="#64748b" opacity="0.3"/>
+  <text x="80" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#64748b">👤</text>
+  <text x="80" y="170" text-anchor="middle" font-family="Arial, sans-serif" font-size="8" fill="#64748b">Photo</text>
+  
+  <!-- Student Info -->
+  <text x="140" y="100" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">████ ████</text>
+  <text x="140" y="115" font-family="Arial, sans-serif" font-size="10" fill="#64748b">███</text>
+  
+  <text x="140" y="140" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#dc2626">STUDENT</text>
+  <text x="140" y="155" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e293b">████████</text>
+  
+  <!-- Card Icon -->
+  <circle cx="320" cy="160" r="30" fill="#3b82f6" opacity="0.1"/>
+  <text x="320" y="168" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#3b82f6">🎓</text>
+  
+  <text x="200" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#64748b">学生卡样本 - Student ID Sample</text>
+</svg> 

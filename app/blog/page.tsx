@@ -66,12 +66,15 @@ export default function Blog() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
-      <nav className="fixed w-full z-50 transition-all duration-300 bg-transparent">
+      <nav className="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
+            {/* Left: Logo */}
             <Link className="flex items-center" href="/">
               <span className="text-xl font-bold text-blue-600">Acaboost</span>
             </Link>
+            
+            {/* Center: Menu */}
             <div className="hidden md:flex items-center space-x-8">
               <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/">
                 首页
@@ -88,15 +91,19 @@ export default function Blog() {
               <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/contact">
                 联系我们
               </Link>
-              <Link 
-                href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
-              >
-                WhatsApp咨询
-              </Link>
             </div>
+            
+            {/* Right: CTA Button */}
+            <Link 
+              href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务，希望了解适合我的学历方案" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hidden md:flex bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
+            >
+              WhatsApp咨询
+            </Link>
+            
+            {/* Mobile Menu Button */}
             <button className="md:hidden text-gray-600 hover:text-blue-600">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>

@@ -4,95 +4,95 @@ import React from 'react';
 import Link from 'next/link';
 
 export default function Contact() {
-  const contactMethods = [
-    {
-      icon: '📱',
-      title: 'WhatsApp',
-      subtitle: '快速响应，24小时在线',
-      content: '+86 123 4567 8901',
-      link: 'https://wa.me/8612345678901',
-      buttonText: '立即咨询',
-      color: 'green'
-    },
-    {
-      icon: '📞',
-      title: '电话咨询',
-      subtitle: '专业顾问一对一服务',
-      content: '+86 123 4567 8901',
-      link: 'tel:+8612345678901',
-      buttonText: '拨打电话',
-      color: 'blue'
-    },
-    {
-      icon: '✉️',
-      title: '邮件联系',
-      subtitle: '详细需求可发送邮件',
-      content: 'contact@acaboost.com',
-      link: 'mailto:contact@acaboost.com',
-      buttonText: '发送邮件',
-      color: 'purple'
-    }
+  const partnerInstitutions = [
+    { name: '哈佛大学', logo: '🏛️' },
+    { name: '斯坦福大学', logo: '🌲' },
+    { name: '麻省理工学院', logo: '🔬' },
+    { name: '牛津大学', logo: '📚' },
+    { name: '剑桥大学', logo: '⚖️' },
+    { name: '帝国理工学院', logo: '🔧' },
+    { name: '新加坡国立大学', logo: '🦁' },
+    { name: '墨尔本大学', logo: '🦘' },
+    { name: '多伦多大学', logo: '🍁' },
+    { name: '东京大学', logo: '🗾' },
+    { name: '香港大学', logo: '🏙️' },
+    { name: '波士顿大学', logo: '🎓' }
   ];
 
-  const serviceStats = [
+  const serviceData = [
     {
-      number: '1000+',
-      label: '服务客户',
-      description: '成功为超过1000名客户提供学历认证服务',
+      number: '3,000+',
+      label: '累计服务客户',
       icon: '👥'
     },
     {
-      number: '50+',
-      label: '合作院校',
-      description: '与全球50多所知名院校建立合作关系',
+      number: '20+',
+      label: '覆盖国家',
+      icon: '🌎'
+    },
+    {
+      number: '100+',
+      label: '可提供真实院校学历',
       icon: '🎓'
-    },
-    {
-      number: '7天',
-      label: '快速交付',
-      description: '平均7个工作日完成认证文件制作',
-      icon: '⚡'
-    },
-    {
-      number: '100%',
-      label: '真实可查',
-      description: '所有学历均支持官方渠道验证查询',
-      icon: '🔒'
     }
   ];
 
-  const serviceFeatures = [
+  const customerTypes = [
     {
-      title: '24/7 客服支持',
-      description: '全天候在线客服，随时解答您的疑问',
-      icon: '🌟'
+      title: '职场人士',
+      icon: '🧑‍💼',
+      description: '用于升职加薪、职位入职、移民背景资料',
+      scenarios: ['升职加薪', '职位入职', '移民背景资料']
     },
     {
-      title: '专业顾问团队',
-      description: '资深教育顾问，为您量身定制认证方案',
-      icon: '👨‍💼'
+      title: '留学补件/认证需求者',
+      icon: '🧑‍🎓',
+      description: '提交 WES、ICAS、NACES 等学历认证机构',
+      scenarios: ['WES认证', 'ICAS认证', 'NACES认证']
     },
     {
-      title: '安全保密',
-      description: '严格保护客户隐私，信息安全有保障',
-      icon: '🛡️'
+      title: '海外生活/身份申请人群',
+      icon: '🌍',
+      description: '用于申请签证、落户、工签、公证',
+      scenarios: ['申请签证', '落户申请', '工签申请', '公证服务']
+    }
+  ];
+
+  const competitiveAdvantages = [
+    {
+      title: '7–15 天快速出证，部分项目最快 5 天',
+      icon: '📦'
     },
     {
-      title: '售后无忧',
-      description: '提供完善的售后服务和技术支持',
-      icon: '✅'
+      title: '100+ 所真实院校资源',
+      icon: '🔍'
+    },
+    {
+      title: '完整认证服务支持：海牙认证、教育局认证、WES认证、ICAS/NACES 等',
+      icon: '🧾'
+    },
+    {
+      title: '全流程加密交付，资料保密',
+      icon: '🔐'
+    },
+    {
+      title: '签署协议，服务受法律保障',
+      icon: '💼'
     }
   ];
 
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
-      <nav className="fixed w-full z-50 transition-all duration-300 bg-transparent">
+      <nav className="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
+            {/* Left: Logo */}
             <Link className="flex items-center" href="/">
               <span className="text-xl font-bold text-blue-600">Acaboost</span>
             </Link>
+            
+            {/* Center: Menu */}
             <div className="hidden md:flex items-center space-x-8">
               <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/">
                 首页
@@ -109,15 +109,19 @@ export default function Contact() {
               <Link className="text-sm font-medium transition-colors text-blue-600" href="/contact">
                 联系我们
               </Link>
-              <Link 
-                href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
-              >
-                WhatsApp咨询
-              </Link>
             </div>
+            
+            {/* Right: CTA Button */}
+            <Link 
+              href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务，希望了解适合我的学历方案" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hidden md:flex bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
+            >
+              WhatsApp咨询
+            </Link>
+            
+            {/* Mobile Menu Button */}
             <button className="md:hidden text-gray-600 hover:text-blue-600">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
@@ -156,113 +160,88 @@ export default function Contact() {
             </div>
           </section>
 
-          {/* Contact Methods */}
+          {/* Partner Institutions */}
           <section className="py-16 px-6 bg-white">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">多种联系方式</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">选择最适合您的联系方式，我们的专业团队随时为您服务</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">🏛 合作院校/教育机构</h2>
+                <p className="text-gray-600 max-w-2xl mx-auto">已合作或提供文件的真实院校展示</p>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+                {partnerInstitutions.map((institution, index) => (
+                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 p-6 text-center">
+                    <div className="text-4xl mb-3">{institution.logo}</div>
+                    <p className="text-sm text-gray-600 font-medium">{institution.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Service Data */}
+          <section className="py-16 px-6 bg-gray-50">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">📊 服务数据</h2>
+                <p className="text-gray-600 mb-6">真实院校合作，服务全球客户</p>
+                <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed">
+                  我们已为超过 3,000 位客户成功提供学历文件及认证服务，合作院校涵盖欧美、东南亚、港澳地区等真实院校资源。
+                </p>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {contactMethods.map((method, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 p-8 text-center">
-                    <div className="text-4xl mb-4">{method.icon}</div>
-                    <h3 className="text-xl font-bold mb-2">{method.title}</h3>
-                    <p className="text-gray-600 mb-4">{method.subtitle}</p>
-                    <p className="text-lg font-semibold text-gray-900 mb-6">{method.content}</p>
-                    <Link 
-                      href={method.link}
-                      target={method.link.startsWith('http') ? '_blank' : undefined}
-                      rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className={`inline-block px-6 py-3 rounded-full font-medium transition-colors ${
-                        method.color === 'green' 
-                          ? 'bg-green-500 text-white hover:bg-green-600' 
-                          : method.color === 'blue'
-                          ? 'bg-blue-500 text-white hover:bg-blue-600'
-                          : 'bg-purple-500 text-white hover:bg-purple-600'
-                      }`}
-                    >
-                      {method.buttonText}
-                    </Link>
+                {serviceData.map((data, index) => (
+                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-8 text-center border border-gray-100">
+                    <div className="text-4xl mb-4">{data.icon}</div>
+                    <div className="text-4xl font-bold text-blue-600 mb-2">{data.number}</div>
+                    <h3 className="text-lg font-semibold text-gray-900">{data.label}</h3>
                   </div>
                 ))}
               </div>
             </div>
           </section>
 
-          {/* Service Statistics */}
-          <section className="py-16 px-6 bg-gray-50">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">服务数据</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">用数据说话，展现我们的专业实力和服务质量</p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {serviceStats.map((stat, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 text-center border border-gray-100">
-                    <div className="text-4xl mb-4">{stat.icon}</div>
-                    <div className="text-3xl font-bold text-blue-600 mb-2">{stat.number}</div>
-                    <h3 className="text-lg font-semibold mb-2">{stat.label}</h3>
-                    <p className="text-gray-600 text-sm">{stat.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Service Features */}
+          {/* Customer Types & Use Cases */}
           <section className="py-16 px-6 bg-white">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">服务特色</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">专业、贴心、可靠的服务，让您的认证之路更加顺畅</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">🔹 服务客户类型 & 典型使用场景</h2>
+                <p className="text-gray-600 max-w-2xl mx-auto">我们为不同需求的客户提供专业的学历认证服务</p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                {serviceFeatures.map((feature, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 text-center border border-gray-100">
-                    <div className="text-4xl mb-4">{feature.icon}</div>
-                    <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {customerTypes.map((type, index) => (
+                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 p-8 text-center">
+                    <div className="text-5xl mb-4">{type.icon}</div>
+                    <h3 className="text-xl font-bold mb-4">{type.title}</h3>
+                    <p className="text-gray-600 mb-6">{type.description}</p>
+                    <div className="space-y-2">
+                      {type.scenarios.map((scenario, scenarioIndex) => (
+                        <div key={scenarioIndex} className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm mr-2 mb-2">
+                          {scenario}
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
           </section>
 
-          {/* Office Information */}
+          {/* Competitive Advantages */}
           <section className="py-16 px-6 bg-gray-50">
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">办公信息</h2>
-                <p className="text-gray-600">了解更多关于我们的信息</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-3">我们的优势</h2>
+                <p className="text-gray-600 max-w-2xl mx-auto">差异化信任强化，专业服务保障</p>
               </div>
-              <div className="bg-white rounded-xl shadow-sm p-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                      <span>🏢</span>
-                      公司信息
-                    </h3>
-                    <div className="space-y-3 text-gray-600">
-                      <p><strong>公司名称：</strong>Acaboost 学历认证服务</p>
-                      <p><strong>服务领域：</strong>全球学历认证、文件制作</p>
-                      <p><strong>成立时间：</strong>2018年</p>
-                      <p><strong>服务国家：</strong>新加坡、马来西亚、英国、澳洲等</p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {competitiveAdvantages.map((advantage, index) => (
+                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100">
+                    <div className="flex items-start gap-4">
+                      <div className="text-2xl flex-shrink-0">{advantage.icon}</div>
+                      <p className="text-gray-700 font-medium leading-relaxed">{advantage.title}</p>
                     </div>
                   </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                      <span>⏰</span>
-                      服务时间
-                    </h3>
-                    <div className="space-y-3 text-gray-600">
-                      <p><strong>WhatsApp：</strong>24小时在线</p>
-                      <p><strong>电话咨询：</strong>周一至周日 9:00-21:00</p>
-                      <p><strong>邮件回复：</strong>24小时内回复</p>
-                      <p><strong>紧急联系：</strong>WhatsApp优先响应</p>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </section>

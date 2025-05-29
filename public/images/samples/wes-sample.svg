@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f8f9fa"/>
+  <rect x="20" y="20" width="360" height="260" fill="white" stroke="#e9ecef" stroke-width="2"/>
+  
+  <!-- WES Header -->
+  <circle cx="80" cy="60" r="25" fill="#22c55e" opacity="0.2"/>
+  <text x="80" y="67" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#22c55e">🌍</text>
+  
+  <text x="120" y="55" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1f2937">U.S.</text>
+  <text x="120" y="70" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">DEPARTMENT OF EDUCATION</text>
+  <text x="120" y="82" font-family="Arial, sans-serif" font-size="10" fill="#6b7280">STUDENT INFORMATION CENTER</text>
+  
+  <!-- Document Title -->
+  <rect x="50" y="100" width="300" height="20" fill="#3b82f6" opacity="0.1"/>
+  <text x="200" y="113" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#3b82f6">CREDENTIAL EVALUATION AND AUTHENTICATION REPORT</text>
+  
+  <!-- Basic Info -->
+  <text x="50" y="140" font-family="Arial, sans-serif" font-size="9" fill="#1f2937">Name: ████ ████</text>
+  <text x="250" y="140" font-family="Arial, sans-serif" font-size="9" fill="#1f2937">Date: Dec 4, 2024</text>
+  <text x="50" y="155" font-family="Arial, sans-serif" font-size="9" fill="#1f2937">Date of Birth: ████████</text>
+  <text x="250" y="155" font-family="Arial, sans-serif" font-size="9" fill="#1f2937">Ref #: ████████</text>
+  
+  <!-- Evaluation Summary -->
+  <text x="50" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1f2937">U.S.EQUIVALENCY SUMMARY</text>
+  <text x="50" y="195" font-family="Arial, sans-serif" font-size="9" fill="#374151">Doctoral degree from a regionally accredited institution</text>
+  
+  <!-- Credential Analysis -->
+  <text x="50" y="215" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#1f2937">CREDENTIAL ANALYSIS</text>
+  <text x="50" y="230" font-family="Arial, sans-serif" font-size="8" fill="#6b7280">Credential Authentication: Official transcripts were sent directly by the institution</text>
+  <text x="50" y="242" font-family="Arial, sans-serif" font-size="8" fill="#6b7280">Country: China</text>
+  <text x="50" y="254" font-family="Arial, sans-serif" font-size="8" fill="#6b7280">Institution: Boston University</text>
+  
+  <!-- Official Seal -->
+  <circle cx="320" cy="220" r="30" fill="#ef4444" opacity="0.1"/>
+  <text x="320" y="228" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" fill="#ef4444">🔒</text>
+</svg> 
