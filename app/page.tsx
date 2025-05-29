@@ -416,21 +416,20 @@ export default function Home() {
                       <div className="bg-white rounded-lg shadow-md p-6">
                         <div className="flex items-center mb-4">
                           <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
-                            <span className="text-2xl">🧑‍💻</span>
+                            <span className="text-2xl">👨‍🎓</span>
                           </div>
                           <div>
-                            <h3 className="font-bold">成功案例展示</h3>
-                            <p className="text-sm text-gray-500">真实反馈</p>
+                            <h3 className="font-bold">David（加拿大）</h3>
+                            <p className="text-sm text-gray-500">美国硕士学历</p>
                           </div>
                         </div>
-                        <div className="space-y-4">
-                          <div className="bg-gray-50 p-4 rounded-lg">
-                            <p className="text-sm text-gray-600">&quot;服务非常专业，文件真实可靠，成功帮助我获得心仪的工作机会。&quot;</p>
-                          </div>
-                          <div className="bg-gray-50 p-4 rounded-lg">
-                            <p className="text-sm text-gray-600">&quot;7天内就收到了所有文件，效率很高，质量也很好。&quot;</p>
-                          </div>
+                        <div className="mb-4">
+                          <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">移民申请</span>
+                          <span className="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">10天完成</span>
                         </div>
+                        <p className="text-gray-700">
+                          定制美国硕士学历认证文件，成功通过加拿大EE移民申请，CRS分数提升50分，顺利获得PR邀请。
+                        </p>
                       </div>
                     </div>
                   </div>

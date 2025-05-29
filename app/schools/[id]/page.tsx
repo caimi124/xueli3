@@ -404,20 +404,20 @@ export default function SchoolDetailPage({ params }: SchoolDetailPageProps) {
                   </p>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">📍 所在地区</h3>
-                      <p className="text-gray-600">{school.location}</p>
+                      <h3 className="text-sm font-semibold text-gray-500 mb-1">📍 所在地区</h3>
+                      <p className="text-gray-700 font-medium">{school.location}</p>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">⏱️ 出证周期参考</h3>
-                      <p className="text-gray-600">约7–15个工作日</p>
+                      <h3 className="text-sm font-semibold text-gray-500 mb-1">⏱️ 出证周期参考</h3>
+                      <p className="text-gray-700 font-medium">约7–15个工作日</p>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">🔒 认证支持</h3>
-                      <p className="text-gray-600">支持海牙认证、教育局认证、WES等权威认证</p>
+                      <h3 className="text-sm font-semibold text-gray-500 mb-1">🔒 认证支持</h3>
+                      <p className="text-gray-700 font-medium">支持海牙认证、教育局认证、WES等权威认证</p>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">📞 专属顾问服务</h3>
-                      <p className="text-gray-600">一对一顾问全程协助，支持定制个性化方案</p>
+                      <h3 className="text-sm font-semibold text-gray-500 mb-1">📞 专属顾问服务</h3>
+                      <p className="text-gray-700 font-medium">一对一顾问全程协助，支持定制个性化方案</p>
                     </div>
                   </div>
                 </div>
