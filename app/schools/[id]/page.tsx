@@ -146,6 +146,117 @@ interface SchoolDetailPageProps {
   };
 }
 
+const getSchoolLogo = (country: string, schoolName: string) => {
+  if (country === '美国') {
+    if (schoolName.includes('MIT') || schoolName.includes('麻省理工')) return '🔬';
+    if (schoolName.includes('哈佛')) return '🏛️';
+    if (schoolName.includes('斯坦福')) return '🌲';
+    if (schoolName.includes('普林斯顿')) return '🦁';
+    if (schoolName.includes('耶鲁')) return '🗝️';
+    if (schoolName.includes('哥伦比亚')) return '👑';
+    if (schoolName.includes('芝加哥')) return '🏢';
+    if (schoolName.includes('宾夕法尼亚')) return '🔔';
+    if (schoolName.includes('康奈尔')) return '🌿';
+    if (schoolName.includes('加州大学')) return '🌞';
+    if (schoolName.includes('UCLA')) return '🎬';
+    if (schoolName.includes('USC')) return '⚔️';
+    if (schoolName.includes('纽约大学') || schoolName.includes('NYU')) return '🗽';
+    if (schoolName.includes('密歇根')) return '🏈';
+    if (schoolName.includes('西北大学')) return '🎭';
+    if (schoolName.includes('卡内基梅隆')) return '💻';
+    if (schoolName.includes('杜克')) return '👑';
+    if (schoolName.includes('波士顿')) return '🦞';
+    if (schoolName.includes('华盛顿大学')) return '🌲';
+    return '🗽';
+  }
+  if (country === '英国') {
+    if (schoolName.includes('牛津')) return '📚';
+    if (schoolName.includes('剑桥')) return '⚖️';
+    if (schoolName.includes('帝国理工')) return '🔧';
+    if (schoolName.includes('UCL') || schoolName.includes('伦敦大学学院')) return '🏛️';
+    if (schoolName.includes('LSE') || schoolName.includes('伦敦政治经济')) return '💼';
+    if (schoolName.includes('KCL') || schoolName.includes('伦敦国王')) return '👑';
+    if (schoolName.includes('爱丁堡')) return '🏰';
+    if (schoolName.includes('曼彻斯特')) return '⚽';
+    if (schoolName.includes('华威')) return '⚔️';
+    if (schoolName.includes('布里斯托')) return '🌉';
+    return '👑';
+  }
+  if (country === '新加坡') {
+    if (schoolName.includes('NUS') || schoolName.includes('国立大学')) return '🦁';
+    if (schoolName.includes('NTU') || schoolName.includes('南洋理工')) return '🔬';
+    return '🦁';
+  }
+  if (country === '澳大利亚') {
+    if (schoolName.includes('墨尔本')) return '🦘';
+    if (schoolName.includes('悉尼')) return '🏖️';
+    if (schoolName.includes('新南威尔士')) return '⚡';
+    if (schoolName.includes('澳大利亚国立')) return '🏛️';
+    if (schoolName.includes('莫纳什')) return '🔬';
+    return '🦘';
+  }
+  if (country === '加拿大') {
+    if (schoolName.includes('多伦多')) return '🍁';
+    if (schoolName.includes('麦吉尔')) return '🏔️';
+    if (schoolName.includes('UBC') || schoolName.includes('英属哥伦比亚')) return '🌲';
+    return '🍁';
+  }
+  if (country === '日本') {
+    if (schoolName.includes('东京大学')) return '🗾';
+    if (schoolName.includes('东京工业')) return '🔧';
+    if (schoolName.includes('大阪')) return '🏯';
+    return '🗾';
+  }
+  if (country === '香港') {
+    if (schoolName.includes('HKU') || schoolName.includes('香港大学')) return '🏙️';
+    if (schoolName.includes('CUHK') || schoolName.includes('中文大学')) return '📚';
+    if (schoolName.includes('HKUST') || schoolName.includes('科技大学')) return '🔬';
+    if (schoolName.includes('理工大学')) return '🔧';
+    if (schoolName.includes('城市大学')) return '🏢';
+    if (schoolName.includes('浸会大学')) return '⛪';
+    return '🏙️';
+  }
+  if (country === '新西兰') {
+    if (schoolName.includes('奥克兰')) return '🥝';
+    if (schoolName.includes('林肯')) return '🌿';
+    return '🥝';
+  }
+  if (country === '澳门') {
+    if (schoolName.includes('澳门大学')) return '🎰';
+    if (schoolName.includes('科技大学')) return '🔬';
+    if (schoolName.includes('城市大学')) return '🏢';
+    return '🎰';
+  }
+  if (country === '荷兰') {
+    if (schoolName.includes('阿姆斯特丹')) return '🌷';
+    if (schoolName.includes('莱顿')) return '🧪';
+    return '🌷';
+  }
+  if (country === '西班牙') {
+    if (schoolName.includes('巴塞罗那')) return '🌞';
+    if (schoolName.includes('瓦伦西亚')) return '🍊';
+    return '🌞';
+  }
+  return '🎓';
+};
+
+const getCountryGradient = (country: string) => {
+  const gradients: Record<string, string> = {
+    '美国': 'from-red-50 to-blue-50',
+    '英国': 'from-blue-50 to-red-50',
+    '新加坡': 'from-red-50 to-white',
+    '澳大利亚': 'from-green-50 to-yellow-50',
+    '加拿大': 'from-red-50 to-red-50',
+    '日本': 'from-red-50 to-white',
+    '香港': 'from-red-50 to-white',
+    '新西兰': 'from-blue-50 to-red-50',
+    '澳门': 'from-green-50 to-red-50',
+    '荷兰': 'from-orange-50 to-blue-50',
+    '西班牙': 'from-red-50 to-yellow-50'
+  };
+  return gradients[country] || 'from-blue-50 to-blue-100';
+};
+
 export default function SchoolDetailPage({ params }: SchoolDetailPageProps) {
   const schoolId = parseInt(params.id);
   const school = getSchoolData(schoolId);
@@ -261,13 +372,8 @@ export default function SchoolDetailPage({ params }: SchoolDetailPageProps) {
               </div>
               
               <div className="text-center">
-                <div className="relative h-32 w-32 mx-auto mb-4">
-                  <Image 
-                    alt={school.name} 
-                    fill
-                    className="object-contain rounded-lg" 
-                    src="/images/schools/placeholder.svg"
-                  />
+                <div className={`w-32 h-32 rounded-2xl bg-gradient-to-br ${getCountryGradient(school.country)} flex items-center justify-center mx-auto mb-4 border border-gray-200 shadow-sm`}>
+                  <span className="text-6xl">{getSchoolLogo(school.country, school.name)}</span>
                 </div>
                 <Link 
                   href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务" 
@@ -293,7 +399,8 @@ export default function SchoolDetailPage({ params }: SchoolDetailPageProps) {
                 <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
                   <h2 className="text-2xl font-bold mb-4">🏫 大学介绍</h2>
                   <p className="text-gray-600 leading-relaxed mb-6">
-                    {school.description}
+                    {school.description} <br />
+                    <span className="font-semibold text-blue-700 block mt-2">学历含金量高，国际认可度强，适用于工作背景认证、移民申请、职业提升等多种场景。</span>
                   </p>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -301,16 +408,16 @@ export default function SchoolDetailPage({ params }: SchoolDetailPageProps) {
                       <p className="text-gray-600">{school.location}</p>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">🗣️ 授课语言</h3>
-                      <p className="text-gray-600">{school.language}</p>
+                      <h3 className="font-semibold text-gray-800 mb-2">⏱️ 出证周期参考</h3>
+                      <p className="text-gray-600">约7–15个工作日</p>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">💰 学费参考</h3>
-                      <p className="text-gray-600">{school.tuition}</p>
+                      <h3 className="font-semibold text-gray-800 mb-2">🔒 认证支持</h3>
+                      <p className="text-gray-600">支持海牙认证、教育局认证、WES等权威认证</p>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-gray-800 mb-2">⏱️ 学制时长</h3>
-                      <p className="text-gray-600">{school.duration}</p>
+                      <h3 className="font-semibold text-gray-800 mb-2">📞 专属顾问服务</h3>
+                      <p className="text-gray-600">一对一顾问全程协助，支持定制个性化方案</p>
                     </div>
                   </div>
                 </div>
@@ -450,7 +557,7 @@ export default function SchoolDetailPage({ params }: SchoolDetailPageProps) {
               className="inline-flex items-center bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors"
             >
               <span className="mr-3">📱</span>
-              添加顾问微信咨询
+              WhatsApp 顾问咨询
             </Link>
           </div>
         </section>

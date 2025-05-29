@@ -401,15 +401,17 @@ export default function Home() {
                             <span className="text-2xl">👨‍💼</span>
                           </div>
                           <div>
-                            <h3 className="font-bold">Mark（马来西亚）</h3>
-                            <p className="text-sm text-gray-500">加拿大本科文凭</p>
+                            <h3 className="font-bold">Jason（中国香港）</h3>
+                            <p className="text-sm text-gray-500">澳大利亚本科文凭</p>
                           </div>
                         </div>
                         <div className="mb-4">
-                          <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">跳槽大厂</span>
-                          <span className="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">6天完成</span>
+                          <span className="inline-block bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mr-2">升职加薪</span>
+                          <span className="inline-block bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">7天出证</span>
                         </div>
-                        <p className="text-gray-700">定制加拿大本科文凭，成功跳槽到知名科技公司。</p>
+                        <p className="text-gray-700">
+                          定制澳洲本科学历文件，顺利通过外企背景审核，成功晋升项目主管职位，月薪提升40%。
+                        </p>
                       </div>
                       <div className="bg-white rounded-lg shadow-md p-6">
                         <div className="flex items-center mb-4">
