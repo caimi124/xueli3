@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#f8fafc"/>
+  <rect x="20" y="20" width="360" height="260" fill="#ffffff" stroke="#e5e7eb" stroke-width="2"/>
+  <circle cx="200" cy="80" r="25" fill="#3b82f6"/>
+  <rect x="60" y="120" width="280" height="4" fill="#3b82f6"/>
+  <rect x="60" y="140" width="200" height="3" fill="#6b7280"/>
+  <rect x="60" y="160" width="250" height="3" fill="#6b7280"/>
+  <rect x="60" y="180" width="180" height="3" fill="#6b7280"/>
+  <rect x="60" y="220" width="120" height="3" fill="#9ca3af"/>
+  <rect x="220" y="220" width="120" height="3" fill="#9ca3af"/>
+  <text x="200" y="250" text-anchor="middle" font-family="Arial" font-size="12" fill="#374151">毕业证书</text>
+</svg> 
