@@ -137,7 +137,8 @@ export function getTranslation(section: string, key: string, locale: string): st
     return key;
   }
   
-  return translations[section][locale][key];
+  const value = translations[section][locale][key];
+  return typeof value === 'string' ? value : key;
 }
 
 /**

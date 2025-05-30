@@ -1,85 +1,173 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 export default function Contact() {
-  const partnerInstitutions = [
+  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
+
+  // 分组的合作院校数据
+  const westernSchools = [
     { name: '哈佛大学', logo: '🏛️' },
     { name: '斯坦福大学', logo: '🌲' },
     { name: '麻省理工学院', logo: '🔬' },
     { name: '牛津大学', logo: '📚' },
     { name: '剑桥大学', logo: '⚖️' },
     { name: '帝国理工学院', logo: '🔧' },
-    { name: '新加坡国立大学', logo: '🦁' },
-    { name: '墨尔本大学', logo: '🦘' },
     { name: '多伦多大学', logo: '🍁' },
-    { name: '东京大学', logo: '🗾' },
-    { name: '香港大学', logo: '🏙️' },
+    { name: '墨尔本大学', logo: '🦘' },
     { name: '波士顿大学', logo: '🎓' }
   ];
 
+  const asianSchools = [
+    { name: '新加坡国立大学', logo: '🦁' },
+    { name: '南洋理工大学', logo: '🔬' },
+    { name: '东京大学', logo: '🗾' },
+    { name: '香港大学', logo: '🏙️' },
+    { name: '香港中文大学', logo: '📚' },
+    { name: '香港科技大学', logo: '⚗️' }
+  ];
+
+  // 优化后的服务数据
   const serviceData = [
     {
-      number: '3,000+',
-      label: '累计服务客户',
+      number: '3,200+',
+      label: '已服务客户',
       icon: '👥'
     },
     {
-      number: '20+',
+      number: '25+',
       label: '覆盖国家',
       icon: '🌎'
     },
     {
-      number: '100+',
-      label: '可提供真实院校学历',
+      number: '120+',
+      label: '可提供学历院校',
       icon: '🎓'
+    },
+    {
+      number: '98.7%',
+      label: '客户满意率',
+      icon: '⭐'
+    },
+    {
+      number: '7~15天',
+      label: '平均交付时效',
+      icon: '⏰'
     }
   ];
 
+  // 重新整理的客户类型
   const customerTypes = [
     {
       title: '职场人士',
       icon: '🧑‍💼',
-      description: '用于升职加薪、职位入职、移民背景资料',
-      scenarios: ['升职加薪', '职位入职', '移民背景资料']
+      needs: ['升职', '入职', '移民', '公证']
     },
     {
-      title: '留学补件/认证需求者',
+      title: '留学认证人群',
       icon: '🧑‍🎓',
-      description: '提交 WES、ICAS、NACES 等学历认证机构',
-      scenarios: ['WES认证', 'ICAS认证', 'NACES认证']
+      needs: ['补件', 'WES', 'ICAS', 'NACES']
     },
     {
-      title: '海外生活/身份申请人群',
+      title: '海外身份申请人',
       icon: '🌍',
-      description: '用于申请签证、落户、工签、公证',
-      scenarios: ['申请签证', '落户申请', '工签申请', '公证服务']
+      needs: ['签证', '工签', '落户']
+    },
+    {
+      title: '教育机构/中介合作方',
+      icon: '🏫',
+      needs: ['提供学历背书或认证支持']
     }
   ];
 
-  const competitiveAdvantages = [
+  // 顾问团队数据
+  const consultantTeam = [
     {
-      title: '7–15 天快速出证，部分项目最快 5 天',
-      icon: '📦'
+      name: '李顾问',
+      position: '高级学历顾问',
+      description: '专注美加市场，擅长WES、ECE等国际认证，全流程跟进，客户满意度98%。',
+      avatar: '👨‍💼'
     },
     {
-      title: '100+ 所真实院校资源',
-      icon: '🔍'
+      name: 'Sarah',
+      position: '客户服务经理',
+      description: '负责东南亚客户支持，精通多国语言，保障7x24小时响应与售后。',
+      avatar: '👩‍💼'
     },
     {
-      title: '完整认证服务支持：海牙认证、教育局认证、WES认证、ICAS/NACES 等',
-      icon: '🧾'
+      name: 'Mark',
+      position: '档案审核专员',
+      description: '严格审核每一份文件内容与格式，确保交付资料真实完整。',
+      avatar: '👨‍🔬'
     },
     {
-      title: '全流程加密交付，资料保密',
-      icon: '🔐'
-    },
-    {
-      title: '签署协议，服务受法律保障',
-      icon: '💼'
+      name: 'Amanda',
+      position: '认证流程专家',
+      description: '熟悉各类认证路径（教育部、海牙、WES等），擅长定制高效认证方案。',
+      avatar: '👩‍🎓'
     }
   ];
+
+  // 重新整理的优势对比
+  const advantages = [
+    {
+      title: '🔒 真实学历',
+      value: '全程真实院校出具，支持认证查询'
+    },
+    {
+      title: '🕐 快速出证',
+      value: '最快5天，常规7~15天内完成'
+    },
+    {
+      title: '📦 全套服务',
+      value: '提供学历+成绩单+认证文件全流程'
+    },
+    {
+      title: '🔍 多国认证',
+      value: '支持海牙、WES、ECE、ICAS等国际认证'
+    },
+    {
+      title: '👨‍💼 顾问1对1',
+      value: '定制方案，快速匹配最合适的院校与流程'
+    },
+    {
+      title: '📈 高满意度',
+      value: '已服务3000+客户，满意度高达98.5%'
+    }
+  ];
+
+  // FAQ数据
+  const faqs = [
+    {
+      question: '如何开始咨询？',
+      answer: '直接点击WhatsApp按钮或拨打电话，我们的顾问会立即为您服务。'
+    },
+    {
+      question: '咨询收费吗？',
+      answer: '初次咨询完全免费，我们会根据您的需求提供详细的方案和报价。'
+    },
+    {
+      question: '多久能收到回复？',
+      answer: 'WhatsApp通常5分钟内回复，电话即时接听，邮件24小时内回复。'
+    },
+    {
+      question: '信息会保密吗？',
+      answer: '我们严格保护客户隐私，所有信息都会得到妥善保管和处理。'
+    },
+    {
+      question: '认证材料是否真实？',
+      answer: '所有认证材料均来自真实院校，支持官方验证，确保100%真实有效。'
+    },
+    {
+      question: '支持哪些认证类型？',
+      answer: '我们支持海牙认证、WES认证、ECE认证、ICAS认证、NACES认证等多种国际认证服务。'
+    }
+  ];
+
+  const toggleFAQ = (index: number) => {
+    setExpandedFAQ(expandedFAQ === index ? null : index);
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -100,9 +188,7 @@ export default function Contact() {
               <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/schools">
                 院校数据库
               </Link>
-              <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/guide">
-                领证指南
-              </Link>
+              <Link className="text-sm text-gray-600 hover:text-blue-600 transition-colors" href="/guide">快速领证服务</Link>
               <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/blog">
                 博客
               </Link>
@@ -134,11 +220,11 @@ export default function Contact() {
       {/* Main Content */}
       <main className="flex-grow pt-16">
         <main className="min-h-screen bg-gray-50">
-          {/* Hero Section */}
+          {/* 1. 新的Banner版位 */}
           <section className="relative py-20 px-6 bg-gradient-to-r from-blue-600 to-blue-800">
             <div className="max-w-4xl mx-auto text-center text-white">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">联系我们</h1>
-              <p className="text-xl md:text-2xl text-blue-100 mb-8">专业学历认证服务，24小时为您提供咨询支持</p>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">全球学历认证，一对一顾问服务</h1>
+              <p className="text-xl md:text-2xl text-blue-100 mb-8">24小时在线，支持全球客户，经验丰富、交付可靠。</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
                   href="https://wa.me/8612345678901" 
@@ -160,125 +246,212 @@ export default function Contact() {
             </div>
           </section>
 
-          {/* Partner Institutions */}
+          {/* 2. 重新设计的合作院校版块 */}
           <section className="py-16 px-6 bg-white">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">🏛 合作院校/教育机构</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">已合作或提供文件的真实院校展示</p>
-              </div>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-                {partnerInstitutions.map((institution, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 p-6 text-center">
-                    <div className="text-4xl mb-3">{institution.logo}</div>
-                    <p className="text-sm text-gray-600 font-medium">{institution.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Service Data */}
-          <section className="py-16 px-6 bg-gray-50">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">📊 服务数据</h2>
-                <p className="text-gray-600 mb-6">真实院校合作，服务全球客户</p>
-                <p className="text-gray-700 max-w-3xl mx-auto leading-relaxed">
-                  我们已为超过 3,000 位客户成功提供学历文件及认证服务，合作院校涵盖欧美、东南亚、港澳地区等真实院校资源。
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">我们合作的真实院校资源</h2>
+                <p className="text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                  我们提供的学历及认证文件均来自真实可查院校，部分如下展示。
                 </p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {serviceData.map((data, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-8 text-center border border-gray-100">
-                    <div className="text-4xl mb-4">{data.icon}</div>
-                    <div className="text-4xl font-bold text-blue-600 mb-2">{data.number}</div>
-                    <h3 className="text-lg font-semibold text-gray-900">{data.label}</h3>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Customer Types & Use Cases */}
-          <section className="py-16 px-6 bg-white">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">🔹 服务客户类型 & 典型使用场景</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">我们为不同需求的客户提供专业的学历认证服务</p>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {customerTypes.map((type, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 p-8 text-center">
-                    <div className="text-5xl mb-4">{type.icon}</div>
-                    <h3 className="text-xl font-bold mb-4">{type.title}</h3>
-                    <p className="text-gray-600 mb-6">{type.description}</p>
-                    <div className="space-y-2">
-                      {type.scenarios.map((scenario, scenarioIndex) => (
-                        <div key={scenarioIndex} className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm mr-2 mb-2">
-                          {scenario}
-                        </div>
-                      ))}
+              
+              {/* 欧美名校 */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">🌍 欧美名校</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                  {westernSchools.map((school, index) => (
+                    <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 p-6 text-center">
+                      <div className="text-4xl mb-3">{school.logo}</div>
+                      <p className="text-sm text-gray-600 font-medium">{school.name}</p>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+              </div>
+
+              {/* 亚洲名校 */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">🏯 亚洲名校</h3>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+                  {asianSchools.map((school, index) => (
+                    <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 p-6 text-center">
+                      <div className="text-4xl mb-3">{school.logo}</div>
+                      <p className="text-sm text-gray-600 font-medium">{school.name}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
 
-          {/* Competitive Advantages */}
+          {/* 3. 优化后的服务数据版块 */}
           <section className="py-16 px-6 bg-gray-50">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-3">我们的优势</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">差异化信任强化，专业服务保障</p>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">我们交付过的真实数据</h2>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {competitiveAdvantages.map((advantage, index) => (
-                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow p-6 border border-gray-100">
-                    <div className="flex items-start gap-4">
-                      <div className="text-2xl flex-shrink-0">{advantage.icon}</div>
-                      <p className="text-gray-700 font-medium leading-relaxed">{advantage.title}</p>
-                    </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                {serviceData.map((data, index) => (
+                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 p-8 text-center border border-gray-100">
+                    <div className="text-4xl mb-4">{data.icon}</div>
+                    <div className="text-3xl font-bold text-blue-600 mb-2">{data.number}</div>
+                    <h3 className="text-sm font-semibold text-gray-700">{data.label}</h3>
                   </div>
                 ))}
               </div>
             </div>
           </section>
 
-          {/* FAQ Section */}
+          {/* 4. 重新整理的客户类型版块 */}
           <section className="py-16 px-6 bg-white">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">我们服务的客户是谁？</h2>
+              </div>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full bg-white rounded-xl shadow-sm border border-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">客户类型</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">主要需求</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    {customerTypes.map((type, index) => (
+                      <tr key={index} className="hover:bg-gray-50 transition-colors">
+                        <td className="px-6 py-4">
+                          <div className="flex items-center gap-3">
+                            <span className="text-2xl">{type.icon}</span>
+                            <span className="font-medium text-gray-900">{type.title}</span>
+                          </div>
+                        </td>
+                        <td className="px-6 py-4">
+                          <div className="flex flex-wrap gap-2">
+                            {type.needs.map((need, needIndex) => (
+                              <span key={needIndex} className="inline-block bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-sm">
+                                {need}
+                              </span>
+                            ))}
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          {/* 5. 新增顾问团队版块 */}
+          <section className="py-16 px-6 bg-gray-50">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">我们是谁｜专业的学历认证服务团队</h2>
+                <p className="text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                  我们的团队由认证顾问、档案审核师、国际认证专家组成，具备多年经验，服务遍及北美、东南亚、港澳等国家和地区，深谙各国认证体系，保障您快速、安全、高质量获取真实可查学历文件。
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                {consultantTeam.map((member, index) => (
+                  <div key={index} className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 p-6 border border-gray-100">
+                    <div className="flex items-start gap-4">
+                      <div className="text-4xl flex-shrink-0">{member.avatar}</div>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-2">
+                          <h3 className="text-lg font-bold text-gray-900">{member.name}</h3>
+                          <span className="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-xs font-medium">{member.position}</span>
+                        </div>
+                        <p className="text-gray-600 leading-relaxed">{member.description}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="text-center">
+                <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-6 py-3 rounded-full text-sm font-medium">
+                  <span>📌</span>
+                  我们承诺：每位顾问均通过严格认证培训，保障服务质量与信息保密。
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* 6. 优化后的优势对比版块 */}
+          <section className="py-16 px-6 bg-white">
+            <div className="max-w-6xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">为什么选择 Acaboost？</h2>
+              </div>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full bg-white rounded-xl shadow-sm border border-gray-200">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">优势项</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">对客户的价值</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    {advantages.map((advantage, index) => (
+                      <tr key={index} className="hover:bg-gray-50 transition-colors">
+                        <td className="px-6 py-4">
+                          <span className="font-medium text-gray-900">{advantage.title}</span>
+                        </td>
+                        <td className="px-6 py-4">
+                          <span className="text-gray-600">{advantage.value}</span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          {/* 7. 优化后的FAQ版块（可折叠） */}
+          <section className="py-16 px-6 bg-gray-50">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-3">常见问题</h2>
                 <p className="text-gray-600">以下是客户最常询问的问题</p>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="text-lg font-bold mb-3">如何开始咨询？</h3>
-                  <p className="text-gray-600">直接点击WhatsApp按钮或拨打电话，我们的顾问会立即为您服务。</p>
-                </div>
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="text-lg font-bold mb-3">咨询收费吗？</h3>
-                  <p className="text-gray-600">初次咨询完全免费，我们会根据您的需求提供详细的方案和报价。</p>
-                </div>
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="text-lg font-bold mb-3">多久能收到回复？</h3>
-                  <p className="text-gray-600">WhatsApp通常5分钟内回复，电话即时接听，邮件24小时内回复。</p>
-                </div>
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="text-lg font-bold mb-3">信息会保密吗？</h3>
-                  <p className="text-gray-600">我们严格保护客户隐私，所有信息都会得到妥善保管和处理。</p>
-                </div>
+              
+              <div className="space-y-4">
+                {faqs.map((faq, index) => (
+                  <div key={index} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                    <button
+                      onClick={() => toggleFAQ(index)}
+                      className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
+                    >
+                      <h3 className="text-lg font-semibold text-gray-900">{faq.question}</h3>
+                      <svg 
+                        className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${expandedFAQ === index ? 'rotate-180' : ''}`}
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                      </svg>
+                    </button>
+                    {expandedFAQ === index && (
+                      <div className="px-6 pb-4 border-t border-gray-100">
+                        <p className="text-gray-600 pt-4">{faq.answer}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           </section>
 
-          {/* CTA Section */}
+          {/* 8. 新的尾部CTA召唤 */}
           <section className="py-16 px-6 bg-blue-700 relative overflow-hidden">
             <div className="max-w-4xl mx-auto text-center relative z-10">
-              <h2 className="text-3xl font-bold text-white mb-6">准备开始您的学历认证咨询了吗？</h2>
-              <p className="text-xl text-blue-100 mb-8">专业团队已准备就绪，立即联系获取个性化认证方案</p>
+              <h2 className="text-3xl font-bold text-white mb-3">🎓 想快速获取可查学历证书？</h2>
+              <p className="text-xl text-blue-100 mb-8">👨‍💼 让专业团队为你定制认证方案，立即联系顾问</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link 
                   href="https://wa.me/8612345678901" 
@@ -286,15 +459,13 @@ export default function Contact() {
                   rel="noopener noreferrer" 
                   className="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl"
                 >
-                  <span className="mr-2">📱</span>
-                  WhatsApp 立即咨询
+                  WhatsApp 在线咨询
                 </Link>
                 <Link 
-                  href="tel:+8612345678901"
+                  href="/guide"
                   className="inline-flex items-center bg-white text-blue-700 px-8 py-4 rounded-full font-semibold hover:bg-blue-50 transition-colors shadow-lg hover:shadow-xl"
                 >
-                  <span className="mr-2">📞</span>
-                  电话直接咨询
+                  获取认证方案
                 </Link>
               </div>
             </div>

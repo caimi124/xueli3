@@ -126,29 +126,6 @@ export default function Guide() {
     }
   ];
 
-  const trustIndicators = [
-    {
-      title: '100%真实可查',
-      description: '所有学历均由真实学校颁发，具备认证报告',
-      icon: '🔒'
-    },
-    {
-      title: '7天快速交付',
-      description: '最快7个工作日完成，满足您的紧急需求',
-      icon: '⚡'
-    },
-    {
-      title: '全球认证通用',
-      description: '支持移民、留学、工作等多种用途',
-      icon: '🌍'
-    },
-    {
-      title: '专业团队服务',
-      description: '资深顾问一对一指导，确保服务质量',
-      icon: '👥'
-    }
-  ];
-
   const customerFeedbacks = [
     {
       id: 1,
@@ -236,7 +213,7 @@ export default function Guide() {
                 院校数据库
               </Link>
               <Link className="text-sm font-medium transition-colors text-blue-600" href="/guide">
-                领证指南
+                快速领证服务
               </Link>
               <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/blog">
                 博客
@@ -272,7 +249,7 @@ export default function Guide() {
           {/* Hero Section */}
           <section className="relative py-20 px-6 bg-gradient-to-r from-blue-600 to-blue-800">
             <div className="max-w-4xl mx-auto text-center text-white">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">学历认证领证指南</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-4">🎓 快速领证服务</h1>
               <p className="text-xl md:text-2xl text-blue-100 mb-8">5步快速认证流程，7天内获取真实可查学历证书</p>
               <Link 
                 href="https://wa.me/1234567890" 

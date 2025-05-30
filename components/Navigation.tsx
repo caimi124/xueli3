@@ -19,7 +19,7 @@ const Navigation = () => {
   const menuItems = [
     { href: '/', label: '首页' },
     { href: '/schools', label: '院校数据库' },
-    { href: '/guide', label: '领证指南' },
+    { href: '/guide', label: '快速领证服务' },
     { href: '/blog', label: '博客' },
     { href: '/contact', label: '联系我们' }
   ];

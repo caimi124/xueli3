@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { FaArrowLeft, FaCalendarAlt, FaTag, FaClock, FaUser, FaEye, FaSearch, FaBlog, FaHeart, FaShare } from 'react-icons/fa';
 
 export default function Blog() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -83,7 +82,7 @@ export default function Blog() {
                 院校数据库
               </Link>
               <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/guide">
-                领证指南
+                快速领证服务
               </Link>
               <Link className="text-sm font-medium transition-colors text-blue-600" href="/blog">
                 博客

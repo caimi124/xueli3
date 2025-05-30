@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
 
 interface School {
@@ -298,9 +297,7 @@ export default function SchoolDetailPage({ params }: SchoolDetailPageProps) {
               <Link className="text-sm font-medium transition-colors text-blue-600" href="/schools">
                 院校数据库
               </Link>
-              <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/guide">
-                领证指南
-              </Link>
+              <Link className="text-sm text-gray-600 hover:text-blue-600 transition-colors" href="/guide">快速领证服务</Link>
               <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/blog">
                 博客
               </Link>

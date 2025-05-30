@@ -1,6 +1,3 @@
-import * as React from 'react';
-import { type PropsWithChildren, type ReactNode } from 'react';
-
 // Layout Component Types
 export interface LayoutProps {
   children: JSX.Element | JSX.Element[] | null;
