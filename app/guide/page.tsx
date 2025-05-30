@@ -249,17 +249,40 @@ export default function Guide() {
           {/* Hero Section */}
           <section className="relative py-20 px-6 bg-gradient-to-r from-blue-600 to-blue-800">
             <div className="max-w-4xl mx-auto text-center text-white">
+              {/* 紧急感提示 */}
+              <div className="inline-flex items-center gap-2 bg-red-500/20 text-red-100 px-4 py-2 rounded-full text-sm mb-6 animate-bounce">
+                <span className="animate-ping inline-flex h-2 w-2 rounded-full bg-red-400 opacity-75"></span>
+                <span>🔥 限时优惠：本月咨询立减500元</span>
+              </div>
+              
               <h1 className="text-4xl md:text-5xl font-bold mb-4">🎓 快速领证服务</h1>
-              <p className="text-xl md:text-2xl text-blue-100 mb-8">5步快速认证流程，7天内获取真实可查学历证书</p>
-              <Link 
-                href="https://wa.me/1234567890" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="inline-flex items-center bg-green-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-green-600 transition-colors shadow-lg hover:shadow-xl"
-              >
-                <span className="mr-2">📱</span>
-                立即咨询认证方案
-              </Link>
+              <p className="text-xl md:text-2xl text-blue-100 mb-6">无需考试，无需上课，7天快速获得真实学历证书</p>
+              
+              {/* 社会证明 */}
+              <div className="flex justify-center items-center gap-6 mb-8 text-sm">
+                <div className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span>
+                  <span>本月已帮助 1,245+ 客户获得学历</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="text-green-400">✓</span>
+                  <span>通过率 99.8%</span>
+                </div>
+              </div>
+              
+              {/* 主要CTA */}
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 inline-block">
+                <Link 
+                  href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务，希望了解适合我的学历方案" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-full text-white bg-green-600 hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+                >
+                  <span className="mr-2 text-xl">📲</span>
+                  免费咨询获取方案
+                </Link>
+                <p className="text-xs text-blue-100 mt-2">⚡ 24小时在线 | 5分钟快速回复</p>
+              </div>
             </div>
           </section>
 

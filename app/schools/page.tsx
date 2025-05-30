@@ -663,82 +663,84 @@ export default function Schools() {
           {/* Enhanced Schools Grid */}
           <section className="py-8 px-6">
             <div className="max-w-6xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {currentSchools.map((school) => (
-                  <div key={school.id} className="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-6 border border-gray-100 hover:border-blue-200 group">
-                    {/* School Logo */}
-                    <div className="relative h-16 mb-4 flex items-center justify-center">
-                      <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${getCountryGradient(school.country)} flex items-center justify-center border border-gray-200 shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-                        <span className="text-3xl">{getSchoolLogo(school.country, school.name)}</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                {filteredSchools.map((school, index) => (
+                  <div 
+                    key={school.id} 
+                    className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-blue-200"
+                  >
+                    <div className="p-6">
+                      {/* 学校排名标识 */}
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                          <div className={`px-2 py-1 rounded text-xs font-bold ${
+                            (school.qsRank && school.qsRank <= 10) ? 'bg-yellow-100 text-yellow-800' :
+                            (school.qsRank && school.qsRank <= 50) ? 'bg-green-100 text-green-800' :
+                            'bg-blue-100 text-blue-800'
+                          }`}>
+                            QS #{school.qsRank || 'N/A'}
+                          </div>
+                          {school.qsRank && school.qsRank <= 20 && (
+                            <div className="px-2 py-1 bg-red-100 text-red-800 rounded text-xs font-bold animate-pulse">
+                              🔥 热门
+                            </div>
+                          )}
+                        </div>
+                        <div className="text-xs text-gray-500">{school.country}</div>
                       </div>
-                    </div>
-                    
-                    {/* School Info */}
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-blue-600 transition-colors">{school.name}</h3>
-                    <div className="flex items-center text-sm text-gray-500 mb-3">
-                      <span className="mr-4">{getCountryFlag(school.country)} {school.country}</span>
-                      <span className="text-xs bg-gray-100 px-2 py-1 rounded">📍 {school.location}</span>
-                    </div>
-                    
-                    {/* Rankings */}
-                    <div className="grid grid-cols-3 gap-2 mb-4">
-                      {school.qsRank && (
-                        <div className="text-center bg-blue-50 rounded-lg p-2">
-                          <div className="text-xs text-blue-600 font-medium">QS排名</div>
-                          <div className="font-bold text-blue-700 text-lg">#{school.qsRank}</div>
-                          <div className="text-xs">
-                            {school.qsRank <= 10 && '🏆'}
-                            {school.qsRank > 10 && school.qsRank <= 50 && '🥇'}
-                            {school.qsRank > 50 && school.qsRank <= 100 && '🥈'}
-                            {school.qsRank > 100 && school.qsRank <= 200 && '🥉'}
-                          </div>
+
+                      {/* 学校名称 */}
+                      <h3 className="font-bold text-lg mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                        {school.name}
+                      </h3>
+
+                      {/* 特色和优势 */}
+                      <div className="mb-3">
+                        <p className="text-sm text-blue-600 font-medium mb-1">🎯 {school.specialty}</p>
+                        <p className="text-xs text-gray-600 line-clamp-2">{school.keyAdvantage}</p>
+                      </div>
+
+                      {/* 专业列表 */}
+                      <div className="mb-4">
+                        <div className="flex flex-wrap gap-1">
+                          {school.majors.slice(0, 3).map((major, idx) => (
+                            <span key={idx} className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">
+                              {major}
+                            </span>
+                          ))}
+                          {school.majors.length > 3 && (
+                            <span className="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">
+                              +{school.majors.length - 3}个专业
+                            </span>
+                          )}
                         </div>
-                      )}
-                      {school.worldRank && (
-                        <div className="text-center bg-green-50 rounded-lg p-2">
-                          <div className="text-xs text-green-600 font-medium">世界排名</div>
-                          <div className="font-bold text-green-700 text-lg">#{school.worldRank}</div>
-                          <div className="text-xs">
-                            {school.worldRank <= 20 && '🌟'}
-                          </div>
+                      </div>
+
+                      {/* CTA按钮组 */}
+                      <div className="space-y-2">
+                        <Link 
+                          href={`/schools/${school.id}`}
+                          className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+                        >
+                          📋 查看详情
+                        </Link>
+                        <Link 
+                          href={`https://wa.me/1234567890?text=您好，我对${school.name}的学历认证服务感兴趣，希望了解详细方案。`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full bg-green-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors flex items-center justify-center gap-2"
+                        >
+                          💬 立即咨询
+                        </Link>
+                      </div>
+
+                      {/* 信任元素 */}
+                      <div className="mt-3 pt-3 border-t border-gray-100">
+                        <div className="flex items-center justify-between text-xs text-gray-500">
+                          <span>✅ 真实可查</span>
+                          <span>⚡ 7天出证</span>
                         </div>
-                      )}
-                      {school.countryRank && (
-                        <div className="text-center bg-orange-50 rounded-lg p-2">
-                          <div className="text-xs text-orange-600 font-medium">国内排名</div>
-                          <div className="font-bold text-orange-700 text-lg">#{school.countryRank}</div>
-                          <div className="text-xs">
-                            {school.countryRank <= 5 && '⭐'}
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                    
-                    {/* Documents */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {school.documents.map((doc, index) => (
-                        <span key={index} className="px-2 py-1 bg-blue-50 text-blue-600 rounded-full text-xs">
-                          {doc}
-                        </span>
-                      ))}
-                    </div>
-                    
-                    {/* Action Buttons */}
-                    <div className="flex gap-2">
-                      <Link 
-                        href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="flex-1 bg-green-500 text-white text-center py-2 px-3 rounded-lg text-sm hover:bg-green-600 transition-colors"
-                      >
-                        立即咨询
-                      </Link>
-                      <Link 
-                        href={`/schools/${school.id}`}
-                        className="flex-1 bg-blue-500 text-white text-center py-2 px-3 rounded-lg text-sm hover:bg-blue-600 transition-colors"
-                      >
-                        查看详情
-                      </Link>
+                      </div>
                     </div>
                   </div>
                 ))}

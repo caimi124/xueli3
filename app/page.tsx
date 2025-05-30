@@ -7,6 +7,29 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
+      {/* 首页结构化数据 */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "快速学历认证服务",
+            "description": "专业海外学历认证，7天快速出证，真实可查",
+            "provider": {
+              "@type": "Organization",
+              "name": "Acaboost"
+            },
+            "serviceType": "学历认证",
+            "areaServed": "Global",
+            "availableChannel": {
+              "@type": "ServiceChannel",
+              "serviceUrl": "https://wa.me/1234567890"
+            }
+          })
+        }}
+      />
+      
       <div className="flex flex-col min-h-screen">
         <div className="min-h-screen flex flex-col">
           {/* Navigation */}
@@ -65,19 +88,53 @@ export default function Home() {
                 <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center mix-blend-overlay opacity-20"></div>
                 <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 px-6">
                   <div className="max-w-6xl mx-auto text-center">
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">真实学历认证，全球高校覆盖，快速交付</h1>
+                    {/* 社会证明数据 */}
+                    <div className="flex justify-center items-center gap-8 mb-6 text-sm">
+                      <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                        <span className="text-green-400">✓</span>
+                        <span>已服务15000+客户</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                        <span className="text-green-400">✓</span>
+                        <span>99.8%通过率</span>
+                      </div>
+                      <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                        <span className="text-green-400">✓</span>
+                        <span>7天快速出证</span>
+                      </div>
+                    </div>
+                    
+                    <h1 className="text-4xl md:text-5xl font-bold mb-4">
+                      <span className="text-yellow-300">🎓</span> 快速领证服务
+                      <br />
+                      <span className="text-3xl md:text-4xl text-blue-100">真实学历认证，全球高校覆盖</span>
+                    </h1>
                     <p className="text-xl md:text-2xl mb-4">毕业证、成绩单、认证文件一站搞定，支持海牙/WES，最快7天出证</p>
                     <p className="text-lg md:text-xl text-blue-100 mb-8">担心学历查不到、流程复杂？我们提供安全、真实、快速的解决方案。</p>
-                    <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 inline-block">
-                      <Link 
-                        href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务，希望了解适合我的学历方案" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-full text-white bg-green-600 hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
-                      >
-                        <span className="mr-2 text-xl">📲</span>
-                        WhatsApp联系顾问
-                      </Link>
+                    
+                    {/* 优化的CTA区域 */}
+                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 inline-block mb-8">
+                      <div className="flex flex-col md:flex-row gap-4 items-center">
+                        <Link 
+                          href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务，希望了解适合我的学历方案" 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-full text-white bg-green-600 hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform animate-pulse"
+                        >
+                          <span className="mr-2 text-xl">📲</span>
+                          WhatsApp联系顾问
+                        </Link>
+                        <div className="text-center text-white/80">
+                          <p className="text-sm mb-1">🕒 在线客服 24/7</p>
+                          <p className="text-xs">平均5分钟内回复</p>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* 紧急需求标识 */}
+                    <div className="inline-flex items-center gap-2 bg-red-500/20 text-red-100 px-4 py-2 rounded-full text-sm">
+                      <span className="animate-ping inline-flex h-2 w-2 rounded-full bg-red-400 opacity-75"></span>
+                      <span>🔥 紧急加急服务：3天出证</span>
                     </div>
                   </div>
                 </section>

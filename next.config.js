@@ -1,9 +1,41 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  i18n: {
-    locales: ['zh', 'en'],
-    defaultLocale: 'zh',
+  // 移除内置的i18n配置，使用自定义路由结构
+  // i18n: {
+  //   locales: ['zh', 'en'],
+  //   defaultLocale: 'zh',
+  // },
+  async redirects() {
+    return [
+      // 重定向根路径到中文版本
+      {
+        source: '/',
+        destination: '/zh',
+        permanent: true,
+      },
+      // 重定向旧的页面路径到新的多语言结构
+      {
+        source: '/schools',
+        destination: '/zh/schools',
+        permanent: true,
+      },
+      {
+        source: '/guide',
+        destination: '/zh/guide',
+        permanent: true,
+      },
+      {
+        source: '/blog',
+        destination: '/zh/blog',
+        permanent: true,
+      },
+      {
+        source: '/contact',
+        destination: '/zh/contact',
+        permanent: true,
+      },
+    ]
   },
   images: {
     remotePatterns: [
@@ -43,6 +75,28 @@ const nextConfig = {
           {
             key: 'X-Frame-Options',
             value: 'DENY'
+          },
+          {
+            key: 'Content-Language',
+            value: 'zh-CN, en-US'
+          }
+        ],
+      },
+      {
+        source: '/zh/:path*',
+        headers: [
+          {
+            key: 'Content-Language',
+            value: 'zh-CN'
+          }
+        ],
+      },
+      {
+        source: '/en/:path*',
+        headers: [
+          {
+            key: 'Content-Language',
+            value: 'en-US'
           }
         ],
       },
@@ -58,4 +112,5 @@ const nextConfig = {
     ]
   },
 };
+
 module.exports = nextConfig; 
