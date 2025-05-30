@@ -380,11 +380,11 @@ export default function Home() {
                           </div>
                           <div>
                             <h3 className="font-bold">Lily（新加坡）</h3>
-                            <p className="text-sm text-gray-500">英国硕士学历 | 申请PR | 7天完成</p>
+                            <p className="text-sm text-gray-500">英国硕士学历 | 申请PR | ⏱️ 7天交付</p>
                           </div>
                         </div>
-                        <p className="text-gray-700 mb-3">成功获得英国硕士学历认证，用于申请新加坡PR，7天内快速交付。</p>
-                        <p className="text-blue-600 italic">"过程顺利，效率惊人，感谢团队支持！"</p>
+                        <p className="text-gray-700 mb-3">✅ 成功获得英国硕士学历认证，用于申请新加坡永久居民身份</p>
+                        <p className="text-blue-600 italic">💬 "过程顺利，效率惊人，感谢团队支持！"</p>
                       </div>
                       <div className="bg-white rounded-lg shadow-md p-6">
                         <div className="flex items-center mb-4">
@@ -393,13 +393,11 @@ export default function Home() {
                           </div>
                           <div>
                             <h3 className="font-bold">Jason（中国香港）</h3>
-                            <p className="text-sm text-gray-500">澳大利亚本科文凭 | 升职加薪 | 7天出证</p>
+                            <p className="text-sm text-gray-500">澳洲本科学历 | 升职加薪 | ⏱️ 7天完成</p>
                           </div>
                         </div>
-                        <p className="text-gray-700 mb-3">
-                          定制澳洲本科学历文件，顺利通过外企背景审核，成功晋升项目主管，月薪提升40%。
-                        </p>
-                        <p className="text-blue-600 italic">"学历认证让我职业发展更顺利！"</p>
+                        <p className="text-gray-700 mb-3">✅ 定制澳洲学历，顺利通过外企背景审核，升任项目主管</p>
+                        <p className="text-blue-600 italic">💬 "学历认证让我职业发展更顺利！"</p>
                       </div>
                       <div className="bg-white rounded-lg shadow-md p-6">
                         <div className="flex items-center mb-4">
@@ -408,13 +406,11 @@ export default function Home() {
                           </div>
                           <div>
                             <h3 className="font-bold">David（加拿大）</h3>
-                            <p className="text-sm text-gray-500">美国硕士学历 | 移民申请 | 10天完成</p>
+                            <p className="text-sm text-gray-500">美国硕士学历 | 移民申请 | ⏱️ 10天完成</p>
                           </div>
                         </div>
-                        <p className="text-gray-700 mb-3">
-                          定制美国硕士学历认证文件，成功通过加拿大EE移民申请，CRS分数提升50分，顺利获得PR邀请。
-                        </p>
-                        <p className="text-blue-600 italic">"学历助力移民梦圆，感谢专业服务！"</p>
+                        <p className="text-gray-700 mb-3">✅ 提升加拿大EE移民CRS分数50分，顺利获PR邀请</p>
+                        <p className="text-blue-600 italic">💬 "学历助力移民梦圆，感谢专业服务！"</p>
                       </div>
                     </div>
                   </div>
