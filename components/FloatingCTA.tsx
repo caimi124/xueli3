@@ -51,7 +51,7 @@ export default function FloatingCTA() {
           </div>
 
           {/* CTA按钮 */}
-          <Link
+          <Link 
             href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务，希望了解适合我的学历方案"
             target="_blank"
             rel="noopener noreferrer"
@@ -60,10 +60,10 @@ export default function FloatingCTA() {
             📲 WhatsApp免费咨询
           </Link>
 
-          {/* 紧急感元素 */}
+          {/* 联系提示 */}
           <div className="mt-2 text-center">
-            <span className="text-xs text-red-600 font-medium">
-              🔥 本月限时优惠，咨询立减500元
+            <span className="text-xs text-blue-600 font-medium">
+              💬 专业顾问在线，立即获取方案
             </span>
           </div>
         </div>

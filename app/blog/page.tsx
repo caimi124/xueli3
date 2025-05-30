@@ -6,15 +6,15 @@ import Image from 'next/image';
 
 export default function Blog() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('全部文章');
+  const [selectedCategory, setSelectedCategory] = useState('📚全部文章');
 
   const categories = [
-    { id: 'all', name: '全部文章', icon: '📚' },
-    { id: 'process', name: '认证流程', icon: '📋' },
-    { id: 'cases', name: '真实案例', icon: '📝' },
-    { id: 'countries', name: '热门国家', icon: '🌍' },
-    { id: 'tips', name: '注意事项', icon: '💡' },
-    { id: 'faq', name: '常见问题', icon: '❓' }
+    { id: 'all', name: '📚全部文章', icon: '📚' },
+    { id: 'process', name: '📋认证流程', icon: '📋' },
+    { id: 'cases', name: '📝真实案例', icon: '📝' },
+    { id: 'countries', name: '🌍热门国家', icon: '🌍' },
+    { id: 'tips', name: '💡注意事项', icon: '💡' },
+    { id: 'faq', name: '❓常见问题', icon: '❓' }
   ];
 
   const articles = [
@@ -57,7 +57,7 @@ export default function Blog() {
     const matchesSearch = article.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          article.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          article.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesCategory = selectedCategory === '全部文章' || article.category === selectedCategory;
+    const matchesCategory = selectedCategory === '📚全部文章' || article.category === selectedCategory.substring(2);
     
     return matchesSearch && matchesCategory;
   });
@@ -153,7 +153,6 @@ export default function Blog() {
                           : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                       }`}
                     >
-                      <span>{category.icon}</span>
                       {category.name}
                     </button>
                   ))}
