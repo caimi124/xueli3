@@ -1,42 +1,85 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
+
+// 翻译内容
+const translations = {
+  zh: {
+    home: "首页",
+    schools: "院校数据库", 
+    guide: "快速领证服务",
+    blog: "博客",
+    contact: "联系我们",
+    whatsappConsult: "📱 WhatsApp咨询"
+  },
+  en: {
+    home: "Home",
+    schools: "Schools Database",
+    guide: "Fast Credential Service", 
+    blog: "Blog",
+    contact: "Contact Us",
+    whatsappConsult: "📱 WhatsApp Consult"
+  }
+};
 
 export default function Contact() {
+  const params = useParams();
+  const locale = (params?.locale as string) || 'zh';
+  const t = translations[locale as keyof typeof translations] || translations.zh;
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Navigation */}
       <nav className="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-sm">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
-            <Link className="flex items-center" href="/">
+            <Link className="flex items-center" href={`/${locale}`}>
               <span className="text-xl font-bold text-blue-600">Acaboost</span>
             </Link>
             
             <div className="hidden md:flex items-center space-x-8">
-              <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/">
-                首页
+              <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href={`/${locale}`}>
+                {t.home}
               </Link>
-              <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/schools">
-                院校数据库
+              <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href={`/${locale}/schools`}>
+                {t.schools}
               </Link>
-              <Link className="text-sm text-gray-600 hover:text-blue-600 transition-colors" href="/guide">
-                快速领证服务
+              <Link className="text-sm text-gray-600 hover:text-blue-600 transition-colors" href={`/${locale}/guide`}>
+                {t.guide}
               </Link>
-              <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href="/blog">
-                博客
+              <Link className="text-sm font-medium transition-colors text-gray-600 hover:text-blue-600" href={`/${locale}/blog`}>
+                {t.blog}
               </Link>
-              <Link className="text-sm font-medium transition-colors text-blue-600" href="/contact">
-                联系我们
+              <Link className="text-sm font-medium transition-colors text-blue-600" href={`/${locale}/contact`}>
+                {t.contact}
               </Link>
             </div>
             
+            {/* Language Switcher */}
+            <div className="hidden md:flex items-center space-x-2 mr-4">
+              <Link 
+                href="/zh/contact" 
+                className={`px-3 py-1 rounded text-sm ${locale === 'zh' ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:text-blue-600'}`}
+              >
+                中文
+              </Link>
+              <Link 
+                href="/en/contact" 
+                className={`px-3 py-1 rounded text-sm ${locale === 'en' ? 'bg-blue-100 text-blue-700' : 'text-gray-600 hover:text-blue-600'}`}
+              >
+                EN
+              </Link>
+            </div>
+
             <Link
-              href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务，希望了解适合我的学历方案"
+              href={`https://wa.me/1234567890?text=${locale === 'en' ? 'Hello, I would like to inquire about academic credential services.' : '您好，我想咨询学历认证服务，希望了解适合我的学历方案'}`}
               target="_blank"
               rel="noopener noreferrer"
               className="hidden md:flex bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
             >
-              WhatsApp咨询
+              {t.whatsappConsult}
             </Link>
             
             <button className="md:hidden text-gray-600 hover:text-blue-600">
