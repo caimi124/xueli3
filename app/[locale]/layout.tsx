@@ -6,11 +6,11 @@ import FloatingCTA from '../../components/FloatingCTA';
 const inter = Inter({ subsets: ['latin'] });
 
 type Props = {
-  params: { locale: string }
+  params: Promise<{ locale: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const locale = params.locale;
+  const { locale } = await params;
   
   if (locale === 'en') {
     return {
@@ -146,14 +146,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const locale = params.locale;
+  const { locale } = await params;
   
   return (
     <html lang={locale === 'en' ? 'en' : 'zh-CN'}>

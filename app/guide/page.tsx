@@ -32,18 +32,14 @@ export default function Guide() {
               </Link>
             </div>
             
-            <div className="hidden md:flex items-center space-x-2">
-              <span className="text-sm text-gray-600">中文</span>
-              <span className="text-sm text-gray-600">EN</span>
-              <Link 
-                href="https://wa.me/1234567890"
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
-              >
-                WhatsApp咨询
-              </Link>
-            </div>
+            <Link 
+              href="https://wa.me/1234567890"
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hidden md:flex bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-600 transition-colors"
+            >
+              WhatsApp咨询
+            </Link>
             
             <button className="md:hidden text-gray-600 hover:text-blue-600">
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -56,6 +52,7 @@ export default function Guide() {
 
       <main className="flex-grow pt-16">
         <main className="min-h-screen bg-gray-50">
+          {/* Hero Section */}
           <section className="relative py-20 px-6 bg-gradient-to-r from-blue-600 to-blue-800">
             <div className="max-w-4xl mx-auto text-center text-white">
               <h1 className="text-4xl md:text-5xl font-bold mb-4">🎓 快速领证服务</h1>
@@ -71,6 +68,7 @@ export default function Guide() {
             </div>
           </section>
 
+          {/* Document Categories Section */}
           <section className="py-20 px-6 bg-white relative overflow-hidden">
             <div className="absolute inset-0 opacity-5">
               <div className="absolute top-10 left-10 w-32 h-32 bg-blue-500 rounded-full blur-3xl"></div>
@@ -150,7 +148,7 @@ export default function Guide() {
               
               <div className="text-center mt-12">
                 <div className="inline-flex items-center gap-2 bg-blue-50 text-blue-600 px-6 py-3 rounded-full text-sm font-medium">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path>
                   </svg>
                   所有文件均为真实院校颁发，支持官方认证查询
@@ -159,6 +157,7 @@ export default function Guide() {
             </div>
           </section>
 
+          {/* Sample Gallery Section */}
           <section className="py-16 px-6 bg-gray-50">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
@@ -235,6 +234,7 @@ export default function Guide() {
             </div>
           </section>
 
+          {/* Customer Feedback Section */}
           <section className="py-16 px-6 bg-gray-50">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
@@ -429,6 +429,7 @@ export default function Guide() {
             </div>
           </section>
 
+          {/* Final CTA Section */}
           <section className="py-16 px-6 bg-blue-700 relative overflow-hidden">
             <div className="max-w-4xl mx-auto text-center relative z-10">
               <h2 className="text-3xl font-bold text-white mb-3">📨 获取适合你的学历认证方案</h2>
@@ -463,6 +464,7 @@ export default function Guide() {
         </main>
       </main>
 
+      {/* Footer */}
       <footer className="bg-gray-900 text-white">
         <div className="container mx-auto px-4 py-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -505,6 +507,7 @@ export default function Guide() {
         </div>
       </footer>
 
+      {/* Floating WhatsApp Button */}
       <Link 
         href="https://wa.me/1234567890?text=您好，我想咨询学历认证服务"
         target="_blank" 
