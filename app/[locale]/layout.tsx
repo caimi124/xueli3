@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '../globals.css';
 import FloatingCTA from '../../components/FloatingCTA';
+import StructuredData from '../../components/StructuredData';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -158,35 +159,6 @@ export default async function LocaleLayout({
   return (
     <html lang={locale === 'en' ? 'en' : 'zh-CN'}>
       <head>
-        {/* 结构化数据 */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "EducationalOrganization",
-              "name": "Acaboost",
-              "description": locale === 'en' 
-                ? "Professional international academic credential services platform"
-                : "专业海外学历认证服务平台",
-              "url": `https://acaboost.com/${locale}`,
-              "logo": "https://acaboost.com/images/logo.png",
-              "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+1-234-567-890",
-                "contactType": "customer service",
-                "availableLanguage": locale === 'en' ? ["English", "Chinese"] : ["Chinese", "English"]
-              },
-              "sameAs": [
-                "https://wa.me/1234567890"
-              ],
-              "serviceType": locale === 'en' ? "Academic Credential Services" : "学历认证服务",
-              "areaServed": "Global",
-              "inLanguage": locale === 'en' ? "en-US" : "zh-CN"
-            })
-          }}
-        />
-        
         {/* 性能和SEO优化 */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -202,6 +174,7 @@ export default async function LocaleLayout({
         {/* 在生产环境中添加Google Analytics, 百度统计等 */}
       </head>
       <body className={inter.className}>
+        <StructuredData locale={locale} />
         {children}
         <FloatingCTA />
       </body>

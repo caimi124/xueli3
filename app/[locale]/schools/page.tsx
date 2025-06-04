@@ -129,8 +129,8 @@ export default function LocalizedSchools() {
 
   // 国家列表
   const countries = locale === 'en' 
-    ? ['All', 'United States', 'United Kingdom', 'Singapore', 'Australia', 'Canada', 'Japan', 'Hong Kong', 'New Zealand', 'Macau', 'Netherlands', 'Spain', 'Switzerland', 'China', 'South Korea']
-    : ['全部', '美国', '英国', '新加坡', '澳大利亚', '加拿大', '日本', '香港', '新西兰', '澳门', '荷兰', '西班牙', '瑞士', '中国', '韩国'];
+    ? ['All', 'United States', 'United Kingdom', 'Singapore', 'Japan', 'Canada', 'Australia', 'New Zealand', 'Hong Kong', 'Macau', 'Netherlands', 'Spain']
+    : ['全部', '美国', '英国', '新加坡', '日本', '加拿大', '澳大利亚', '新西兰', '香港', '澳门', '荷兰', '西班牙'];
 
   // 专业类别
   const majorCategories = locale === 'en'

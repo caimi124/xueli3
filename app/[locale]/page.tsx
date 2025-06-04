@@ -208,61 +208,62 @@ export default function LocalizedHome() {
           <main className="flex-grow pt-16">
             <main className="flex-grow">
               {/* Hero Section */}
-              <div className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-blue-900">
-                <div className="absolute inset-0 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center mix-blend-overlay opacity-20"></div>
-                <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 px-6">
-                  <div className="max-w-6xl mx-auto text-center">
-                    {/* 社会证明数据 */}
-                    <div className="flex justify-center items-center gap-8 mb-6 text-sm flex-wrap">
-                      <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                        <span className="text-green-400">✓</span>
-                        <span>{t.statsServed}</span>
-                      </div>
-                      <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                        <span className="text-green-400">✓</span>
-                        <span>{t.statsSuccess}</span>
-                      </div>
-                      <div className="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
-                        <span className="text-green-400">✓</span>
-                        <span>{t.statsFast}</span>
-                      </div>
+              <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-20 px-6 overflow-hidden">
+                {/* 轻微的对比度增强overlay */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-700/30 to-blue-800/30"></div>
+                {/* 轻微的阴影overlay用于文字可读性 */}
+                <div className="absolute inset-0 bg-black/10"></div>
+                <div className="container mx-auto text-center relative z-10">
+                  {/* 社会证明数据 */}
+                  <div className="flex justify-center items-center gap-8 mb-6 text-sm flex-wrap">
+                    <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                      <span className="text-green-300">✓</span>
+                      <span className="font-medium text-white">{t.statsServed}</span>
                     </div>
-                    
-                    <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                      <span className="text-yellow-300">🎓</span> {t.heroTitle}
-                      <br />
-                      <span className="text-3xl md:text-4xl text-blue-100">{t.heroSubtitle}</span>
-                    </h1>
-                    <p className="text-xl md:text-2xl mb-4">{t.heroDescription}</p>
-                    <p className="text-lg md:text-xl text-blue-100 mb-8">{t.heroSubDescription}</p>
-                    
-                    {/* 优化的CTA区域 */}
-                    <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 inline-block mb-8">
-                      <div className="flex flex-col md:flex-row gap-4 items-center">
-                        <Link 
-                          href={`https://wa.me/1234567890?text=${locale === 'en' ? 'Hello, I would like to inquire about academic credential services and learn about suitable solutions for me.' : '您好，我想咨询学历认证服务，希望了解适合我的学历方案'}`}
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-semibold rounded-full text-white bg-green-600 hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform animate-pulse"
-                        >
-                          <span className="mr-2 text-xl">📲</span>
-                          {t.ctaButton}
-                        </Link>
-                        <div className="text-center text-white/80">
-                          <p className="text-sm mb-1">🕒 {t.onlineService}</p>
-                          <p className="text-xs">{t.averageReply}</p>
-                        </div>
-                      </div>
+                    <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                      <span className="text-green-300">✓</span>
+                      <span className="font-medium text-white">{t.statsSuccess}</span>
                     </div>
-                    
-                    {/* 紧急需求标识 */}
-                    <div className="inline-flex items-center gap-2 bg-red-500/20 text-red-100 px-4 py-2 rounded-full text-sm">
-                      <span className="animate-ping inline-flex h-2 w-2 rounded-full bg-red-400 opacity-75"></span>
-                      <span>🔥 {t.urgentService}</span>
+                    <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full border border-white/30">
+                      <span className="text-green-300">✓</span>
+                      <span className="font-medium text-white">{t.statsFast}</span>
                     </div>
                   </div>
-                </section>
-              </div>
+                  
+                  <h1 className="text-4xl md:text-6xl font-black mb-6 text-white drop-shadow-lg">
+                    <span className="text-yellow-300 drop-shadow-lg">🎓</span> {t.heroTitle}
+                    <br />
+                    <span className="text-3xl md:text-4xl text-white font-bold drop-shadow-lg">{t.heroSubtitle}</span>
+                  </h1>
+                  <p className="text-xl md:text-2xl mb-4 font-semibold text-white drop-shadow-md">{t.heroDescription}</p>
+                  <p className="text-lg md:text-xl text-white mb-8 font-medium drop-shadow-md">{t.heroSubDescription}</p>
+                  
+                  {/* 优化的CTA区域 */}
+                  <div className="bg-white/15 backdrop-blur-md rounded-2xl p-6 inline-block mb-8 border border-white/20 shadow-xl">
+                    <div className="flex flex-col md:flex-row gap-4 items-center">
+                      <Link 
+                        href={`https://wa.me/1234567890?text=${locale === 'en' ? 'Hello, I would like to inquire about academic credential services and learn about suitable solutions for me.' : '您好，我想咨询学历认证服务，希望了解适合我的学历方案'}`}
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-bold rounded-full text-white bg-green-600 hover:bg-green-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform animate-pulse"
+                      >
+                        <span className="mr-2 text-xl">📲</span>
+                        {t.ctaButton}
+                      </Link>
+                      <div className="text-center text-white">
+                        <p className="text-sm mb-1 font-semibold">🕒 {t.onlineService}</p>
+                        <p className="text-xs font-medium">{t.averageReply}</p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* 紧急需求标识 */}
+                  <div className="inline-flex items-center gap-2 bg-red-500/30 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm border border-red-400/50 font-semibold">
+                    <span className="animate-ping inline-flex h-2 w-2 rounded-full bg-red-300 opacity-75"></span>
+                    <span>🔥 {t.urgentService}</span>
+                  </div>
+                </div>
+              </section>
 
               {/* Core Service Advantages */}
               <div className="py-16 bg-gray-50">
@@ -319,78 +320,319 @@ export default function LocalizedHome() {
                     <h2 className="text-3xl font-bold text-gray-900 mb-3">{t.processTitle}</h2>
                     <p className="text-gray-600 max-w-2xl mx-auto">{t.processSubtitle}</p>
                   </div>
-                  <div className="relative">
-                    <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-blue-200 transform -translate-x-1/2"></div>
-                    <div className="space-y-16">
-                      <div className="flex flex-col md:flex-row items-center">
-                        <div className="md:w-5/12 md:text-right md:pr-8">
-                          <h3 className="text-xl font-bold mb-3 text-blue-600">{t.step1Title}</h3>
-                          <p className="text-gray-600">{t.step1Desc}</p>
-                        </div>
-                        <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
-                          <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10 shadow-lg">1</div>
-                        </div>
-                        <div className="md:w-5/12"></div>
+                  <div className="flex flex-col md:flex-row items-center justify-between max-w-6xl mx-auto relative">
+                    {/* Process Steps */}
+                    <div className="flex flex-col items-center text-center mb-8 md:mb-0 relative">
+                      <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 relative z-10">1</div>
+                      <h3 className="text-lg font-bold mb-2">{t.step1Title}</h3>
+                      <p className="text-gray-600 max-w-xs">{t.step1Desc}</p>
+                    </div>
+                    
+                    <div className="hidden md:block flex-1 h-px bg-gray-300 mx-4"></div>
+                    
+                    <div className="flex flex-col items-center text-center mb-8 md:mb-0 relative">
+                      <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 relative z-10">2</div>
+                      <h3 className="text-lg font-bold mb-2">{t.step2Title}</h3>
+                      <p className="text-gray-600 max-w-xs">{t.step2Desc}</p>
+                    </div>
+                    
+                    <div className="hidden md:block flex-1 h-px bg-gray-300 mx-4"></div>
+                    
+                    <div className="flex flex-col items-center text-center mb-8 md:mb-0 relative">
+                      <div className="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 relative z-10">3</div>
+                      <h3 className="text-lg font-bold mb-2">{t.step3Title}</h3>
+                      <p className="text-gray-600 max-w-xs">{t.step3Desc}</p>
+                    </div>
+                    
+                    <div className="hidden md:block flex-1 h-px bg-gray-300 mx-4"></div>
+                    
+                    <div className="flex flex-col items-center text-center relative">
+                      <div className="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center text-xl font-bold mb-4 relative z-10">✓</div>
+                      <h3 className="text-lg font-bold mb-2">{t.step4Title}</h3>
+                      <p className="text-gray-600 max-w-xs">{t.step4Desc}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* 学历文件类型说明 */}
+              <div className="py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                  <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-3">{locale === 'en' ? 'Academic Document Types' : '学历文件类型说明'}</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto">{locale === 'en' ? 'We provide various types of academic certification documents to meet your different needs' : '我们提供多种类型的学历认证文件，满足您不同场景的需求'}</p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                      <div className="h-48 relative bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center">
+                        <div className="text-6xl">🎓</div>
                       </div>
-                      <div className="flex flex-col md:flex-row md:flex-row-reverse items-center">
-                        <div className="md:w-5/12 md:text-left md:pl-8">
-                          <h3 className="text-xl font-bold mb-3 text-green-600">{t.step2Title}</h3>
-                          <p className="text-gray-600">{t.step2Desc}</p>
-                        </div>
-                        <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
-                          <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10 shadow-lg">2</div>
-                        </div>
-                        <div className="md:w-5/12"></div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold mb-4">{locale === 'en' ? 'Diploma Certificate' : '毕业证书'}</h3>
+                        <p className="text-gray-600">{locale === 'en' ? 'Core academic document to prove your educational background' : '作为学历核心文件，用于证明您的学历背景'}</p>
                       </div>
-                      <div className="flex flex-col md:flex-row items-center">
-                        <div className="md:w-5/12 md:text-right md:pr-8">
-                          <h3 className="text-xl font-bold mb-3 text-orange-600">{t.step3Title}</h3>
-                          <p className="text-gray-600">{t.step3Desc}</p>
-                        </div>
-                        <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
-                          <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10 shadow-lg">3</div>
-                        </div>
-                        <div className="md:w-5/12"></div>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                      <div className="h-48 relative bg-gradient-to-br from-green-100 to-green-200 flex items-center justify-center">
+                        <div className="text-6xl">📊</div>
                       </div>
-                      <div className="flex flex-col md:flex-row md:flex-row-reverse items-center">
-                        <div className="md:w-5/12 md:text-left md:pl-8">
-                          <h3 className="text-xl font-bold mb-3 text-purple-600">{t.step4Title}</h3>
-                          <p className="text-gray-600">{t.step4Desc}</p>
-                        </div>
-                        <div className="my-4 md:my-0 md:w-2/12 flex justify-center">
-                          <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-full flex items-center justify-center font-bold text-lg relative z-10 shadow-lg">4</div>
-                        </div>
-                        <div className="md:w-5/12"></div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold mb-4">{locale === 'en' ? 'Academic Transcript' : '成绩单'}</h3>
+                        <p className="text-gray-600">{locale === 'en' ? 'Essential for immigration/further education applications, showcasing your academic achievements' : '申请移民/升学材料，展示您的学习成果'}</p>
+                      </div>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                      <div className="h-48 relative bg-gradient-to-br from-purple-100 to-purple-200 flex items-center justify-center">
+                        <div className="text-6xl">🏆</div>
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold mb-4">{locale === 'en' ? 'Degree Certificate' : '学位证书'}</h3>
+                        <p className="text-gray-600">{locale === 'en' ? 'Graduate and doctoral degree certification, enhancing your professional background' : '研究生及博士学历证明，提升您的专业背景'}</p>
+                      </div>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                      <div className="h-48 relative bg-gradient-to-br from-orange-100 to-orange-200 flex items-center justify-center">
+                        <div className="text-6xl">✅</div>
+                      </div>
+                      <div className="p-6">
+                        <h3 className="text-xl font-bold mb-4">{locale === 'en' ? 'Education Verification Report' : '教育认证报告'}</h3>
+                        <p className="text-gray-600">{locale === 'en' ? 'Ensures authenticity and verifiability, used for institutional review and verification' : '确保真实可查，用于机构审核和验证'}</p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Rest of the sections would be similarly translated... */}
-              {/* For brevity, I'll include a few more key sections */}
+              {/* 全球顶尖学校资源 */}
+              <div className="py-16 bg-white">
+                <div className="container mx-auto px-4">
+                  <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-3">{locale === 'en' ? 'Global Top University Resources' : '全球顶尖学校资源'}</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto">{locale === 'en' ? 'We partner with renowned universities from multiple countries and regions worldwide, providing rich academic certification options' : '我们与全球多个国家和地区的知名院校合作，提供丰富的学历认证选择'}</p>
+                  </div>
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                    <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl">🇺🇸</span>
+                      </div>
+                      <h3 className="font-bold mb-2">{locale === 'en' ? 'United States' : '美国'}</h3>
+                      <p className="text-sm text-gray-600">{locale === 'en' ? 'Multiple renowned universities' : '多所知名院校'}</p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl">🇬🇧</span>
+                      </div>
+                      <h3 className="font-bold mb-2">{locale === 'en' ? 'United Kingdom' : '英国'}</h3>
+                      <p className="text-sm text-gray-600">{locale === 'en' ? 'Multiple renowned universities' : '多所知名院校'}</p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl">🇦🇺</span>
+                      </div>
+                      <h3 className="font-bold mb-2">{locale === 'en' ? 'Australia' : '澳大利亚'}</h3>
+                      <p className="text-sm text-gray-600">{locale === 'en' ? 'Multiple renowned universities' : '多所知名院校'}</p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl">🇨🇦</span>
+                      </div>
+                      <h3 className="font-bold mb-2">{locale === 'en' ? 'Canada' : '加拿大'}</h3>
+                      <p className="text-sm text-gray-600">{locale === 'en' ? 'Multiple renowned universities' : '多所知名院校'}</p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl">🇸🇬</span>
+                      </div>
+                      <h3 className="font-bold mb-2">{locale === 'en' ? 'Singapore' : '新加坡'}</h3>
+                      <p className="text-sm text-gray-600">{locale === 'en' ? 'Multiple renowned universities' : '多所知名院校'}</p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl">🇯🇵</span>
+                      </div>
+                      <h3 className="font-bold mb-2">{locale === 'en' ? 'Japan' : '日本'}</h3>
+                      <p className="text-sm text-gray-600">{locale === 'en' ? 'Multiple renowned universities' : '多所知名院校'}</p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl">🇭🇰</span>
+                      </div>
+                      <h3 className="font-bold mb-2">{locale === 'en' ? 'Hong Kong' : '香港'}</h3>
+                      <p className="text-sm text-gray-600">{locale === 'en' ? 'Multiple renowned universities' : '多所知名院校'}</p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl">🇳🇿</span>
+                      </div>
+                      <h3 className="font-bold mb-2">{locale === 'en' ? 'New Zealand' : '新西兰'}</h3>
+                      <p className="text-sm text-gray-600">{locale === 'en' ? 'Multiple renowned universities' : '多所知名院校'}</p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl">🇳🇱</span>
+                        </div>
+                      <h3 className="font-bold mb-2">{locale === 'en' ? 'Netherlands' : '荷兰'}</h3>
+                      <p className="text-sm text-gray-600">{locale === 'en' ? 'Multiple renowned universities' : '多所知名院校'}</p>
+                        </div>
+                    <div className="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition-shadow">
+                      <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span className="text-2xl">🇪🇸</span>
+                      </div>
+                      <h3 className="font-bold mb-2">{locale === 'en' ? 'Spain' : '西班牙'}</h3>
+                      <p className="text-sm text-gray-600">{locale === 'en' ? 'Multiple renowned universities' : '多所知名院校'}</p>
+                    </div>
+                  </div>
+                  <div className="text-center mt-12">
+                    <Link href={`/${locale}/schools`}>
+                      <span className="inline-block bg-blue-600 text-white hover:bg-blue-700 font-bold py-3 px-8 rounded-lg text-lg transition-colors">
+                        {locale === 'en' ? 'Browse Complete University Database' : '浏览完整学校资源库'}
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
 
-              {/* CTA Section */}
+              {/* 成功案例展示 */}
+              <div className="py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                  <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-3">{locale === 'en' ? 'Success Stories' : '成功案例展示'}</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto">{locale === 'en' ? 'See how we helped other clients successfully obtain academic certifications' : '看看我们如何帮助其他客户成功获得学历认证'}</p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div className="bg-white rounded-lg shadow-md p-6">
+                      <div className="flex items-center mb-4">
+                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                          <span className="text-2xl">👩‍🎓</span>
+                        </div>
+                        <div>
+                          <h3 className="font-bold">Lily{locale === 'en' ? ' (Singapore)' : '（新加坡）'}</h3>
+                          <p className="text-sm text-gray-500">{locale === 'en' ? 'UK Master\'s Degree | PR Application | 7 days completion' : '英国硕士学历 | 申请PR | 7天完成'}</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-700 mb-3">
+                        {locale === 'en' 
+                          ? 'Successfully obtained UK Master\'s degree certification for Singapore PR application, delivered within 7 days.' 
+                          : '成功获得英国硕士学历认证，用于申请新加坡PR，7天内快速交付。'}
+                      </p>
+                      <p className="text-blue-600 italic">
+                        &quot;{locale === 'en' 
+                          ? 'Smooth process, amazing efficiency, thanks to the team support!' 
+                          : '过程顺利，效率惊人，感谢团队支持！'}&quot;
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6">
+                      <div className="flex items-center mb-4">
+                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                          <span className="text-2xl">👨‍💼</span>
+                        </div>
+                        <div>
+                          <h3 className="font-bold">Jason{locale === 'en' ? ' (Hong Kong)' : '（中国香港）'}</h3>
+                          <p className="text-sm text-gray-500">{locale === 'en' ? 'Australian Bachelor\'s Degree | Career Advancement | 7 days delivery' : '澳大利亚本科文凭 | 升职加薪 | 7天出证'}</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-700 mb-3">
+                        {locale === 'en' 
+                          ? 'Customized Australian bachelor\'s degree documents, successfully passed foreign company background check, promoted to project manager with 40% salary increase.' 
+                          : '定制澳洲本科学历文件，顺利通过外企背景审核，成功晋升项目主管，月薪提升40%。'}
+                      </p>
+                      <p className="text-blue-600 italic">
+                        &quot;{locale === 'en' 
+                          ? 'Academic certification made my career development smoother!' 
+                          : '学历认证让我职业发展更顺利！'}&quot;
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6">
+                      <div className="flex items-center mb-4">
+                        <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                          <span className="text-2xl">👨‍🎓</span>
+                        </div>
+                        <div>
+                          <h3 className="font-bold">David{locale === 'en' ? ' (Canada)' : '（加拿大）'}</h3>
+                          <p className="text-sm text-gray-500">{locale === 'en' ? 'US Master\'s Degree | Immigration Application | 10 days completion' : '美国硕士学历 | 移民申请 | 10天完成'}</p>
+                        </div>
+                      </div>
+                      <p className="text-gray-700 mb-3">
+                        {locale === 'en' 
+                          ? 'Customized US Master\'s degree certification documents, successfully passed Canadian EE immigration application, CRS score increased by 50 points, successfully received PR invitation.' 
+                          : '定制美国硕士学历认证文件，成功通过加拿大EE移民申请，CRS分数提升50分，顺利获得PR邀请。'}
+                      </p>
+                      <p className="text-blue-600 italic">
+                        &quot;{locale === 'en' 
+                          ? 'Academic credentials helped achieve immigration dreams, thanks for the professional service!' 
+                          : '学历助力移民梦圆，感谢专业服务！'}&quot;
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA Banner */}
               <div className="py-16 bg-blue-700 relative overflow-hidden">
+                <div className="absolute inset-0 opacity-20">
+                  <div className="w-full h-full bg-gradient-to-r from-blue-600 to-blue-800"></div>
+                </div>
                 <div className="container mx-auto px-4 relative z-10">
                   <div className="max-w-3xl mx-auto text-center">
                     <h2 className="text-3xl font-bold text-white mb-6">
                       {locale === 'en' 
-                        ? "No need to wait for lengthy education programs. Get your credentials easily and quickly for smoother career advancement." 
-                        : "无需等待漫长学制，轻松快速拿证，职场晋升更顺利。"
-                      }
+                        ? 'No need to wait for lengthy academic programs, get certified quickly and advance your career.' 
+                        : '无需等待漫长学制，轻松快速拿证，职场晋升更顺利。'}
                     </h2>
                     <p className="text-xl text-blue-100 mb-8">
-                      {locale === 'en'
-                        ? "📲 Add WhatsApp, our dedicated advisor will help you get your credentials worry-free within 7-15 days."
-                        : "📲 添加WhatsApp，专属顾问助您7-15天内拿证无忧。"
-                      }
+                      📲 {locale === 'en' 
+                        ? 'Add WhatsApp, dedicated advisor to help you get certified worry-free within 7-15 days.' 
+                        : '添加WhatsApp，专属顾问助您7-15天内拿证无忧。'}
                     </p>
                     <Link href={`/${locale}/contact`}>
                       <span className="inline-block bg-white text-blue-700 hover:bg-blue-50 font-bold py-3 px-8 rounded-lg text-lg transition-colors">
-                        {locale === 'en' ? "Contact Now" : "立即咨询"}
+                        {locale === 'en' ? 'Contact Now' : '立即咨询'}
                       </span>
                     </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* 常见问题 FAQ */}
+              <div className="py-16 bg-gray-50">
+                <div className="container mx-auto px-4">
+                  <div className="text-center mb-12">
+                    <h2 className="text-3xl font-bold text-gray-900 mb-3">{locale === 'en' ? 'Frequently Asked Questions (FAQ)' : '常见问题 FAQ'}</h2>
+                    <p className="text-gray-600 max-w-2xl mx-auto">{locale === 'en' ? 'Answers to your most pressing questions' : '解答您最关心的问题'}</p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="bg-white rounded-lg shadow-md p-6">
+                      <h3 className="text-xl font-bold mb-4">{locale === 'en' ? 'Are the credentials reliable?' : '学历可靠吗？'}</h3>
+                      <p className="text-gray-600">
+                        {locale === 'en' 
+                          ? 'All credentials are issued by authentic institutions with verification reports, ensuring authenticity and verifiability.' 
+                          : '所有学历均由真实学校颁发，具备认证报告，确保真实可查。'}
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6">
+                      <h3 className="text-xl font-bold mb-4">{locale === 'en' ? 'Can I verify them?' : '我能查到吗？'}</h3>
+                      <p className="text-gray-600">
+                        {locale === 'en' 
+                          ? 'Yes, authenticity can be verified through certification platforms or original institutions. We provide complete verification support.' 
+                          : '可通过认证平台或原校查询学历真实性，我们提供完整的验证支持。'}
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6">
+                      <h3 className="text-xl font-bold mb-4">{locale === 'en' ? 'Is it legal?' : '是否违法？'}</h3>
+                      <p className="text-gray-600">
+                        {locale === 'en' 
+                          ? 'No forgery involved. We provide legitimate certification support through proper procedures, ensuring legal compliance.' 
+                          : '不涉及伪造，我们提供正规流程认证支持，确保合法合规。'}
+                      </p>
+                    </div>
+                    <div className="bg-white rounded-lg shadow-md p-6">
+                      <h3 className="text-xl font-bold mb-4">{locale === 'en' ? 'How long does it take?' : '多久能拿到？'}</h3>
+                      <p className="text-gray-600">
+                        {locale === 'en' 
+                          ? 'Fastest 7 business days, specific timing depends on credential type and certification requirements.' 
+                          : '最快7个工作日，具体取决于学历类型和认证要求。'}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

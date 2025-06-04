@@ -16,11 +16,6 @@ const nextConfig = {
       },
       // 重定向旧的页面路径到新的多语言结构
       {
-        source: '/schools',
-        destination: '/zh/schools',
-        permanent: true,
-      },
-      {
         source: '/guide',
         destination: '/zh/guide',
         permanent: true,

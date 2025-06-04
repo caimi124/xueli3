@@ -6,11 +6,6 @@
       "use": "@vercel/next"
     }
   ],
-  "env": {
-    "NOTION_TOKEN": "secret_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "NOTION_DATABASE_ID": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "NEXT_PUBLIC_SITE_URL": "${VERCEL_URL}"
-  },
   "buildCommand": "npm run build",
   "installCommand": "rm -f package-lock.json && npm install"
 } 
