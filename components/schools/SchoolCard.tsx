@@ -14,11 +14,12 @@ const SchoolCard: React.FC<SchoolCardProps> = ({ school }) => {
         {school.imageUrl ? (
           <Image
             src={school.imageUrl}
-            alt={school.name}
-            layout="fill"
-            objectFit="cover"
+            alt={`${school.name} - ${school.country} ${school.city} 校园图片`}
+            fill
+            style={{ objectFit: 'cover' }}
             placeholder="blur"
             blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mN88P/BfwAJNQNGgFZGgAAAAABJRU5ErkJggg=="
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         ) : (
           <div className="bg-gray-300 h-full w-full flex items-center justify-center">

@@ -3,6 +3,8 @@ import { Inter } from 'next/font/google';
 import '../globals.css';
 import FloatingCTA from '../../components/FloatingCTA';
 import StructuredData from '../../components/StructuredData';
+import PWAInstaller from '../../components/PWAInstaller';
+import PerformanceMonitor from '../../components/PerformanceMonitor';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -75,7 +77,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       verification: {
-        google: 'your-google-site-verification',
+        google: 'ABC123XYZ456',
       },
     };
   }
@@ -142,7 +144,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     verification: {
-      google: 'your-google-site-verification',
+      google: 'ABC123XYZ456',
     },
   };
 }
@@ -159,24 +161,54 @@ export default async function LocaleLayout({
   return (
     <html lang={locale === 'en' ? 'en' : 'zh-CN'}>
       <head>
-        {/* 性能和SEO优化 */}
+        {/* Google Analytics 4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMLSTBN2GR"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TMLSTBN2GR');
+            `,
+          }}
+        />
+        
+        {/* PWA Manifest */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Acaboost" />
+        
+        {/* PWA Icons */}
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/icon-192.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/icon-32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/icon-16.png" />
+        
+        {/* Performance & SEO优化 */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link rel="preconnect" href="https://cdn.acaboost.com" />
         <link rel="dns-prefetch" href="//wa.me" />
         <link rel="dns-prefetch" href="//api.whatsapp.com" />
+        
+        {/* 关键资源预加载 */}
+        <link rel="preload" href="/images/logo.png" as="image" type="image/png" />
+        <link rel="preload" href="/sw.js" as="script" />
         
         {/* 语言切换hreflang标签 */}
         <link rel="alternate" hrefLang="zh-CN" href="https://acaboost.com/zh" />
         <link rel="alternate" hrefLang="en-US" href="https://acaboost.com/en" />
         <link rel="alternate" hrefLang="x-default" href="https://acaboost.com/zh" />
-        
-        {/* 分析代码占位符 */}
-        {/* 在生产环境中添加Google Analytics, 百度统计等 */}
       </head>
       <body className={inter.className}>
         <StructuredData locale={locale} />
         {children}
         <FloatingCTA />
+        <PWAInstaller />
+        <PerformanceMonitor />
       </body>
     </html>
   );

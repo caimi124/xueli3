@@ -669,10 +669,10 @@ export default function Guide() {
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src="/images/samples/boston-university-diploma.jpeg"
-                      alt={t.sample1Title}
+                      alt={`${t.sample1Title} - Acaboost 学历认证服务真实样本展示`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="100vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="bg-white/90 rounded-full p-3">
@@ -696,10 +696,10 @@ export default function Guide() {
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src="/images/samples/transcript-real.jpeg"
-                      alt={t.sample2Title}
+                      alt={`${t.sample2Title} - Acaboost 官方成绩单认证样本`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="100vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="bg-white/90 rounded-full p-3">
@@ -723,10 +723,10 @@ export default function Guide() {
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src="/images/samples/student-id-real.jpeg"
-                      alt={t.sample3Title}
+                      alt={`${t.sample3Title} - Acaboost 学生身份证明认证样本`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="100vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="bg-white/90 rounded-full p-3">
@@ -750,10 +750,10 @@ export default function Guide() {
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src="/images/samples/admission-letter-real.jpeg"
-                      alt={t.sample4Title}
+                      alt={`${t.sample4Title} - Acaboost 录取通知书认证样本`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="100vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="bg-white/90 rounded-full p-3">
@@ -777,10 +777,10 @@ export default function Guide() {
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src="/images/samples/apostille-real.jpeg"
-                      alt={t.sample5Title}
+                      alt={`${t.sample5Title} - Acaboost 海牙认证服务真实样本`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="100vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="bg-white/90 rounded-full p-3">
@@ -804,10 +804,10 @@ export default function Guide() {
                   <div className="relative h-64 overflow-hidden">
                     <Image
                       src="/images/samples/wes-certification-real.jpeg"
-                      alt={t.sample6Title}
+                      alt={`${t.sample6Title} - Acaboost WES学历认证评估报告样本`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
-                      sizes="100vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                       <div className="bg-white/90 rounded-full p-3">
@@ -868,10 +868,10 @@ export default function Guide() {
                     <div className="relative h-48 overflow-hidden">
                       <Image
                         src="/images/samples/transcript-real.jpeg"
-                        alt={t.customer2ImageAlt}
+                        alt={`${t.customer2ImageAlt} - Acaboost 客户认证成功案例展示`}
                         fill
                         className="object-cover blur-sm"
-                        sizes="100vw"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
                         <div className="text-center text-white">

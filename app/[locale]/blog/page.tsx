@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useParams } from 'next/navigation';
 
 // 翻译内容
@@ -298,8 +299,15 @@ export default function LocalizedBlog() {
               <div className="bg-white rounded-xl shadow-lg overflow-hidden">
                 <div className="md:flex">
                   <div className="md:w-1/2">
-                    <div className="h-64 md:h-full bg-gray-300 flex items-center justify-center">
-                      <span className="text-gray-500">📄</span>
+                    <div className="relative h-64 md:h-full overflow-hidden">
+                      <Image
+                        src={featuredPost.image}
+                        alt={`${featuredPost.title} - Acaboost 学历认证知识库精选文章`}
+                        fill
+                        style={{ objectFit: 'cover' }}
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        className="hover:scale-105 transition-transform duration-300"
+                      />
                     </div>
                   </div>
                   <div className="md:w-1/2 p-8">
@@ -379,8 +387,15 @@ export default function LocalizedBlog() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {regularPosts.map((post) => (
                 <article key={post.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
-                  <div className="h-48 bg-gray-300 flex items-center justify-center">
-                    <span className="text-gray-500 text-4xl">📄</span>
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={`${post.title} - Acaboost 学历认证专业指南`}
+                      fill
+                      style={{ objectFit: 'cover' }}
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      className="hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
                   <div className="p-6">
                     <div className="flex items-center gap-2 mb-3">

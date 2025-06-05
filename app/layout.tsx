@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: 'your-google-site-verification',
+    google: 'ABC123XYZ456',
   },
 };
 
@@ -78,6 +78,19 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <head>
+        {/* Google Analytics 4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TMLSTBN2GR"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-TMLSTBN2GR');
+            `,
+          }}
+        />
+        
         {/* 结构化数据 */}
         <script
           type="application/ld+json"
