@@ -72,8 +72,7 @@ const nextConfig = {
     ? 'https://cdn.acaboost.com' 
     : '',
 
-  // 编译优化
-  swcMinify: true,
+  // 编译优化 - 移除swcMinify，在Next.js 15中已默认启用
   modularizeImports: {
     '@mui/icons-material': {
       transform: '@mui/icons-material/{{member}}',

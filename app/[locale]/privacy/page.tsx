@@ -3,7 +3,6 @@
 import React from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { Shield, Eye, Lock, Users, Mail, Clock, AlertTriangle } from 'lucide-react';
 
 const translations = {
   zh: {
@@ -12,7 +11,7 @@ const translations = {
     lastUpdated: "最后更新：2025年1月15日",
     effectiveDate: "生效日期：2025年1月15日",
     
-    intro: "Acaboost（以下简称"我们"）非常重视用户隐私保护。本隐私政策详细说明了我们如何收集、使用、存储和保护您的个人信息。使用我们的服务即表示您同意本隐私政策的条款。",
+    intro: "Acaboost（以下简称\"我们\"）非常重视用户隐私保护。本隐私政策详细说明了我们如何收集、使用、存储和保护您的个人信息。使用我们的服务即表示您同意本隐私政策的条款。",
     
     section1Title: "1. 我们收集的信息",
     section1Items: [
@@ -251,7 +250,6 @@ export default function PrivacyPolicy() {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <Link className="flex items-center" href={`/${locale}`}>
-              <Shield className="w-8 h-8 text-blue-600 mr-2" />
               <span className="text-xl font-bold text-blue-600">Acaboost</span>
             </Link>
             <div className="flex items-center space-x-4">
@@ -273,14 +271,14 @@ export default function PrivacyPolicy() {
       <section className="pt-20 pb-8 bg-gradient-to-br from-blue-50 to-indigo-100">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 text-white rounded-full mb-6">
-            <Shield className="w-8 h-8" />
+            <span className="text-xl font-bold text-gray-900">Acaboost</span>
           </div>
           <h1 className="text-4xl font-bold text-gray-900 mb-4">{t.title}</h1>
           <p className="text-xl text-gray-600 mb-6">{t.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-2 justify-center text-sm text-gray-500">
-            <span className="flex items-center"><Clock className="w-4 h-4 mr-1" />{t.lastUpdated}</span>
+            <span className="flex items-center">📅 {t.lastUpdated}</span>
             <span className="hidden sm:block">•</span>
-            <span className="flex items-center"><AlertTriangle className="w-4 h-4 mr-1" />{t.effectiveDate}</span>
+            <span className="flex items-center">⚠️ {t.effectiveDate}</span>
           </div>
         </div>
       </section>
@@ -291,8 +289,9 @@ export default function PrivacyPolicy() {
           <div className="lg:w-1/4">
             <div className="sticky top-24 bg-white rounded-xl shadow-sm p-6">
               <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                <Eye className="w-5 h-5 mr-2 text-blue-600" />
-                {t.quickNav}
+                <span className="text-blue-600">
+                  {t.quickNav}
+                </span>
               </h3>
               <nav className="space-y-2">
                 {[1,2,3,4,5,6,7,8,9,10,11,12].map((num) => (
@@ -319,8 +318,9 @@ export default function PrivacyPolicy() {
               {/* Key Points */}
               <div className="mb-8 p-6 bg-green-50 rounded-lg">
                 <h3 className="font-semibold text-gray-900 mb-4 flex items-center">
-                  <Lock className="w-5 h-5 mr-2 text-green-600" />
-                  {t.keyPoints}
+                  <span className="text-green-600">
+                    {t.keyPoints}
+                  </span>
                 </h3>
                 <ul className="grid md:grid-cols-2 gap-3 text-sm text-gray-700">
                   <li className="flex items-center">
@@ -443,7 +443,6 @@ export default function PrivacyPolicy() {
                   <div className="grid md:grid-cols-2 gap-4">
                     {t.section7Items.map((item, index) => (
                       <div key={index} className="flex items-start p-4 bg-blue-50 rounded-lg">
-                        <Users className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
                         <span className="text-gray-700 leading-relaxed">{item}</span>
                       </div>
                     ))}
@@ -499,7 +498,6 @@ export default function PrivacyPolicy() {
                   <div className="grid md:grid-cols-2 gap-4">
                     {t.section12Items.map((item, index) => (
                       <div key={index} className="flex items-start p-4 bg-gray-50 rounded-lg">
-                        <Mail className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
                         <span className="text-gray-700 leading-relaxed">{item}</span>
                       </div>
                     ))}
