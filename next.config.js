@@ -184,18 +184,6 @@ const nextConfig = {
   // 重定向规则
   async redirects() {
     return [
-      // WWW重定向
-      {
-        source: '/:path*',
-        has: [
-          {
-            type: 'host',
-            value: 'www.acaboost.com',
-          },
-        ],
-        destination: 'https://acaboost.com/:path*',
-        permanent: true,
-      },
       // 旧路径重定向
       {
         source: '/credentials',

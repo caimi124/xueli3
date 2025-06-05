@@ -7,5 +7,12 @@
     }
   ],
   "buildCommand": "npm run build",
-  "installCommand": "rm -f package-lock.json && npm install"
+  "installCommand": "rm -f package-lock.json && npm install",
+  "redirects": [
+    {
+      "source": "https://www.acaboost.com/:path*",
+      "destination": "https://acaboost.com/:path*",
+      "permanent": true
+    }
+  ]
 } 
