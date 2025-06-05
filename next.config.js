@@ -72,7 +72,8 @@ const nextConfig = {
     ? 'https://cdn.acaboost.com' 
     : '',
 
-  // 编译优化 - 移除swcMinify，在Next.js 15中已默认启用
+  // 编译优化
+  swcMinify: true,
   modularizeImports: {
     '@mui/icons-material': {
       transform: '@mui/icons-material/{{member}}',
@@ -184,6 +185,18 @@ const nextConfig = {
   // 重定向规则
   async redirects() {
     return [
+      // WWW重定向
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.acaboost.com',
+          },
+        ],
+        destination: 'https://acaboost.com/:path*',
+        permanent: true,
+      },
       // 旧路径重定向
       {
         source: '/credentials',
