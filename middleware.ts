@@ -7,10 +7,19 @@ export function middleware(request: NextRequest) {
   // 检查路径是否已经包含 locale
   const pathnameHasLocale = /^\/(?:zh|en)(?:\/.*)?$/.test(pathname)
   
-  // 如果是根路径或者没有 locale 前缀的路径，重定向到中文版本
-  if (pathname === '/' || (!pathnameHasLocale && !pathname.startsWith('/_') && !pathname.startsWith('/api'))) {
-    const newPath = pathname === '/' ? '/zh' : `/zh${pathname}`
-    return NextResponse.redirect(new URL(newPath, request.url))
+  // 如果路径已经有正确的 locale，直接通过
+  if (pathnameHasLocale) {
+    return NextResponse.next()
+  }
+  
+  // 只对根路径和没有 locale 前缀的路径进行重定向
+  if (pathname === '/') {
+    return NextResponse.redirect(new URL('/zh', request.url))
+  }
+  
+  // 对于其他没有 locale 的路径，添加 /zh 前缀
+  if (!pathname.startsWith('/_') && !pathname.startsWith('/api') && !pathname.startsWith('/images') && !pathname.startsWith('/fonts')) {
+    return NextResponse.redirect(new URL(`/zh${pathname}`, request.url))
   }
   
   return NextResponse.next()
