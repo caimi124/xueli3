@@ -2,17 +2,12 @@
 const nextConfig = {
   // 启用实验性功能
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['@headlessui/react', 'lucide-react'],
     turbo: {
       resolveAlias: {
         canvas: './empty-module.js',
       },
     },
-    // 启用并发特性
-    serverComponentsExternalPackages: ['sharp'],
-    // 启用部分预渲染
-    ppr: true,
   },
 
   // 图片优化配置
@@ -21,8 +16,6 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    // 图片质量优化
-    quality: 85,
     
     // CDN配置
     remotePatterns: [
@@ -54,7 +47,6 @@ const nextConfig = {
     
     // 图片加载策略
     loader: 'default',
-    loaderFile: './lib/imageLoader.js',
     
     // 禁用静态导入优化（使用动态导入）
     dangerouslyAllowSVG: true,
@@ -79,7 +71,6 @@ const nextConfig = {
     : '',
 
   // 编译优化
-  swcMinify: true,
   modularizeImports: {
     '@mui/icons-material': {
       transform: '@mui/icons-material/{{member}}',
