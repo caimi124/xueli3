@@ -2,7 +2,6 @@
 const nextConfig = {
   // 启用实验性功能
   experimental: {
-    optimizeCss: true,
     optimizePackageImports: ['@headlessui/react', 'lucide-react'],
     turbo: {
       resolveAlias: {
