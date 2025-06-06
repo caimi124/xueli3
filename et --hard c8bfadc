@@ -1,0 +1,80 @@
+[33m5712830[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m  实施Core Web Vitals优化和PWA功能 - 新增PWA支持、性能监控、智能图片加载器，预期首屏加载提升40-60%
+[33mc8bfadc[m 添加学校数据处理脚本和更新联系页面
+[33mac68b14[m \重新构建学校数据库：按照用户90所学校名单，移除所有中国和韩国学校，增加到20所核心学校，修复页面404错误，确保中英文版本同步\
+[33mc9a50a2[m 重大修复：移除所有不在名单中的学校，修正数据库以严格匹配用户提供的90所学校名单，移除了所有中国和韩国学校
+[33me14bcad[m 修复学校页面部署问题：修复schools页面国家列表，恢复完整学校数据库，修复导入导出错误，添加隐私政策页面，提高安全性和法律合规性
+[33ma026042[m  安全与法律合规修复: 添加隐私政策、服务条款及安全验证 - 新增隐私政策页面(/privacy) - 新增服务条款页面(/terms) - 创建输入验证工具(utils/validation.ts) - 移除vercel.json中硬编码环境变量 - 修复schools页面国家列表和英文数据 - 完善90所全球大学数据库 - 移除旧版非国际化页面文件 - 优化页面结构和用户体验
+[33m9395e92[m 完成所有页面导航栏布局统一优化：首页、schools、blog页面均采用居中导航链接和右侧操作区布局
+[33m56ec3e8[m 优化导航栏布局：主要导航链接居中，语言切换和WhatsApp按钮右侧对齐，提升用户体验
+[33m23852d8[m 修复contact和guide页面导航栏：添加语言切换按钮和国际化支持
+[33m9dfa838[m 扩展学校数据库到70所，修复页面问题，完善功能
+[33m1950196[m feat: 网站页面内容更新 - 恢复guide页面，更新blog分类，重建contact页面，优化FloatingCTA
+[33m40630e2[m feat: 扩展学校数据库
+[33m37518a4[m fix: 修复404页面问题，创建缺失的页面 - 新增快速领证服务页面 (/guide) - 新增联系我们页面 (/contact) - 新增博客页面 (/blog) - 修复所有导航链接404问题 - 完善中英文翻译内容
+[33mf66b8d9[m feat: 完整实现网站国际化功能 - 支持中英文双语，SEO优化，多语言路由结构
+[33mfa235f3[m 重新优化
+[33m6cc6f93[m 更新首页成功案例展示文案 - 重新设计案例展示格式，添加时间和状态图标 - 简化案例描述，突出关键信息 - 统一使用emoji图标增强视觉效果
+[33m9cad2d0[m 修复 app/page.tsx UTF-8 编码问题 - 恢复所有被损坏的中文字符 - 确保正确的文件编码 - 解决编译错误
+[33m4a0dc93[m 更新首页内容和布局优化 - 更新Hero区域主副标题和痛点引导语 - 优化核心服务优势内容 - 更新学历获取流程描述 - 优化成功案例展示格式并添加客户评价 - 修复语法错误确保代码正常运行
+[33mf55e506[m 更新首页成功案例展示和优化学校详情页面字体样式
+[33m1659c82[m 更新首页成功案例展示和学校详情页面内容
+[33m0c60b6b[m fix: 提交所有页面更新和新增样本图片
+[33m5568186[m feat: 优化院校数据库用户体验和功能 - 添加分页功能每页12所学校 - 动态学历类型和专业分类筛选 - QS排名范围筛选功能 - 创建70所全球高校详细页面 - 移除无用成功案例筛选 - 优化排名显示和响应式设计 - 提升渲染性能减少83%DOM元素
+[33m2c7ada8[m feat: update schools page with improved UI and icons
+[33madcf189[m feat: update homepage with improved UI and icons
+[33mffad4db[m feat: update guide page with improved UI and icons
+[33mb826f65[m feat: update contact page with improved UI and icons
+[33m097553b[m feat: update homepage and schools page with improved UI and content
+[33m5efa113[m feat: add blog page with articles and categories
+[33m87db8c1[m fix: remove windows-specific swc dependency for vercel deployment
+[33m84a33ce[m feat: 更新页面和修复样式、依赖问题
+[33mceeec8c[m fix: 优化项目结构和配置，添加必要的页面组件
+[33m61066b4[m fix: 清理项目结构，移除pages目录和多余的配置文件
+[33m6c410cf[m feat: 更新contact页面，使用新的App Router结构
+[33m6a459a3[m fix: 修复contact页面的Server Component错误，将其改为客户端组件
+[33m19b2029[m 删除 pages/contact，解决和 app 路由冲突
+[33m0f2a279[m 更新认证页面
+[33m1c409b1[m fix: 添加必要的配置文件和样式文件，修复部署问题
+[33m276efd5[m fix: 添加根布局文件以解决App Router布局问题
+[33mf8ef0c8[m fix: 删除pages/contact/index.tsx以解决路由冲突
+[33mfd4df2f[m feat: 添加联系我们页面，包含五个主要模块：Hero Section、联系方式展示、客户信任展示、学历保障和CTA部分
+[33mb0af70e[m feat: 添加指南页面，包含五个主要模块：Hero Section、步骤流程、证书类型、信任背书和CTA部分
+[33m51fc774[m fix: 修复guide和contact页面的React组件导出问题，确保构建成功
+[33m0c3c791[m feat: 重新创建快速领证指南和联系我们页面，按照用户要求优化内容结构
+[33md2cc377[m test: 简化联系我们页面内容，修复编码问题
+[33mae89955[m test: 更新领证指南测试文字
+[33m93e7dc8[m test: 简化领证指南页面内容，修复编码问题
+[33m6938ab1[m test: 简化领证指南页面内容，测试编码问题
+[33mda7ab0c[m test: 在领证指南页面添加测试文字
+[33ma35fcd5[m test: 添加测试文字
+[33m302a1ba[m test: trigger deploy
+[33m3f7d046[m feat: 重新设计领证指南页面，优化用户体验和转化率
+[33mfd3e61c[m feat: 创建新的联系我们页面，优化用户体验
+[33mde57197[m feat: 更新领证指南页面内容，匹配网站内容
+[33m4175950[m feat: 优化领证指南页面和WhatsApp按钮组件
+[33mbf940fe[m feat: 优化博客页面功能和性能
+[33m0461b3a[m feat: 重构博客页面布局和功能
+[33m69b6a04[m feat: 优化学校数据库页面布局和功能
+[33mc4305cc[m feat: 优化博客页面布局和功能
+[33m7f758aa[m feat: 优化学校数据库页面布局和功能
+[33m2eb8d80[m feat: 优化博客页面布局和功能
+[33m0df234b[m feat: 优化学校数据库页面布局和功能
+[33m38fea1c[m fix: 修复 Layout 组件的 TypeScript 类型错误
+[33m43fde11[m fix: 修复学校数据库页面图片资源问题
+[33mac4710f[m feat: 优化学校数据库页面布局和交互体验
+[33mae04886[m feat: 优化学校数据库页面，添加筛选功能和学校列表展示
+[33mb4d3162[m feat: 更新首页布局，优化认证流程和学校资源展示
+[33m9bb0500[m fix: 修复SEO组件keywords类型错误
+[33me37c23a[m feat: 更新所有文件，包括博客系统、认证中心和联系我们页面
+[33mfa4334f[m feat: 优化联系我们页面，改为WhatsApp咨询为主
+[33m4742a91[m 更新网站内容：1. 优化首页设计和布局 2. 更新博客页面内容 3. 更新指南页面内容
+[33mda80218[m Update homepage content and structure: - Update homepage content with localized text - Remove unused pages and components - Update navigation and footer components - Clean up project structure
+[33m72df9f9[m feat: update website to match reference version
+[33m177dd6e[m feat: update website components to match reference version
+[33m710dfa9[m feat: update homepage design with animations and improved UI
+[33m3504eb7[m 重新设计首页，优化WhatsApp转化和SEO，添加更专业的布局
+[33m4514d08[m 删除工具页面和资格评估功能
+[33m999fc35[m 修复构建错误：更新子目录导入路径并删除重复页面文件
+[33m8c2063e[m 重构网站结构：新增5大主菜单，修改导航，创建新的目录结构
+[33mb7aff91[m 更新网站内容和结构
+[33me658f67[m 重新设计网站，包括首页、学校资源、服务、博客和联系页面
