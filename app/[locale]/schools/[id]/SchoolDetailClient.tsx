@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 
 const translations = {
@@ -55,7 +55,6 @@ interface SchoolDetailClientProps {
 
 export default function SchoolDetailClient({ locale, school, uniqueInfo, schools }: SchoolDetailClientProps) {
   const t = translations[locale as keyof typeof translations] || translations.zh;
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const whatsappMessage = `Hello! I'm interested in ${school.name} degree authentication and would like to know about the specific authentication process, timeline, and fees. My background is [please describe your situation], and I'm looking to apply for [specific major]. Thank you!`;
 

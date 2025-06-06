@@ -120,8 +120,6 @@ export default function LocalizedSchools() {
   const [qsRankRange, setQsRankRange] = useState(locale === 'en' ? 'All' : '全部');
   const [sortBy, setSortBy] = useState('rankAsc');
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchSuggestions, setSearchSuggestions] = useState<string[]>([]);
-  const [showSuggestions, setShowSuggestions] = useState(false);
   const itemsPerPage = 16;
 
   // 获取学校数据
